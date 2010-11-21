@@ -1,0 +1,54 @@
+@import css3
+
+$radius = 6px
+
+body
+  background-color: #ccc
+
+#header
+  background-color: #222
+  color: #fff
+  margin-bottom: 20px
+
+  h1
+    margin: 10px
+
+#app-box
+  background-color: #fff
+  border: solid 1px #bbb
+  margin: 0 auto
+  padding: 20px 10px
+  width: 960px
+
+#search-box
+  background-color: #ddd
+  padding: 10px
+
+  input[type='text']
+    margin-right: 10px
+    padding: 5px
+    width: 800px
+
+.ui-dialog
+  background-color: rgba(0, 0, 0, .8)
+  +border-radius($radius)
+  color: #fff
+  padding: $radius
+
+.ui-dialog-titlebar
+  padding: 4px
+
+.ui-dialog-titlebar-close
+  background-color: rgba(0, 0, 0, .95)
+  +border-radius(4px)
+  color: #fff
+  padding: 3px 10px
+  margin: 3px
+  text-decoration: none
+  float: right
+
+#dialog
+  background-color: #fff
+  +border-radius($radius)
+  padding: 20px
+  width: 400px

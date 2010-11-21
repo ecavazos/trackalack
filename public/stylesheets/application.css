@@ -1,0 +1,54 @@
+body {
+  background-color: #cccccc; }
+
+#header {
+  background-color: #222222;
+  color: white;
+  margin-bottom: 20px; }
+  #header h1 {
+    margin: 10px; }
+
+#app-box {
+  background-color: white;
+  border: solid 1px #bbbbbb;
+  margin: 0 auto;
+  padding: 20px 10px;
+  width: 960px; }
+
+#search-box {
+  background-color: #dddddd;
+  padding: 10px; }
+  #search-box input[type='text'] {
+    margin-right: 10px;
+    padding: 5px;
+    width: 800px; }
+
+.ui-dialog {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  color: white;
+  padding: 6px; }
+
+.ui-dialog-titlebar {
+  padding: 4px; }
+
+.ui-dialog-titlebar-close {
+  background-color: rgba(0, 0, 0, 0.95);
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  color: white;
+  padding: 3px 10px;
+  margin: 3px;
+  text-decoration: none;
+  float: right; }
+
+#dialog {
+  background-color: white;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  padding: 20px;
+  width: 400px; }
