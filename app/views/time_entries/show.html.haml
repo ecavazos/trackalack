@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Date:
+  = @time_entry.date
+%p
+  %b Duration:
+  = @time_entry.duration
+%p
+  %b Description:
+  = @time_entry.description
+%p
+  %b Project:
+  = @time_entry.project
+%p
+  %b User:
+  = @time_entry.user
+
+= link_to 'Edit', edit_time_entry_path(@time_entry)
+\|
+= link_to 'Back', time_entries_path

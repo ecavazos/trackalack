@@ -1,0 +1,27 @@
+%h1 Listing time_entries
+
+%table
+  %tr
+    %th Date
+    %th Duration
+    %th Description
+    %th Project
+    %th User
+    %th
+    %th
+    %th
+
+  - @time_entries.each do |time_entry|
+    %tr
+      %td= time_entry.date
+      %td= time_entry.duration
+      %td= time_entry.description
+      %td= time_entry.project
+      %td= time_entry.user
+      %td= link_to 'Show', time_entry
+      %td= link_to 'Edit', edit_time_entry_path(time_entry)
+      %td= link_to 'Destroy', time_entry, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Time entry', new_time_entry_path
