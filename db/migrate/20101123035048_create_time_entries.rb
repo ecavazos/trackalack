@@ -2,7 +2,7 @@ class CreateTimeEntries < ActiveRecord::Migration
   def self.up
     create_table :time_entries do |t|
       t.date :date
-      t.integer :duration
+      t.decimal :duration
       t.text :description
       t.references :project
       t.references :user

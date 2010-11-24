@@ -7,6 +7,15 @@ body {
   margin-bottom: 20px; }
   #header h1 {
     margin: 10px; }
+    #header h1 a {
+      color: white;
+      text-decoration: none; }
+
+h2 {
+  border-bottom: dashed 1px #cccccc;
+  font-size: 24px;
+  padding-bottom: 5px;
+  margin-bottom: 20px; }
 
 #app-box {
   background-color: white;
@@ -17,11 +26,21 @@ body {
 
 #search-box {
   background-color: #dddddd;
+  margin-bottom: 20px;
   padding: 10px; }
   #search-box input[type='text'] {
     margin-right: 10px;
     padding: 5px;
     width: 800px; }
+
+.home-button {
+  background-color: #dddddd;
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: center; }
+  .home-button a {
+    display: inline-block;
+    margin: 20px; }
 
 .ui-dialog {
   background-color: rgba(0, 0, 0, 0.8);
@@ -52,3 +71,6 @@ body {
   -webkit-border-radius: 6px;
   padding: 20px;
   width: 400px; }
+
+.activity li {
+  margin-bottom: 8px; }
