@@ -2,7 +2,9 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries
   # GET /time_entries.xml
   def index
-    @time_entries = TimeEntry.all
+    @time_entries = Project.
+                      includes(:client, :time_entries => :user).
+                      find(params[:project_id]).time_entries
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,6 +26,7 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries/new
   # GET /time_entries/new.xml
   def new
+    @project = Project.find(params[:project_id])
     @time_entry = TimeEntry.new
 
     respond_to do |format|
@@ -32,15 +35,14 @@ class TimeEntriesController < ApplicationController
     end
   end
 
-  # GET /time_entries/1/edit
   def edit
     @time_entry = TimeEntry.find(params[:id])
   end
 
-  # POST /time_entries
-  # POST /time_entries.xml
   def create
     @time_entry = TimeEntry.new(params[:time_entry])
+
+    # TODO: get current user and assign it as creator of this entry
 
     respond_to do |format|
       if @time_entry.save
