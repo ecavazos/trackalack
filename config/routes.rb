@@ -1,11 +1,13 @@
 Trackalack::Application.routes.draw do
-  resources :time_entries
-
-  resources :projects
-
   resources :users
 
-  resources :clients
+  resources :clients do
+    resources :projects, :only => [:new, :create]
+  end
+
+  resources :projects, :except => [:new, :create] do
+    resources :time_entries
+  end
 
   get "home/index"
 

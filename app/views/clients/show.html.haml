@@ -4,6 +4,9 @@
   %b Name:
   = @client.name
 
+%p
+  = link_to 'Add Project', new_client_project_path(@client)
+
 = link_to 'Edit', edit_client_path(@client)
 \|
 = link_to 'Back', clients_path

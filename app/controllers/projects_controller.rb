@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.xml
   def new
+    @client = Client.find(params[:client_id])
     @project = Project.new
 
     respond_to do |format|
@@ -40,16 +41,13 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.xml
   def create
-    @project = Project.new(params[:project])
+    @client = Client.find(params[:client_id])
+    @project = @client.projects.build(params[:project])
 
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
-        format.xml  { render :xml => @project, :status => :created, :location => @project }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
-      end
+    if @project.save
+      redirect_to projects_path
+    else
+      render :new
     end
   end
 
