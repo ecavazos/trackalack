@@ -9,6 +9,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass'
+gem 'devise'
 
 group :test, :development do
   gem 'rspec-rails'

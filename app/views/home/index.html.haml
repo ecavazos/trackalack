@@ -1,7 +1,9 @@
-#search-box
-  %form
-    %input{ :type => 'text'}
-    %input{ :type => 'submit', :value => 'Search'}
+.row
+  %div{ :class => 'column grid_12'}
+    #search-box
+      %form
+        %input{ :type => 'text'}
+        %input{ :type => 'submit', :value => 'Search'}
 
 .row
   %div{ :class => 'column grid_6'}
@@ -11,15 +13,20 @@
     .home-button
       = link_to 'Add User', new_user_path
 
-%h2
-  Recent Activity
+.row
+  %div{ :class => 'column grid_8'}
+    %h2 Recent Activity
 
-%ul.activity
-  - @time_entries.each do |x|
-    %li
-      = link_to x.user.full_name, user_path(x.user)
-      recently (#{x.created_at}) did work for
-      = link_to x.project.client.name, client_path(x.project.client)
-      on the
-      = link_to x.project.name, project_path(x.project)
-      project.
+    %ul.activity
+      - @time_entries.each do |x|
+        %li
+          = link_to x.user.full_name, user_path(x.user)
+          recently (#{date_format(x.created_at)}) did work for
+          = link_to x.project.client.name, client_path(x.project.client)
+          on the
+          = link_to x.project.name, project_path(x.project)
+          project.
+          [#{link_to 'Add Time', new_project_time_entry_path(x.project)}]
+
+  %div{ :class => 'column grid_4'}
+    %h2 Stats
