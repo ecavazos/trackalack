@@ -9,11 +9,21 @@
 
 ### Users ###
 
-User.create({ :full_name => 'Cheech Marin',
-              :email    => 'cheech@cc.com' })
+User.create!({
+  email: 'cheech@cc.com',
+  first_name: 'Cheech',
+  last_name: 'Marin',
+  password: '1234',
+  password_confirmation: '1234'
+})
 
-User.create({ :full_name => 'Thomas Chong',
-              :email    => 'chong@cc.com' })
+User.create!({
+  email: 'chong@cc.com',
+  first_name: 'Thomas',
+  last_name: 'Chong',
+  password: '1234',
+  password_confirmation: '1234'
+})
 
 ### Clients ###
 

@@ -1,5 +1,5 @@
 Trackalack::Application.routes.draw do
-  resources :users
+  devise_for :users
 
   resources :clients do
     resources :projects, :only => [:new, :create]
