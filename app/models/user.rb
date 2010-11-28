@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
   def fullname
     "#{first_name} #{last_name}"
   end
+
+  def pathname
+    fullname.downcase.gsub(' ', '_')
+  end
 end

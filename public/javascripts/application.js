@@ -8,6 +8,10 @@ $(function () {
   };
   */
 
+  var app = {
+
+  };
+
   $('#test').click(function () {
     var dialogHtml = '<div id="dialog" title="dialog"><input type="text" /><input type="submit" value="WTF" /></div>';
 

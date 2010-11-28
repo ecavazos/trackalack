@@ -1,12 +1,27 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @project.name
+%h2= "#{@project.client.name} - #{@project.name}"
 
 %p
   = link_to 'Add Time', new_project_time_entry_path(@project)
+  = link_to 'Edit', edit_project_path(@project)
+  = link_to @project.client.name, @project.client
 
-= link_to 'Edit', edit_project_path(@project)
-\|
-= link_to 'Back', projects_path
+.child-data
+  %h3 Time Entries
+
+  %table.data-table
+    %tr
+      %th User
+      %th Date
+      %th Duration
+      %th Description
+      %th
+      %th
+
+    - @project.time_entries.each do |time_entry|
+      %tr
+        %td= time_entry.user.fullname
+        %td= time_entry.date
+        %td= time_entry.duration
+        %td= time_entry.description
+        %td.crud-action= link_to 'Edit', edit_project_time_entry_path(time_entry.project, time_entry)
+        %td.crud-action= link_to 'Destroy', project_time_entry_path(time_entry.project, time_entry), :confirm => 'Are you sure?', :method => :delete

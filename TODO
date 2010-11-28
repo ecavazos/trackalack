@@ -2,3 +2,6 @@
 
 * put all pages in grid (css)
 * customize devise views
+* style alerts and notices
+* user management
+* time entries alway sort descending

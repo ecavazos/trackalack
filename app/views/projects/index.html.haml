@@ -1,6 +1,6 @@
 %h2 Listing projects
 
-%table
+%table.data-table
   %tr
     %th Client
     %th Name
@@ -11,10 +11,11 @@
 
   - @projects.each do |project|
     %tr
-      %td= project.client.name
+      %td= link_to project.client.name, client_path(project.client)
       %td= project.name
-      %td= link_to 'New Project', new_client_project_path(project.client)
-      %td= link_to 'Show', project
-      %td= link_to 'Edit', edit_project_path(project)
-      %td= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+
+      %td.crud-action= link_to 'Add Time', new_project_time_entry_path(project)
+      %td.crud-action= link_to 'Show', project
+      %td.crud-action= link_to 'Edit', edit_project_path(project)
+      %td.crud-action= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
 

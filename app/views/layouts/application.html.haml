@@ -14,15 +14,15 @@
       %div{ :class => 'column grid_8'}
         %h1
           = link_to 'Trackalack', :root
+
       %div{ :class => 'column grid_4'}
         %ul#header-links
-          - if current_user
-            %li
-              = link_to current_user.fullname, edit_user_registration_path(current_user.email)
-            %li
-              = link_to 'Sign out', destroy_user_session_path
-            %li
-              = link_to 'Add user', new_user_registration_path
+          %li
+            = link_to current_user.fullname, edit_user_registration_path(current_user.pathname)
+          %li
+            = link_to 'Add user', new_user_registration_path
+          %li
+            = link_to 'Sign out', destroy_user_session_path
 
   #app-box
     = rails_msg(:alert)

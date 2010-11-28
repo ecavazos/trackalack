@@ -36,7 +36,8 @@ class TimeEntriesController < ApplicationController
   end
 
   def edit
-    @time_entry = TimeEntry.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @time_entry = @project.time_entries.find(params[:id])
   end
 
   def create

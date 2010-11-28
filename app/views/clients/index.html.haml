@@ -1,6 +1,9 @@
 %h2 Listing clients
 
-%table
+%p
+  = link_to 'New Client', new_client_path
+
+%table.data-table
   %tr
     %th Name
     %th
@@ -10,10 +13,7 @@
   - @clients.each do |client|
     %tr
       %td= client.name
-      %td= link_to 'Show', client
-      %td= link_to 'Edit', edit_client_path(client)
-      %td= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete
+      %td.crud-action= link_to 'Show', client
+      %td.crud-action= link_to 'Edit', edit_client_path(client)
+      %td.crud-action= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete
 
-%br
-
-= link_to 'New Client', new_client_path

@@ -1,12 +1,22 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @client.name
+%h2= @client.name
 
 %p
   = link_to 'Add Project', new_client_project_path(@client)
+  = link_to 'Edit', edit_client_path(@client)
 
-= link_to 'Edit', edit_client_path(@client)
-\|
-= link_to 'Back', clients_path
+.child-data
+  %h3 Projects
+
+  %table.data-table
+    %tr
+      %th Project Name
+      %th
+      %th
+      %th
+
+    - @client.projects.each do |project|
+      %tr
+        %td= link_to project.name, project
+        %td.crud-action= link_to 'Add Time', new_project_time_entry_path(project)
+        %td.crud-action= link_to 'Edit', edit_project_path(project)
+        %td.crud-action= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
