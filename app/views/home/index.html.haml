@@ -14,7 +14,7 @@
     = link_to 'Projects', projects_path
 
 .row
-  %div{ :class => 'column grid_8'}
+  %div{ :class => 'column grid_9'}
     %h2 Recent Activity
 
     %ul.activity
@@ -28,5 +28,22 @@
           project.
           [#{link_to 'Add Time', new_project_time_entry_path(x.project)}]
 
-  %div{ :class => 'column grid_4'}
-    %h2 Stats
+  %div{ :class => 'column grid_3'}
+    %h2 Recently Updated
+
+    %ul.quick-links
+      - @recent_projects.each do |project|
+        %li= link_to project.name
+
+    %h2 New Clients
+
+    %ul.quick-links
+      - @clients.each do |client|
+        %li= link_to client.name, client_path(client)
+
+    %h2 New Projects
+
+    %ul.quick-links
+      - @projects.each do |project|
+        %li= link_to project.name, project_path(project)
+

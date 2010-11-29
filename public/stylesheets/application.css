@@ -64,7 +64,7 @@ body {
 
 h2 {
   border-bottom: dashed 1px #cccccc;
-  font-size: 24px;
+  font-size: 22px;
   padding-bottom: 5px;
   margin-bottom: 20px; }
 
@@ -143,8 +143,16 @@ a:hover {
   padding: 20px;
   width: 400px; }
 
-.activity li {
-  margin-bottom: 10px; }
+.activity {
+  font-size: 13px; }
+  .activity li {
+    margin-bottom: 10px; }
+
+.quick-links {
+  font-size: 13px;
+  margin-bottom: 20px; }
+  .quick-links li {
+    margin-bottom: 5px; }
 
 .field {
   margin-bottom: 10px; }
