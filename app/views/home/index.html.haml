@@ -21,12 +21,13 @@
       - @time_entries.each do |x|
         %li
           = link_to x.user.fullname, edit_user_registration_path(x.user)
-          recently (#{date_format(x.created_at)}) did work for
+          recently (#{date_format(x.created_at)}) recorded work for
           = link_to x.project.client.name, client_path(x.project.client)
           on the
           = link_to x.project.name, project_path(x.project)
           project.
-          [#{link_to 'Add Time', new_project_time_entry_path(x.project)}]
+          .add-time
+            #{link_to 'Add Time', new_project_time_entry_path(x.project)}
 
   %div{ :class => 'column grid_3'}
     %h2 Recently Updated
@@ -35,15 +36,24 @@
       - @recent_projects.each do |project|
         %li= link_to project.name
 
+    .quick-links-footer
+      =link_to 'View all', projects_path
+
     %h2 New Clients
 
     %ul.quick-links
       - @clients.each do |client|
         %li= link_to client.name, client_path(client)
 
+    .quick-links-footer
+      =link_to 'View all', clients_path
+
     %h2 New Projects
 
     %ul.quick-links
       - @projects.each do |project|
         %li= link_to project.name, project_path(project)
+
+    .quick-links-footer
+      =link_to 'View all', projects_path
 

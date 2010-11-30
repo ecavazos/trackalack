@@ -58,10 +58,10 @@ Project.all.each do |p|
     }
 
     p.time_entries.create(attr1)
-    sleep(0.1)
+    sleep(0.01)
 
     p.time_entries.create(attr2)
-    sleep(0.1)
+    sleep(0.01)
   end
 end
 

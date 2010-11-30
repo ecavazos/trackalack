@@ -31,9 +31,10 @@ a:hover
 #app-box
   background-color: #fff
   border: solid 1px #bbb
-  margin: 0 auto
-  padding: 20px
+  margin: 0 auto 40px auto
+  padding: 20px 10px
   width: 960px
+  +box-shadow(rgba(0, 0, 0, 0.3), 0, 0, 10px)
 
 #search-box
   background-color: #ddd
@@ -51,12 +52,14 @@ a:hover
   a
     background-color: #ddd
     border: solid 2px #ccc
-    color: #222
+    color: #444
     display: inline-block
     font-size: 22px
-    padding: 20px
+    font-weight: bold
+    padding: 10px 20px
     margin: 0 10px 20px 0
     text-decoration: none
+    text-shadow: -1px 0 #fff
     +border-radius(10px)
 
 .ui-dialog
@@ -84,6 +87,7 @@ a:hover
   width: 400px
 
 .activity
+  color: #555
   font-size: 13px
 
   li
@@ -91,10 +95,14 @@ a:hover
 
 .quick-links
   font-size: 13px
-  margin-bottom: 20px
+  margin-bottom: 10px
 
   li
     margin-bottom: 5px
+
+.quick-links-footer
+  font-size: 13px
+  margin-bottom: 20px
 
 .field
   margin-bottom: 10px

@@ -1,7 +1,13 @@
 == TODO ==
 
+* search - index model
+* assign user to time entry
+* secure user's time entry
 * put all pages in grid (css)
 * customize devise views
 * style alerts and notices
 * user management
 * time entries alway sort descending
+* totals
+* make async
+* caching

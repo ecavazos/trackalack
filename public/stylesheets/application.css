@@ -3,6 +3,7 @@
   color: white;
   margin-bottom: 20px; }
   #header h1 {
+    font-size: 20px;
     margin: 10px 0; }
   #header a {
     color: #eeeeee;
@@ -85,9 +86,12 @@ a:hover {
 #app-box {
   background-color: white;
   border: solid 1px #bbbbbb;
-  margin: 0 auto;
-  padding: 20px;
-  width: 960px; }
+  margin: 0 auto 40px auto;
+  padding: 20px 10px;
+  width: 960px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px; }
 
 #search-box {
   background-color: #dddddd;
@@ -103,12 +107,14 @@ a:hover {
   .home-buttons a {
     background-color: #dddddd;
     border: solid 2px #cccccc;
-    color: #222222;
+    color: #444444;
     display: inline-block;
     font-size: 22px;
-    padding: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
     margin: 0 10px 20px 0;
     text-decoration: none;
+    text-shadow: -1px 0 white;
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px; }
@@ -144,15 +150,20 @@ a:hover {
   width: 400px; }
 
 .activity {
+  color: #555555;
   font-size: 13px; }
   .activity li {
     margin-bottom: 10px; }
 
 .quick-links {
   font-size: 13px;
-  margin-bottom: 20px; }
+  margin-bottom: 10px; }
   .quick-links li {
     margin-bottom: 5px; }
+
+.quick-links-footer {
+  font-size: 13px;
+  margin-bottom: 20px; }
 
 .field {
   margin-bottom: 10px; }
