@@ -1,5 +1,7 @@
 == TODO ==
 
+* fix seed data
+
 * search - index model
 * customize devise views (login)
 * user management
@@ -8,9 +10,10 @@
 * style alerts and notices
 * make shared partial for form errors
 * style forms
-* style action links for tier pages
 * client/project/user time totals
 * hide secure links
+* make view all buttons (graidents)
+* move home page buttons above search bar (top, right)
 
 * move home page queries to model classes
 

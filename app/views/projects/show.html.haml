@@ -1,12 +1,15 @@
 .row
-  %div{ :class => 'column grid_12'}
+  %div{ :class => 'column grid_7'}
+    %h2= "#{@project.name} for #{@project.client.name}"
 
-    %h2= "#{@project.client.name} - #{@project.name}"
-
-    %p
+  %div{ :class => 'column grid_5'}
+    #manage-nav
       = link_to 'Add Time', new_project_time_entry_path(@project)
-      = link_to 'Edit', edit_project_path(@project)
-      = link_to @project.client.name, @project.client
+      = link_to 'Edit Project', edit_project_path(@project)
+      = link_to 'View Client', @project.client
+
+.row
+  %div{ :class => 'column grid_12'}
 
     .child-data
       %h3 Time Entries

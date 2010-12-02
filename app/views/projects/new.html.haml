@@ -1,8 +1,13 @@
 .row
-  %div{ :class => 'column grid_12'}
-
+  %div{ :class => 'column grid_7'}
     %h2 New project
 
+  %div{ :class => 'column grid_5'}
+    #manage-nav
+      = link_to 'View client', client_path(@client)
+
+.row
+  %div{ :class => 'column grid_12'}
     / = render 'form'
 
     = form_for [@client, @project] do |f|
@@ -21,4 +26,3 @@
       .actions
         = f.submit 'Save'
 
-    = link_to 'Back', projects_path

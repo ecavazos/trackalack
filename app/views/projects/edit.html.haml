@@ -1,10 +1,13 @@
 .row
-  %div{ :class => 'column grid_12'}
-
+  %div{ :class => 'column grid_7'}
     %h2 Editing project
 
+  %div{ :class => 'column grid_5'}
+    #manage-nav
+      = link_to 'View project', @project
+      = link_to 'View client', @project.client
+
+.row
+  %div{ :class => 'column grid_12'}
     = render 'form'
 
-    = link_to 'Show', @project
-    \|
-    = link_to 'Back', projects_path

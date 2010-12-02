@@ -66,7 +66,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, default; }
 
 h2 {
-  border-bottom: dashed 1px #cccccc;
+  color: #333333;
   font-size: 22px;
   padding-bottom: 5px;
   margin-bottom: 20px; }
@@ -183,10 +183,13 @@ a:hover {
     clear: none; }
 
 .quick-links {
+  color: #666666;
   font-size: 13px;
   margin-bottom: 10px; }
   .quick-links li {
-    margin-bottom: 5px; }
+    border-bottom: solid 1px #eeeeee;
+    margin-bottom: 5px;
+    padding-bottom: 5px; }
 
 .quick-links-footer {
   font-size: 13px;
@@ -218,3 +221,10 @@ label {
     margin-bottom: 5px; }
   #error_explanation ul {
     list-style-position: inside; }
+
+#manage-nav {
+  text-align: right; }
+  #manage-nav a {
+    display: inline-block;
+    margin: 0 0 10px 10px;
+    font-size: 14px; }

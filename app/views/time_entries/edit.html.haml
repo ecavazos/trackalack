@@ -1,8 +1,13 @@
 .row
+  %div{ :class => 'column grid_7'}
+    %h2 Editing time entry
+
+  %div{ :class => 'column grid_5'}
+    #manage-nav
+      = link_to 'View project', @project
+      = link_to 'View client', @project.client
+
+.row
   %div{ :class => 'column grid_12'}
-
-    %h2 Editing Time Entry
-
     = render 'form'
 
-    = link_to 'Back', @project

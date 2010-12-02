@@ -1,11 +1,14 @@
 .row
-  %div{ :class => 'column grid_12'}
-
+  %div{ :class => 'column grid_7'}
     %h2= @client.name
 
-    %p
+  %div{ :class => 'column grid_5'}
+    #manage-nav
       = link_to 'Add Project', new_client_project_path(@client)
-      = link_to 'Edit', edit_client_path(@client)
+      = link_to 'Edit Client', edit_client_path(@client)
+
+.row
+  %div{ :class => 'column grid_12'}
 
     .child-data
       %h3 Projects
