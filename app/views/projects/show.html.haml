@@ -24,7 +24,7 @@
           %tr
             %td= time_entry.user.fullname
             %td= time_entry.date
-            %td= time_entry.duration
+            %td= time_entry.duration_display
             %td.description= time_entry.description
             %td.crud-action= link_to 'Edit', edit_project_time_entry_path(time_entry.project, time_entry)
             %td.crud-action= link_to 'Destroy', project_time_entry_path(time_entry.project, time_entry), :confirm => 'Are you sure?', :method => :delete

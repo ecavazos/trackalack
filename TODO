@@ -6,16 +6,13 @@
   ** user show page
 
 * style alerts and notices
-* style form errors
 * make shared partial for form errors
 * style forms
-* put all pages in grid (css)
+* style action links for tier pages
 * client/project/user time totals
 * hide secure links
 
-* style action links for tier pages
 * move home page queries to model classes
-* add "hrs" to a duration display method for time entries
 
 * make work type a class for easier access to keys and values
 * add billing type to time entry

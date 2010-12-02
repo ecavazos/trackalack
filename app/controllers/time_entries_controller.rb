@@ -42,7 +42,8 @@ class TimeEntriesController < ApplicationController
 
   def create
     @time_entry = current_user.time_entries.build(params[:time_entry])
-    @time_entry.project = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id])
+    @time_entry.project = @project
 
     if @time_entry.save
       redirect_to project_url(@time_entry.project), :notice => 'Time entry was successfully created.'
