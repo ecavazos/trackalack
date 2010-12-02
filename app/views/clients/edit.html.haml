@@ -1,7 +1,10 @@
-%h2 Editing client
+.row
+  %div{ :class => 'column grid_12'}
 
-= render 'form'
+    %h2 Editing client
 
-= link_to 'Show', @client
-\|
-= link_to 'Back', clients_path
+    = render 'form'
+
+    = link_to 'Show', @client
+    \|
+    = link_to 'Back', clients_path

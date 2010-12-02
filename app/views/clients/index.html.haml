@@ -1,19 +1,22 @@
-%h2 Listing clients
+.row
+  %div{ :class => 'column grid_12'}
 
-%p
-  = link_to 'New Client', new_client_path
+    %h2 Listing clients
 
-%table.data-table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
+    %p
+      = link_to 'New Client', new_client_path
 
-  - @clients.each do |client|
-    %tr
-      %td= client.name
-      %td.crud-action= link_to 'Show', client
-      %td.crud-action= link_to 'Edit', edit_client_path(client)
-      %td.crud-action= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete
+    %table.data-table
+      %tr
+        %th Name
+        %th
+        %th
+        %th
+
+      - @clients.each do |client|
+        %tr
+          %td= client.name
+          %td.crud-action= link_to 'Show', client
+          %td.crud-action= link_to 'Edit', edit_client_path(client)
+          %td.crud-action= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete
 

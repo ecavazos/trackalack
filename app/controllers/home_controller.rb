@@ -2,9 +2,9 @@ class HomeController < ApplicationController
   def index
     @time_entries = TimeEntry.
                       includes(:user, :project => :client).
-                      order('created_at desc')
+                      order('created_at desc').limit(25)
 
-    @recent_projects = Project.order('updated_at desc').limit(10)
+    @recently_updated_projects = Project.order('updated_at desc').limit(10)
 
     @clients = Client.order('created_at desc').limit(10)
     @projects = Project.order('created_at desc').limit(10)

@@ -1,27 +1,30 @@
-%h2 Listing time_entries
+.row
+  %div{ :class => 'column grid_12'}
 
-%table
-  %tr
-    %th Client
-    %th Project
-    %th User
-    %th Date
-    %th Duration
-    %th Description
-    %th
-    %th
-    %th
-    %th
+    %h2 Listing time_entries
 
-  - @time_entries.each do |time_entry|
-    %tr
-      %td= time_entry.project.client.name
-      %td= time_entry.project.name
-      %td= time_entry.user.fullname
-      %td= time_entry.date
-      %td= time_entry.duration
-      %td= time_entry.description
-      %td= link_to 'New Time Entry', new_project_time_entry_path(time_entry.project)
-      %td= link_to 'Show', project_time_entry_path(time_entry.project, time_entry)
-      %td= link_to 'Edit', edit_project_time_entry_path(time_entry.project, time_entry)
-      %td= link_to 'Destroy', project_time_entry_path(time_entry.project, time_entry), :confirm => 'Are you sure?', :method => :delete
+    %table
+      %tr
+        %th Client
+        %th Project
+        %th User
+        %th Date
+        %th Duration
+        %th Description
+        %th
+        %th
+        %th
+        %th
+
+      - @time_entries.each do |time_entry|
+        %tr
+          %td= time_entry.project.client.name
+          %td= time_entry.project.name
+          %td= time_entry.user.fullname
+          %td= time_entry.date
+          %td= time_entry.duration
+          %td= time_entry.description
+          %td= link_to 'New Time Entry', new_project_time_entry_path(time_entry.project)
+          %td= link_to 'Show', project_time_entry_path(time_entry.project, time_entry)
+          %td= link_to 'Edit', edit_project_time_entry_path(time_entry.project, time_entry)
+          %td= link_to 'Destroy', project_time_entry_path(time_entry.project, time_entry), :confirm => 'Are you sure?', :method => :delete

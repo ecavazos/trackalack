@@ -1,7 +1,10 @@
-%h1 Editing user
+.row
+  %div{ :class => 'column grid_12'}
 
-= render 'form'
+    %h1 Editing user
 
-= link_to 'Show', @user
-\|
-= link_to 'Back', users_path
+    = render 'form'
+
+    = link_to 'Show', @user
+    \|
+    = link_to 'Back', users_path

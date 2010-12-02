@@ -1,21 +1,24 @@
-%p#notice= notice
+.row
+  %div{ :class => 'column grid_12'}
 
-%p
-  %b Date:
-  = @time_entry.date
-%p
-  %b Duration:
-  = @time_entry.duration
-%p
-  %b Description:
-  = @time_entry.description
-%p
-  %b Project:
-  = @time_entry.project
-%p
-  %b User:
-  = @time_entry.user
+    %p#notice= notice
 
-= link_to 'Edit', edit_time_entry_path(@time_entry)
-\|
-= link_to 'Back', time_entries_path
+    %p
+      %b Date:
+      = @time_entry.date
+    %p
+      %b Duration:
+      = @time_entry.duration
+    %p
+      %b Description:
+      = @time_entry.description
+    %p
+      %b Project:
+      = @time_entry.project
+    %p
+      %b User:
+      = @time_entry.user
+
+    = link_to 'Edit', edit_time_entry_path(@time_entry)
+    \|
+    = link_to 'Back', time_entries_path

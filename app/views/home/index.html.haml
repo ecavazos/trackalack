@@ -17,24 +17,34 @@
   %div{ :class => 'column grid_9'}
     %h2 Recent Activity
 
-    %ul.activity
-      - @time_entries.each do |x|
-        %li
-          = link_to x.user.fullname, edit_user_registration_path(x.user)
-          recently (#{date_format(x.created_at)}) recorded work for
+    - @time_entries.each do |x|
+      .activity
+        .activity-action
+          = link_to 'Log time', new_project_time_entry_path(x.project)
+        .activity-title
+          Work logged for
           = link_to x.project.client.name, client_path(x.project.client)
           on the
           = link_to x.project.name, project_path(x.project)
           project.
-          .add-time
-            #{link_to 'Add Time', new_project_time_entry_path(x.project)}
+        .activity-user
+          done by
+          = link_to x.user.fullname, edit_user_registration_path(x.user)
+        .activity-meta
+          .activity-meta-item
+            = time_ago_in_words(x.created_at)
+            ago
+          - user_edit_time_link(x)
 
   %div{ :class => 'column grid_3'}
     %h2 Recently Updated
 
     %ul.quick-links
-      - @recent_projects.each do |project|
-        %li= link_to project.name
+      - @recently_updated_projects.each do |project|
+        %li
+          =link_to project.client.name, client_path(project.client)
+          &gt;
+          =link_to project.name, project_path(project)
 
     .quick-links-footer
       =link_to 'View all', projects_path

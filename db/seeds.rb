@@ -46,6 +46,7 @@ Project.all.each do |p|
     attr1 = {
       :date => Date.today,
       :duration => 3.5,
+      :work_type => 'feature',
       :description => 'Blah some more blah. And super blah even.',
       :user => User.find(1)
     }
@@ -53,6 +54,7 @@ Project.all.each do |p|
     attr2 = {
       :date => Date.today,
       :duration => 4.5,
+      :work_type => 'task',
       :description => 'Blah some more blah. And super blah even.',
       :user => User.find(2)
     }

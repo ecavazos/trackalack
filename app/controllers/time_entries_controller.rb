@@ -36,51 +36,38 @@ class TimeEntriesController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:project_id])
-    @time_entry = @project.time_entries.find(params[:id])
+    @time_entry = current_user.time_entries.find(params[:id])
+    @project = @time_entry.project
   end
 
   def create
-    @time_entry = TimeEntry.new(params[:time_entry])
+    @time_entry = current_user.time_entries.build(params[:time_entry])
+    @time_entry.project = Project.find(params[:project_id])
 
-    # TODO: get current user and assign it as creator of this entry
-
-    respond_to do |format|
-      if @time_entry.save
-        format.html { redirect_to(@time_entry, :notice => 'Time entry was successfully created.') }
-        format.xml  { render :xml => @time_entry, :status => :created, :location => @time_entry }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @time_entry.errors, :status => :unprocessable_entity }
-      end
+    if @time_entry.save
+      redirect_to project_url(@time_entry.project), :notice => 'Time entry was successfully created.'
+    else
+      render :new
     end
   end
 
   # PUT /time_entries/1
   # PUT /time_entries/1.xml
   def update
-    @time_entry = TimeEntry.find(params[:id])
+    @time_entry = current_user.time_entries.find(params[:id])
+    @project = @time_entry.project
 
-    respond_to do |format|
-      if @time_entry.update_attributes(params[:time_entry])
-        format.html { redirect_to(@time_entry, :notice => 'Time entry was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @time_entry.errors, :status => :unprocessable_entity }
-      end
+    if @time_entry.update_attributes(params[:time_entry])
+      redirect_to project_url(@time_entry.project), :notice => 'Time entry was successfully updated.'
+    else
+      render :edit
     end
   end
 
-  # DELETE /time_entries/1
-  # DELETE /time_entries/1.xml
   def destroy
-    @time_entry = TimeEntry.find(params[:id])
+    @time_entry = current_user.time_entries.find(params[:id])
+    @project = @time_entry.project
     @time_entry.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(time_entries_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to project_url(@project), :notice => 'Time entry was successfully deleted.'
   end
 end

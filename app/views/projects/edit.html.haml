@@ -1,7 +1,10 @@
-%h2 Editing project
+.row
+  %div{ :class => 'column grid_12'}
 
-= render 'form'
+    %h2 Editing project
 
-= link_to 'Show', @project
-\|
-= link_to 'Back', projects_path
+    = render 'form'
+
+    = link_to 'Show', @project
+    \|
+    = link_to 'Back', projects_path

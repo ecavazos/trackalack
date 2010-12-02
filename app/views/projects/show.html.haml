@@ -1,27 +1,30 @@
-%h2= "#{@project.client.name} - #{@project.name}"
+.row
+  %div{ :class => 'column grid_12'}
 
-%p
-  = link_to 'Add Time', new_project_time_entry_path(@project)
-  = link_to 'Edit', edit_project_path(@project)
-  = link_to @project.client.name, @project.client
+    %h2= "#{@project.client.name} - #{@project.name}"
 
-.child-data
-  %h3 Time Entries
+    %p
+      = link_to 'Add Time', new_project_time_entry_path(@project)
+      = link_to 'Edit', edit_project_path(@project)
+      = link_to @project.client.name, @project.client
 
-  %table.data-table
-    %tr
-      %th User
-      %th Date
-      %th Duration
-      %th Description
-      %th
-      %th
+    .child-data
+      %h3 Time Entries
 
-    - @project.time_entries.each do |time_entry|
-      %tr
-        %td= time_entry.user.fullname
-        %td= time_entry.date
-        %td= time_entry.duration
-        %td= time_entry.description
-        %td.crud-action= link_to 'Edit', edit_project_time_entry_path(time_entry.project, time_entry)
-        %td.crud-action= link_to 'Destroy', project_time_entry_path(time_entry.project, time_entry), :confirm => 'Are you sure?', :method => :delete
+      %table.data-table
+        %tr
+          %th User
+          %th Date
+          %th Duration
+          %th Description
+          %th
+          %th
+
+        - @project.time_entries.each do |time_entry|
+          %tr
+            %td= time_entry.user.fullname
+            %td= time_entry.date
+            %td= time_entry.duration
+            %td.description= time_entry.description
+            %td.crud-action= link_to 'Edit', edit_project_time_entry_path(time_entry.project, time_entry)
+            %td.crud-action= link_to 'Destroy', project_time_entry_path(time_entry.project, time_entry), :confirm => 'Are you sure?', :method => :delete

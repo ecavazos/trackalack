@@ -1,22 +1,25 @@
-%h2= @client.name
+.row
+  %div{ :class => 'column grid_12'}
 
-%p
-  = link_to 'Add Project', new_client_project_path(@client)
-  = link_to 'Edit', edit_client_path(@client)
+    %h2= @client.name
 
-.child-data
-  %h3 Projects
+    %p
+      = link_to 'Add Project', new_client_project_path(@client)
+      = link_to 'Edit', edit_client_path(@client)
 
-  %table.data-table
-    %tr
-      %th Project Name
-      %th
-      %th
-      %th
+    .child-data
+      %h3 Projects
 
-    - @client.projects.each do |project|
-      %tr
-        %td= link_to project.name, project
-        %td.crud-action= link_to 'Add Time', new_project_time_entry_path(project)
-        %td.crud-action= link_to 'Edit', edit_project_path(project)
-        %td.crud-action= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+      %table.data-table
+        %tr
+          %th Project Name
+          %th
+          %th
+          %th
+
+        - @client.projects.each do |project|
+          %tr
+            %td= link_to project.name, project
+            %td.crud-action= link_to 'Add Time', new_project_time_entry_path(project)
+            %td.crud-action= link_to 'Edit', edit_project_path(project)
+            %td.crud-action= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete

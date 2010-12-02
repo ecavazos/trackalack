@@ -44,6 +44,8 @@
   .data-table .crud-action {
     text-align: right;
     width: 10%; }
+  .data-table .description {
+    max-width: 300px; }
 
 .child-data {
   background-color: #eeeeee;
@@ -103,10 +105,11 @@ a:hover {
     width: 800px; }
 
 .home-buttons {
+  padding: 5px;
   text-align: center; }
   .home-buttons a {
     background-color: #dddddd;
-    border: solid 2px #cccccc;
+    border: solid 1px #aaaaaa;
     color: #444444;
     display: inline-block;
     font-size: 22px;
@@ -117,7 +120,10 @@ a:hover {
     text-shadow: -1px 0 white;
     border-radius: 10px;
     -moz-border-radius: 10px;
-    -webkit-border-radius: 10px; }
+    -webkit-border-radius: 10px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 2px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 2px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 0 2px; }
 
 .ui-dialog {
   background-color: rgba(0, 0, 0, 0.8);
@@ -150,10 +156,31 @@ a:hover {
   width: 400px; }
 
 .activity {
-  color: #555555;
-  font-size: 13px; }
-  .activity li {
-    margin-bottom: 10px; }
+  background-color: #efefef;
+  border-bottom: solid 1px #dddddd;
+  color: #666666;
+  font-size: 12px;
+  margin-bottom: 10px;
+  padding: 15px;
+  overflow: hidden; }
+  .activity div {
+    clear: left;
+    float: left;
+    margin-bottom: 5px; }
+  .activity .activity-title {
+    font-size: 14px;
+    width: 80%; }
+  .activity .activity-user {
+    font-size: 14px; }
+  .activity .activity-meta {
+    margin: 0; }
+    .activity .activity-meta div {
+      float: none;
+      display: inline-block;
+      margin-right: 6px; }
+  .activity .activity-action {
+    float: right;
+    clear: none; }
 
 .quick-links {
   font-size: 13px;

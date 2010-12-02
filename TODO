@@ -1,13 +1,25 @@
 == TODO ==
 
 * search - index model
-* assign user to time entry
-* secure user's time entry
-* put all pages in grid (css)
-* customize devise views
-* style alerts and notices
+* customize devise views (login)
 * user management
-* time entries alway sort descending
-* totals
+  ** user show page
+
+* style alerts and notices
+* style form errors
+* make shared partial for form errors
+* style forms
+* put all pages in grid (css)
+* client/project/user time totals
+* hide secure links
+
+* style action links for tier pages
+* move home page queries to model classes
+* add "hrs" to a duration display method for time entries
+
+* make work type a class for easier access to keys and values
+* add billing type to time entry
+* make billing type a class ...
+
 * make async
 * caching

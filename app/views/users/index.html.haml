@@ -1,21 +1,24 @@
-%h1 Listing users
+.row
+  %div{ :class => 'column grid_12'}
 
-%table
-  %tr
-    %th Full name
-    %th Email
-    %th
-    %th
-    %th
+    %h1 Listing users
 
-  - @users.each do |user|
-    %tr
-      %td= user.full_name
-      %td= user.email
-      %td= link_to 'Show', user
-      %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
+    %table
+      %tr
+        %th Full name
+        %th Email
+        %th
+        %th
+        %th
 
-%br
+      - @users.each do |user|
+        %tr
+          %td= user.full_name
+          %td= user.email
+          %td= link_to 'Show', user
+          %td= link_to 'Edit', edit_user_path(user)
+          %td= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
 
-= link_to 'New User', new_user_path
+    %br
+
+    = link_to 'New User', new_user_path
