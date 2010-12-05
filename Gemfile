@@ -11,6 +11,11 @@ gem 'jquery-rails'
 gem 'sass'
 gem 'devise'
 
+group :development do
+  gem 'hpricot'
+  gem 'ruby_parser'
+end
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'autotest'

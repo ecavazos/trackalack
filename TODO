@@ -7,13 +7,14 @@
 * user management
   ** user show page
 
+* calendar for entering time
+
 * style alerts and notices
 * make shared partial for form errors
 * style forms
 * client/project/user time totals
 * hide secure links
 * make view all buttons (graidents)
-* move home page buttons above search bar (top, right)
 
 * move home page queries to model classes
 
@@ -23,3 +24,9 @@
 
 * make async
 * caching
+
+== Future Features ==
+
+* home page totals (week, two weeks, month)
+* home page filtering
+* home page is user centric view

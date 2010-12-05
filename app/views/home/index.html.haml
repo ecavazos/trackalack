@@ -1,17 +1,15 @@
 .row
+  %div{ :class => 'column grid_12 home-buttons'}
+    = link_to 'Add Client', new_client_path, :id => 'test'
+    = link_to 'Clients', clients_path
+    = link_to 'Projects', projects_path
+
+.row
   %div{ :class => 'column grid_12'}
     #search-box
       %form
         %input{ :type => 'text'}
         %input{ :type => 'submit', :value => 'Search'}
-
-.row
-  %div{ :class => 'column grid_12 home-buttons'}
-    = link_to 'Add Client', new_client_path, :id => 'test'
-
-    = link_to 'Clients', clients_path
-
-    = link_to 'Projects', projects_path
 
 .row
   %div{ :class => 'column grid_9'}

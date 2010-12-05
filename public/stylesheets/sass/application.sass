@@ -34,12 +34,16 @@ a:hover
   margin: 0 auto 40px auto
   padding: 20px 10px
   width: 960px
+  overflow: hidden
   +box-shadow(rgba(0, 0, 0, 0.3), 0, 0, 10px)
 
 #search-box
   background-color: #ddd
   margin-bottom: 20px
   padding: 10px
+
+  form
+    float: none
 
   input[type='text']
     margin-right: 10px
@@ -48,21 +52,13 @@ a:hover
 
 .home-buttons
   padding: 5px
-  text-align: center
+  text-align: right
 
   a
-    background-color: #ddd
-    border: solid 1px #aaa
-    color: #444
     display: inline-block
-    font-size: 22px
-    font-weight: bold
-    padding: 10px 20px
-    margin: 0 10px 20px 0
+    margin: 0 0 10px 10px
     text-decoration: none
-    text-shadow: -1px 0 #fff
-    +border-radius(10px)
-    +box-shadow(rgba(0, 0, 0, 0.3), 0, 0, 2px)
+    text-shadow: 1px 0 #fff
 
 .ui-dialog
   background-color: rgba(0, 0, 0, .8)
@@ -137,15 +133,30 @@ a:hover
 
 .field
   margin-bottom: 10px
+  overflow: hidden
+
+form
+  font-size: 12px
+  float: left
 
 label
-  background-color: #ddd
+  border-right: solid 2px #ddd
   display: inline-block
-  +border-radius(5px)
-  font-size: 12px
   margin-right: 10px
   padding: 5px 10px
+  text-align: right
   vertical-align: top
+  width: 80px
+
+.readonly
+  display: inline-block
+  padding: 5px 0
+
+input[type='text'], select, textarea
+  clear: left
+
+input[type='submit']
+  float: right
 
 #error_explanation
   background-color: #ffd9ed

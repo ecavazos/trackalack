@@ -10,31 +10,32 @@
 ### Users ###
 
 User.create!({
-  email: 'cheech@cc.com',
-  first_name: 'Cheech',
-  last_name: 'Marin',
+  email: 'bob@trackalack.com',
+  first_name: 'Bob',
+  last_name: 'Stone',
   password: '1234',
   password_confirmation: '1234'
 })
 
 User.create!({
-  email: 'chong@cc.com',
-  first_name: 'Thomas',
-  last_name: 'Chong',
+  email: 'rob@trackalack.com',
+  first_name: 'Rob',
+  last_name: 'Rock',
   password: '1234',
   password_confirmation: '1234'
 })
 
 ### Clients ###
 
-Client.create(:name => 'Tokers Plus')
-Client.create(:name => 'Local Gov')
-Client.create(:name => 'High Skewl Kidz')
+Client.create(:name => 'The Business People')
+Client.create(:name => 'Local Government')
+Client.create(:name => 'Technology Consultants')
 
 ### Projects ###
 
 Client.all.each do |c|
   c.projects.create(:name => 'Website')
+  c.projects.create(:name => 'WPF App')
   c.projects.create(:name => 'iPad App')
   c.projects.create(:name => 'Database Migration')
 end
@@ -42,12 +43,12 @@ end
 ### Time Entries ###
 
 Project.all.each do |p|
-  50.times do |x|
+  30.times do |x|
     attr1 = {
       :date => Date.today,
       :duration => 3.5,
       :work_type => 'feature',
-      :description => 'Blah some more blah. And super blah even.',
+      :description => "Did a little something for #{p.client.name}.",
       :user => User.find(1)
     }
 
@@ -55,7 +56,7 @@ Project.all.each do |p|
       :date => Date.today,
       :duration => 4.5,
       :work_type => 'task',
-      :description => 'Blah some more blah. And super blah even.',
+      :description => "#{p.name} required some updates.",
       :user => User.find(2)
     }
 

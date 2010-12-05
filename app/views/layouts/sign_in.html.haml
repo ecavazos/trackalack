@@ -16,16 +16,9 @@
           = link_to 'Trackalack', :root
 
       %div{ :class => 'column grid_4'}
-        %ul#header-links
-          %li
-            - if current_user
-              = link_to current_user.fullname, edit_user_registration_path(current_user.pathname)
-          %li
-            = link_to 'Add user', new_user_registration_path
-          %li
-            = link_to 'Sign out', destroy_user_session_path
 
   #app-box
     = rails_msg(:alert)
     = rails_msg(:notice)
     = yield
+
