@@ -8,11 +8,7 @@ class ApplicationController < ActionController::Base
   private
 
     def layout_picker
-      if sign_in?
-        'sign_in'
-      else
-        'application'
-      end
+      sign_in? ? 'sign_in' : 'application'
     end
 
     def sign_in?

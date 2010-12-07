@@ -25,7 +25,10 @@
       hrs
   .field
     = f.label :work_type
-    = f.select :work_type, { 'Feature' => :feature, 'Task' => :task, 'Incident' => :incident }
+    = f.select :work_type, WorkTypes.for_select
+  .field
+    = f.label :billing_type
+    = f.select :billing_type, BillingTypes.for_select
   .field
     = f.label :description
     = f.text_area :description, :rows => 4

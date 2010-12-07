@@ -4,7 +4,8 @@ class TimeEntry < ActiveRecord::Base
 
   validates_presence_of :duration
   validates_numericality_of :duration, :greater_than => 0
-  validates_inclusion_of :work_type, :in => [:feature, :task, :incident]
+  validates_inclusion_of :work_type, :in => WorkTypes.all
+  validates_inclusion_of :billing_type, :in => BillingTypes.all
 
   default_scope order('date desc, created_at desc')
 
@@ -16,6 +17,24 @@ class TimeEntry < ActiveRecord::Base
 
   def work_type= (value)
     write_attribute(:work_type, value.to_s)
+  end
+
+  def work_type_display
+    self.work_type ? WorkTypes.all[self.work_type] : ''
+  end
+
+  def billing_type
+    v = read_attribute(:billing_type)
+    return v if v.nil?
+    v.to_sym
+  end
+
+  def billing_type= (value)
+    write_attribute(:billing_type, value.to_s)
+  end
+
+  def billing_type_display
+    self.billing_type ? BillingTypes.all[self.billing_type] : ''
   end
 
   def duration_display

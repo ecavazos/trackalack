@@ -18,6 +18,8 @@
         %tr
           %th User
           %th Date
+          %th Work Type
+          %th Billing Type
           %th Duration
           %th Description
           %th
@@ -27,6 +29,8 @@
           %tr
             %td= time_entry.user.fullname
             %td= time_entry.date
+            %td= time_entry.work_type_display
+            %td= time_entry.billing_type_display
             %td= time_entry.duration_display
             %td.description= time_entry.description
             %td.crud-action= link_to 'Edit', edit_project_time_entry_path(time_entry.project, time_entry)

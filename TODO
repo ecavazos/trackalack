@@ -6,9 +6,11 @@
 * customize devise views (login)
 * user management
   ** user show page
+* add totals to client
 
 * calendar for entering time
 
+* style sign in page
 * style alerts and notices
 * make shared partial for form errors
 * style forms

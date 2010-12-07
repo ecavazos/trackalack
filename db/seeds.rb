@@ -47,7 +47,8 @@ Project.all.each do |p|
     attr1 = {
       :date => Date.today,
       :duration => 3.5,
-      :work_type => 'feature',
+      :work_type => :feature,
+      :billing_type => :billable,
       :description => "Did a little something for #{p.client.name}.",
       :user => User.find(1)
     }
@@ -55,7 +56,8 @@ Project.all.each do |p|
     attr2 = {
       :date => Date.today,
       :duration => 4.5,
-      :work_type => 'task',
+      :work_type => :task,
+      :billing_type => :no_charge,
       :description => "#{p.name} required some updates.",
       :user => User.find(2)
     }

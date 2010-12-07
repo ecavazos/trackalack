@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20101123035048) do
   create_table "time_entries", :force => true do |t|
     t.date     "date"
     t.string   "work_type"
+    t.string   "billing_type"
     t.decimal  "duration"
     t.text     "description"
     t.integer  "project_id"
