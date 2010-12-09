@@ -1,9 +1,15 @@
 .row
+  %div{ :class => 'column grid_7'}
+    %h2 Listing users
+
+  %div{ :class => 'column grid_5'}
+    #manage-nav
+      = link_to 'New user', new_user_path
+
+.row
   %div{ :class => 'column grid_12'}
 
-    %h1 Listing users
-
-    %table
+    %table.data-table
       %tr
         %th Full name
         %th Email
@@ -13,12 +19,9 @@
 
       - @users.each do |user|
         %tr
-          %td= user.full_name
+          %td= user.fullname
           %td= user.email
           %td= link_to 'Show', user
           %td= link_to 'Edit', edit_user_path(user)
           %td= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
 
-    %br
-
-    = link_to 'New User', new_user_path

@@ -28,7 +28,7 @@
         - @project.time_entries.each do |time_entry|
           %tr
             %td= time_entry.user.fullname
-            %td= time_entry.date
+            %td= format_date(time_entry.date)
             %td= time_entry.work_type_display
             %td= time_entry.billing_type_display
             %td= time_entry.duration_display

@@ -1,5 +1,5 @@
 module HomeHelper
-  def date_format(date)
+  def format_date(date)
     date.strftime('%m/%d/%Y')
   end
 

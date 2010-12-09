@@ -1,15 +1,17 @@
 .row
+  %div{ :class => 'column grid_7'}
+    %h2= @user.fullname
+
+  %div{ :class => 'column grid_5'}
+    #manage-nav
+      = link_to 'Users', users_path
+      = link_to 'Edit', edit_user_path(@user)
+
+.row
   %div{ :class => 'column grid_12'}
-
-    %p#notice= notice
-
-    %p
-      %b Full name:
-      = @user.full_name
     %p
       %b Email:
       = @user.email
 
-    = link_to 'Edit', edit_user_path(@user)
-    \|
-    = link_to 'Back', users_path
+    .child-data
+      = render :partial => 'shared/time_grid', :locals => { :time_entries => @user.time_entries }

@@ -1,10 +1,12 @@
 .row
+  %div{ :class => 'column grid_7'}
+    %h2 Editing user
+
+  %div{ :class => 'column grid_5'}
+    #manage-nav
+      = link_to 'Users', users_path
+      = link_to 'Show', @user
+
+.row
   %div{ :class => 'column grid_12'}
-
-    %h1 Editing user
-
     = render 'form'
-
-    = link_to 'Show', @user
-    \|
-    = link_to 'Back', users_path
