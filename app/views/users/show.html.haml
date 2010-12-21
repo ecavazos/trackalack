@@ -9,9 +9,51 @@
 
 .row
   %div{ :class => 'column grid_12'}
-    %p
-      %b Email:
-      = @user.email
+    #filter-bar
+      = form_tag @user, :method => :get do
+        .field
+          = label_tag 'Show last'
+          = select_tag 'days', options_for_select(day_opts, params[:days])
+
+        %span
+          or specify a custom
+
+        .field
+          = label_tag 'date range'
+          = text_field_tag :start_date, params[:start_date]
+          %span to
+          = text_field_tag :end_date, params[:end_date]
+
+        = submit_tag 'Filter', :name => nil
 
     .child-data
-      = render :partial => 'shared/time_grid', :locals => { :time_entries => @user.time_entries }
+      / = render :partial => 'shared/time_grid', :locals => { :time_entries => @time_entries }
+      %h3 Time Entries
+
+      %table.data-table
+        %tr
+          %th Client
+          %th Project
+          %th Date
+          %th Work Type
+          %th Billing Type
+          %th Duration
+          %th Description
+          %th
+          %th
+
+        - @time_entries.each do |time_entry|
+          %tr
+            %td= time_entry.project.client.name
+            %td= time_entry.project.name
+            %td= format_date(time_entry.date)
+            %td= time_entry.work_type_display
+            %td= time_entry.billing_type_display
+            %td= time_entry.duration_display
+            %td= time_entry.abbr_description
+            %td.crud-action= link_to 'Edit', edit_project_time_entry_path(time_entry.project, time_entry)
+            %td.crud-action= link_to 'Destroy', project_time_entry_path(time_entry.project, time_entry), :confirm => 'Are you sure?', :method => :delete
+
+
+
+= javascript_include_tag 'filter_bar'

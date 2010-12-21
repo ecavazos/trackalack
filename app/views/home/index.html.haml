@@ -13,29 +13,29 @@
 
 .row
   %div{ :class => 'column grid_9'}
-    %h2 Recent Activity
+    %h3 Recent Time Entries
 
     - @time_entries.each do |x|
       .activity
         .activity-action
-          = link_to 'Log time', new_project_time_entry_path(x.project)
+          = link_to 'Add time', new_project_time_entry_path(x.project)
         .activity-title
-          Work logged for
+          You logged work for
           = link_to x.project.client.name, client_path(x.project.client)
           on the
           = link_to x.project.name, project_path(x.project)
           project.
-        .activity-user
-          done by
-          = link_to x.user.fullname, edit_user_registration_path(x.user)
         .activity-meta
           .activity-meta-item
             = time_ago_in_words(x.created_at)
             ago
-          - user_edit_time_link(x)
+          .activity-meta-item
+            = link_to x.user.fullname, user_path(x.user)
+          .activity-meta-item
+            - user_edit_time_link(x)
 
   %div{ :class => 'column grid_3'}
-    %h2 Recently Updated
+    %h3 Projects Recently Updated
 
     %ul.quick-links
       - @recently_updated_projects.each do |project|
@@ -47,7 +47,7 @@
     .quick-links-footer
       =link_to 'View all projects', projects_path
 
-    %h2 New Clients
+    %h3 New Clients
 
     %ul.quick-links
       - @clients.each do |client|
@@ -56,7 +56,7 @@
     .quick-links-footer
       =link_to 'View all clients', clients_path
 
-    %h2 New Projects
+    %h3 New Projects
 
     %ul.quick-links
       - @projects.each do |project|

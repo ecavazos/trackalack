@@ -3,6 +3,7 @@ $radius = 6px
 @import css3
 @import header
 @import tables
+@import filters
 
 body
   background-color: #ccc
@@ -39,6 +40,7 @@ a:hover
 
 #search-box
   background-color: #ddd
+  border: solid 1px #ccc
   margin-bottom: 20px
   padding: 10px
 
@@ -100,18 +102,16 @@ a:hover
 
   .activity-title
     font-size: 14px
+    margin: 0 0 15px 0
     width: 80%
-
-  .activity-user
-    font-size: 14px
 
   .activity-meta
     margin: 0
 
-    div
+    .activity-meta-item
       float: none
       display: inline-block
-      margin-right: 6px
+      margin: 0 6px 0 0
 
   .activity-action
     float: right
@@ -120,7 +120,7 @@ a:hover
 .quick-links
   color: #666
   font-size: 13px
-  margin-bottom: 10px
+  margin-bottom: 20px
 
   li
     border-bottom: solid 1px #eee
@@ -133,7 +133,6 @@ a:hover
 
 form
   font-size: 12px
-  float: left
 
   .field
     margin-bottom: 15px

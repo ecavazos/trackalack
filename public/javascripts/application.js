@@ -22,4 +22,5 @@ $(function () {
 
     $(dialogHtml).dialog(opts);
   });
+
 });

@@ -41,4 +41,17 @@ class TimeEntry < ActiveRecord::Base
     "#{self.duration} hrs"
   end
 
+  def abbr_description
+    desc = self.description.split(' ')[0,6].join(' ')
+    "#{desc} ..."
+  end
+
+  def self.limit_days(days)
+    self.date_range((Date.today - days), Date.today)
+  end
+
+  def self.date_range(start_date, end_date)
+    end_date = end_date || start_date
+    where(:date => start_date..end_date)
+  end
 end

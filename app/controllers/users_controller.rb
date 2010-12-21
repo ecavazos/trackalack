@@ -15,6 +15,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+    if range = parse_date_range
+      puts range
+      @time_entries = @user.time_entries.date_range(range[0], range[1])
+    else
+      days = params[:days] || 5
+      @time_entries = @user.time_entries.limit_days(days.to_i)
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -42,14 +50,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
+    if @user.save
+      redirect_to(@user, :notice => 'User was successfully created.')
+    else
+      render :action => "new"
     end
   end
 
@@ -78,6 +82,20 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(users_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  private
+
+  def parse_date_range
+    begin
+      fmt = '%m/%d/%Y'
+      sdate = Date.strptime(params[:start_date], fmt)
+      edate = params[:edate].nil? ? sdate : Date.strptime(params[:end_date], fmt)
+      [sdate, edate]
+    rescue ArgumentError => e
+      flash[:notice] = e.message
+      false
     end
   end
 end

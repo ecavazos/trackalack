@@ -43,7 +43,15 @@
     background-color: #eeeeee; }
   .data-table .crud-action {
     text-align: right;
-    width: 10%; }
+    width: 3%; }
+    .data-table .crud-action a {
+      background-color: #3b68d1;
+      color: white;
+      display: block;
+      padding: 3px 5px;
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px; }
   .data-table .description {
     max-width: 300px; }
 
@@ -60,6 +68,28 @@
     background-color: #eeeeee; }
   .child-data tr:nth-child(odd) {
     background-color: #dddddd; }
+
+#filter-bar {
+  background-color: #eeeeee;
+  border: solid 1px #dddddd;
+  margin-bottom: 20px;
+  padding: 10px;
+  overflow: hidden; }
+  #filter-bar span {
+    display: inline-block !important;
+    margin: 0 5px 0 0; }
+  #filter-bar .field {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle; }
+    #filter-bar .field label {
+      display: inline-block;
+      margin: 0 5px 0 0;
+      padding: 0; }
+    #filter-bar .field select {
+      margin: 0 10px 0 0; }
+    #filter-bar .field input[type='text'] {
+      width: 100px; }
 
 body {
   background-color: #cccccc;
@@ -98,6 +128,7 @@ a:hover {
 
 #search-box {
   background-color: #dddddd;
+  border: solid 1px #cccccc;
   margin-bottom: 20px;
   padding: 10px; }
   #search-box form {
@@ -160,15 +191,14 @@ a:hover {
     margin-bottom: 5px; }
   .activity .activity-title {
     font-size: 14px;
+    margin: 0 0 15px 0;
     width: 80%; }
-  .activity .activity-user {
-    font-size: 14px; }
   .activity .activity-meta {
     margin: 0; }
-    .activity .activity-meta div {
+    .activity .activity-meta .activity-meta-item {
       float: none;
       display: inline-block;
-      margin-right: 6px; }
+      margin: 0 6px 0 0; }
   .activity .activity-action {
     float: right;
     clear: none; }
@@ -176,7 +206,7 @@ a:hover {
 .quick-links {
   color: #666666;
   font-size: 13px;
-  margin-bottom: 10px; }
+  margin-bottom: 20px; }
   .quick-links li {
     border-bottom: solid 1px #eeeeee;
     margin-bottom: 5px;
@@ -187,8 +217,7 @@ a:hover {
   margin-bottom: 20px; }
 
 form {
-  font-size: 12px;
-  float: left; }
+  font-size: 12px; }
   form .field {
     margin-bottom: 15px;
     overflow: hidden; }

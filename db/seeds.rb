@@ -43,9 +43,11 @@ end
 ### Time Entries ###
 
 Project.all.each do |p|
+  i = 0
+
   30.times do |x|
     attr1 = {
-      :date => Date.today,
+      :date => Date.today - i,
       :duration => 3.5,
       :work_type => :feature,
       :billing_type => :billable,
@@ -54,7 +56,7 @@ Project.all.each do |p|
     }
 
     attr2 = {
-      :date => Date.today,
+      :date => Date.today - i,
       :duration => 4.5,
       :work_type => :task,
       :billing_type => :no_charge,
@@ -67,6 +69,8 @@ Project.all.each do |p|
 
     p.time_entries.create(attr2)
     sleep(0.01)
+
+    i += 1
   end
 end
 
