@@ -28,7 +28,7 @@
 
     .child-data
       / = render :partial => 'shared/time_grid', :locals => { :time_entries => @time_entries }
-      %h3 Time Entries
+      %h3= user_show_time_title
 
       %table.data-table
         %tr
@@ -53,7 +53,5 @@
             %td= time_entry.abbr_description
             %td.crud-action= link_to 'Edit', edit_project_time_entry_path(time_entry.project, time_entry)
             %td.crud-action= link_to 'Destroy', project_time_entry_path(time_entry.project, time_entry), :confirm => 'Are you sure?', :method => :delete
-
-
 
 = javascript_include_tag 'filter_bar'

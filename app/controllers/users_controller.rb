@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if range = parse_date_range
-      puts range
       @time_entries = @user.time_entries.date_range(range[0], range[1])
     else
       days = params[:days] || 5
@@ -88,13 +87,14 @@ class UsersController < ApplicationController
   private
 
   def parse_date_range
+    return false if params[:start_date].nil?
     begin
       fmt = '%m/%d/%Y'
       sdate = Date.strptime(params[:start_date], fmt)
-      edate = params[:edate].nil? ? sdate : Date.strptime(params[:end_date], fmt)
+      edate = Date.strptime(params[:end_date], fmt) unless params[:end_date].empty?
       [sdate, edate]
     rescue ArgumentError => e
-      flash[:notice] = e.message
+      flash.now[:error] = 'Date range was invalid'
       false
     end
   end
