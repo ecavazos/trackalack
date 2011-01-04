@@ -1,0 +1,13 @@
+#item-menu {
+  background-color: #eeeeee;
+  border: solid 1px #cccccc;
+  margin: 1px;
+  padding: 2px;
+  position: absolute;
+  text-align: left; }
+  #item-menu ul {
+    list-style: none; }
+    #item-menu ul li {
+      padding: 5px 40px 5px 5px; }
+    #item-menu ul li:hover {
+      background-color: #dddddd; }

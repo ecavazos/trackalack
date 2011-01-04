@@ -25,6 +25,7 @@
           = text_field_tag :end_date, params[:end_date]
 
         = submit_tag 'Filter', :name => nil
+      %a.clear{:href => ''} Clear
 
     .child-data
       / = render :partial => 'shared/time_grid', :locals => { :time_entries => @time_entries }
@@ -41,6 +42,7 @@
           %th Description
           %th
           %th
+          %th
 
         - @time_entries.each do |time_entry|
           %tr
@@ -51,7 +53,12 @@
             %td= time_entry.billing_type_display
             %td= time_entry.duration_display
             %td= time_entry.abbr_description
+            %td.crud-action
+              %a.item-menu-button{:href => '', :data => { |
+                :new_project => new_project_time_entry_path(time_entry.project) |
+                }                        |
+              } Blah                     |
             %td.crud-action= link_to 'Edit', edit_project_time_entry_path(time_entry.project, time_entry)
             %td.crud-action= link_to 'Destroy', project_time_entry_path(time_entry.project, time_entry), :confirm => 'Are you sure?', :method => :delete
 
-= javascript_include_tag 'filter_bar'
+= javascript_include_tag 'filter_bar', 'item_menu'

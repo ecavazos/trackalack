@@ -75,6 +75,11 @@
   margin-bottom: 20px;
   padding: 10px;
   overflow: hidden; }
+  #filter-bar form {
+    float: left; }
+  #filter-bar .clear {
+    float: right;
+    font-size: 11px; }
   #filter-bar span {
     display: inline-block !important;
     margin: 0 5px 0 0; }
@@ -90,6 +95,20 @@
       margin: 0 10px 0 0; }
     #filter-bar .field input[type='text'] {
       width: 100px; }
+
+#item-menu {
+  background-color: #eeeeee;
+  border: solid 1px #cccccc;
+  margin: 1px;
+  padding: 2px;
+  position: absolute;
+  text-align: left; }
+  #item-menu ul {
+    list-style: none; }
+    #item-menu ul li {
+      padding: 5px 40px 5px 5px; }
+    #item-menu ul li:hover {
+      background-color: #dddddd; }
 
 body {
   background-color: #cccccc;
