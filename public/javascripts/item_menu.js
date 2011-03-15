@@ -6,7 +6,6 @@ $(function () {
     $('html').click(function (e) {
       $('#item-menu').remove();
       $('.item-menu-button').removeClass('active');
-      e.preventDefault();
     });
 
     $('.item-menu-button').click(function (e) {
@@ -14,6 +13,7 @@ $(function () {
 
       if ($(this).hasClass('active')) {
         $(this).removeClass('active');
+        e.preventDefault();
         return;
       } else {
         $(this).addClass('active');
@@ -23,22 +23,35 @@ $(function () {
 
       $(this).after(menu);
 
-      $('#item-menu ul')
-        .append('<li id="edit-item">Edit</li>')
-        .append('<li id="delete-item">Delete</li>');
+      var menuItems = $(this).data('items');
 
-      $('#delete-item').click(function (e) {
-        var conf = confirm("Are you sure?");
-        if (conf) {
-          // do something
-          return true;
+      for (var i in menuItems) {
+        var link = menuItems[i];
+        if (link.name.toLowerCase() == 'destroy') {
+          $('#item-menu ul')
+            .append('<li><a href="'
+                + link.path
+                + '" data-confirm="Are you sure?" data-method="delete" rel="nofollow">'
+                + link.name + '</a></li>');
+        } else {
+          $('#item-menu ul')
+            .append('<li><a href="' + link.path + '" >' + link.name + '</a></li>');
         }
-        return false;
-      });
+      }
 
-      $('#item-menu ul li').mouseover(function () {
-        $(this).css('cursor', 'pointer');
-      });
+      $('#item-menu ul li')
+        .click(function (e) {
+          if (this !== e.target) return; // prevent stack overflow
+          var link = $(this).children('a').first();
+          if (link.data('method') == 'delete') {
+            link.trigger('click');
+            return;
+          }
+          location.href = link.attr('href');
+        })
+        .mouseover(function () {
+          $(this).css('cursor', 'pointer');
+        });
 
       e.stopPropagation();
       e.preventDefault();

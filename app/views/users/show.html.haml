@@ -55,10 +55,11 @@
             %td= time_entry.abbr_description
             %td.crud-action
               %a.item-menu-button{:href => '', :data => { |
-                :new_project => new_project_time_entry_path(time_entry.project) |
-                }                        |
-              } Blah                     |
-            %td.crud-action= link_to 'Edit', edit_project_time_entry_path(time_entry.project, time_entry)
-            %td.crud-action= link_to 'Destroy', project_time_entry_path(time_entry.project, time_entry), :confirm => 'Are you sure?', :method => :delete
-
+                :items => [ |
+                  {:name => 'Edit', :path => edit_project_time_entry_path(time_entry.project, time_entry)}, |
+                  {:name => 'New Project', :path => new_project_time_entry_path(time_entry.project)}, |
+                  {:name => 'Destroy', :path => project_time_entry_path(time_entry.project, time_entry)} |
+                  ].to_json |
+                } |
+              } Menu |
 = javascript_include_tag 'filter_bar', 'item_menu'
