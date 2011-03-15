@@ -2,20 +2,18 @@
 
 * fix seed data
 
-* search - index model
-* customize devise views (login)
-* user management
 * user show page
   ** action menu per time entry
-* add totals to client
-
 * calendar for entering time
-
+* user management
+* hide secure links
+* search - index model
+* add totals to client
+* customize devise views (login)
 * style sign in page
 * style alerts and notices
 * make shared partial for form errors
 * client/project/user time totals
-* hide secure links
 * make view all buttons (graidents)
 
 * move home page queries to model classes
