@@ -19,7 +19,7 @@
         %ul#header-links
           %li
             - if current_user
-              = link_to current_user.fullname, edit_user_path(current_user.pathname)
+              = link_to current_user.fullname, edit_user_path(current_user)
           %li
             = link_to 'Add user', new_user_path
           %li
