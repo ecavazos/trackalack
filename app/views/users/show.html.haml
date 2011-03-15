@@ -57,7 +57,7 @@
               %a.item-menu-button{:href => '', :data => { |
                 :items => [ |
                   {:name => 'Edit', :path => edit_project_time_entry_path(time_entry.project, time_entry)}, |
-                  {:name => 'New Project', :path => new_project_time_entry_path(time_entry.project)}, |
+                  {:name => 'Add Time', :path => new_project_time_entry_path(time_entry.project)}, |
                   {:name => 'Destroy', :path => project_time_entry_path(time_entry.project, time_entry)} |
                   ].to_json |
                 } |

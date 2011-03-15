@@ -21,9 +21,11 @@
             - if current_user
               = link_to current_user.fullname, edit_user_path(current_user)
           %li
-            = link_to 'Add user', new_user_path
+            = link_to 'My Time', user_path(current_user)
           %li
-            = link_to 'Sign out', destroy_user_session_path
+            = link_to 'Add User', new_user_path
+          %li
+            = link_to 'Sign Out', destroy_user_session_path
 
   #app-box
     = rails_msg(:alert)
