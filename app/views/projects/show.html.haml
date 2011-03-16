@@ -33,5 +33,5 @@
             %td= time_entry.billing_type_display
             %td= time_entry.duration_display
             %td.description= time_entry.description
-            %td.crud-action= link_to 'Edit', edit_project_time_entry_path(time_entry.project, time_entry)
-            %td.crud-action= link_to 'Destroy', project_time_entry_path(time_entry.project, time_entry), :confirm => 'Are you sure?', :method => :delete
+            %td.crud-action= secure_edit(time_entry)
+            %td.crud-action= secure_destroy(time_entry)
