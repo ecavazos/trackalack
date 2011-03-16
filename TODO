@@ -1,7 +1,12 @@
 == TODO ==
 
 * fix seed data
+* fix date range is invalid bug (user show)
 
+* remove scattered action links and centralize
+* home page
+  ** show mine/show all filter
+  ** show description
 * user show page
   ** add more items to action menu
 * calendar for entering time
