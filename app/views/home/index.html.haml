@@ -29,8 +29,10 @@
           .activity-meta-item
             = time_ago_in_words(x.created_at)
             ago
+          &middot;
           .activity-meta-item
             = link_to x.user.fullname, user_path(x.user)
+          &middot;
           .activity-meta-item
             - user_edit_time_link(x)
 
@@ -42,7 +44,7 @@
         %li
           =link_to project.name, project
           for
-          =link_to project.client.name, project.client
+          =link_to project.client.short_name, project.client
 
     .quick-links-footer
       =link_to 'View all projects', projects_path
