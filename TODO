@@ -3,7 +3,7 @@
 * fix seed data
 
 * user show page
-  ** action menu per time entry
+  ** add more items to action menu
 * calendar for entering time
 * user management
 * hide secure links
@@ -14,7 +14,7 @@
 * style alerts and notices
 * make shared partial for form errors
 * client/project/user time totals
-* make view all buttons (graidents)
+* make view all buttons (gradients)
 
 * move home page queries to model classes
 
@@ -22,7 +22,7 @@
 * add billing type to time entry
 * make billing type a class ...
 
-* make async
+* make async / modal dialogs
 * caching
 
 == Future Features ==
