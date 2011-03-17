@@ -9,6 +9,8 @@
   * projects
 * calendar for entering time
 * search - index model
+* make async / modal dialogs
+* add hard limits or pagination
 * add totals to client
 * customize devise views (login)
 * style sign in page
@@ -23,7 +25,6 @@
 * add billing type to time entry
 * make billing type a class ...
 
-* make async / modal dialogs
 * caching
 
 == Future Features
