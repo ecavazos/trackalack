@@ -1,17 +1,41 @@
 ### Users ###
 
 User.create!({
-  email: 'fake1@trackalack.com',
-  first_name: 'Fake',
-  last_name: 'User 1',
+  email: 'emilio@trackalack.com',
+  first_name: 'Emilio',
+  last_name: 'Fake',
   password: '1234',
   password_confirmation: '1234'
 })
 
 User.create!({
-  email: 'fake2@trackalack.com',
-  first_name: 'Fake',
-  last_name: 'User 2',
+  email: 'jeff@trackalack.com',
+  first_name: 'Jeff',
+  last_name: 'Fake',
+  password: '1234',
+  password_confirmation: '1234'
+})
+
+User.create!({
+  email: 'kevin@trackalack.com',
+  first_name: 'Kevin',
+  last_name: 'Fake',
+  password: '1234',
+  password_confirmation: '1234'
+})
+
+User.create!({
+  email: 'josh@trackalack.com',
+  first_name: 'Josh',
+  last_name: 'Fake',
+  password: '1234',
+  password_confirmation: '1234'
+})
+
+User.create!({
+  email: 'mike@trackalack.com',
+  first_name: 'Mike',
+  last_name: 'Fake',
   password: '1234',
   password_confirmation: '1234'
 })
@@ -42,24 +66,22 @@ Project.all.each do |p|
       :duration => 3.5,
       :work_type => :feature,
       :billing_type => :billable,
-      :description => "Did a little something for #{p.client.name}.",
-      :user => User.find(1)
+      :description => "Did a little something for #{p.client.name}."
     }
 
     attr2 = {
       :date => Date.today - i,
-      :duration => 4.5,
+      :duration => 1,
       :work_type => :task,
       :billing_type => :no_charge,
-      :description => "#{p.name} required some updates.",
-      :user => User.find(2)
+      :description => "#{p.name} required some updates."
     }
 
-    p.time_entries.create(attr1)
-    sleep(0.01)
-
-    p.time_entries.create(attr2)
-    sleep(0.01)
+    User.all.each do |u|
+      p.time_entries.create(attr1.merge(:user => u))
+      p.time_entries.create(attr2.merge(:user => u))
+      sleep(0.01)
+    end
 
     i += 1
   end
