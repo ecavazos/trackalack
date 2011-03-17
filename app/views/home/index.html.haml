@@ -25,6 +25,8 @@
           on the
           = link_to x.project.name, project_path(x.project)
           project.
+        .activity-description
+          = x.description
         .activity-meta
           .activity-meta-item
             = time_ago_in_words(x.created_at)

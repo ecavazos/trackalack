@@ -221,9 +221,15 @@ a:hover {
     float: left;
     margin-bottom: 5px; }
   .activity .activity-title {
-    font-size: 14px;
-    margin: 0 0 15px 0;
+    font-size: 12px;
+    margin: 0 0 10px 0;
     width: 80%; }
+  .activity .activity-description {
+    color: #333333;
+    font-size: 12px;
+    font-style: italic;
+    line-height: 16px;
+    margin: 0 0 10px 0; }
   .activity .activity-meta {
     margin: 0; }
     .activity .activity-meta .activity-meta-item {
