@@ -43,12 +43,16 @@
     background-color: #eeeeee; }
   .data-table .crud-action {
     text-align: right;
+    white-space: nowrap;
     width: 3%; }
     .data-table .crud-action a {
       background-color: #3b68d1;
       color: white;
       display: block;
-      padding: 3px 5px;
+      padding: 5px 8px;
+      font-size: 11px;
+      text-align: center;
+      text-shadow: -1px 0 rgba(0, 0, 0, 0.2);
       border-radius: 3px;
       -moz-border-radius: 3px;
       -webkit-border-radius: 3px; }
@@ -111,7 +115,8 @@
         background: none;
         color: black;
         margin: 0;
-        padding: 0; }
+        padding: 0;
+        text-align: left; }
       #item-menu ul li a:hover {
         text-decoration: none; }
     #item-menu ul li:hover {

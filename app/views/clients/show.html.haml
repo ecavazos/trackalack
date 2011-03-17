@@ -16,9 +16,7 @@
       %table.data-table
         %tr
           %th Project Name
-          %th
-          %th
-          %th
+          %th{ :colspan => 3 }
 
         - @client.projects.each do |project|
           %tr

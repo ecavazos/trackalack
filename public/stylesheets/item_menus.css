@@ -13,7 +13,8 @@
         background: none;
         color: black;
         margin: 0;
-        padding: 0; }
+        padding: 0;
+        text-align: left; }
       #item-menu ul li a:hover {
         text-decoration: none; }
     #item-menu ul li:hover {
