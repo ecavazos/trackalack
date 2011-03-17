@@ -5,7 +5,6 @@
   %div{ :class => 'column grid_5'}
     #manage-nav
       = link_to 'Users', users_path
-      = link_to 'Edit', edit_user_path(@user)
 
 .row
   %div{ :class => 'column grid_12'}
@@ -42,22 +41,24 @@
           %th Description
           %th
 
-        - @time_entries.each do |time_entry|
+        - @time_entries.each do |time|
           %tr
-            %td= time_entry.project.client.name
-            %td= time_entry.project.name
-            %td= format_date(time_entry.date)
-            %td= time_entry.work_type_display
-            %td= time_entry.billing_type_display
-            %td= time_entry.duration_display
-            %td= time_entry.abbr_description
+            %td= link_to time.project.client.short_name, client_path(time.project.client)
+            %td= link_to time.project.name, project_path(time.project)
+            %td= format_date(time.date)
+            %td= time.work_type_display
+            %td= time.billing_type_display
+            %td= time.duration_display
+            %td= time.abbr_description
             %td.crud-action
-              %a.item-menu-button{:href => '', :data => { |
-                :items => [ |
-                  {:name => 'Edit', :path => edit_project_time_entry_path(time_entry.project, time_entry)}, |
-                  {:name => 'Add Time', :path => new_project_time_entry_path(time_entry.project)}, |
-                  {:name => 'Destroy', :path => project_time_entry_path(time_entry.project, time_entry)} |
-                  ].to_json |
-                } |
-              } Menu |
+              - if current_user == time.user
+                %a.item-menu-button{:href => '', :data => { |
+                  :items => [ |
+                    {:name => 'Edit', :path => edit_project_time_entry_path(time.project, time)}, |
+                    {:name => 'Add Time to Project', :path => new_project_time_entry_path(time.project)}, |
+                    {:name => 'Destroy', :path => project_time_entry_path(time.project, time)} |
+                    ].to_json |
+                  } |
+                } Menu |
+
 = javascript_include_tag 'filter_bar', 'item_menu'

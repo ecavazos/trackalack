@@ -39,6 +39,10 @@ $(function () {
         }
       }
 
+      // set menu's left position
+      var left = $(this).offset().left + $(this).outerWidth() - $('#item-menu').outerWidth();
+      var width = $('#item-menu').css('left', left);
+
       $('#item-menu ul li')
         .click(function (e) {
           if (this !== e.target) return; // prevent stack overflow

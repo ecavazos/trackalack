@@ -1,17 +1,13 @@
-== TODO ==
+= TODO
 
-* fix seed data
 * fix date range is invalid bug (user show)
 
-* remove scattered action links and centralize
-* home page
-  ** show mine/show all filter
-  ** show description
-* user show page
-  ** add more items to action menu
+* add links to related entities in grids
+* soft deletes
+  * user
+  * clients
+  * projects
 * calendar for entering time
-* user management
-* hide secure links
 * search - index model
 * add totals to client
 * customize devise views (login)
@@ -30,7 +26,7 @@
 * make async / modal dialogs
 * caching
 
-== Future Features ==
+== Future Features
 
 * home page totals (week, two weeks, month)
 * home page filtering
