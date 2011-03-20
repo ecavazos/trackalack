@@ -51,7 +51,7 @@ class TimeEntry < ActiveRecord::Base
   end
 
   def self.date_range(start_date, end_date)
-    end_date = end_date || start_date
+    end_date = (end_date.instance_of? Date)? end_date : start_date
     where(:date => start_date..end_date)
   end
 end

@@ -1,13 +1,10 @@
 = TODO
 
-* fix date range is invalid bug (user show)
-
-* add links to related entities in grids
+* calendar for entering time
 * soft deletes
   * user
   * clients
   * projects
-* calendar for entering time
 * search - index model
 * make async / modal dialogs
 * add hard limits or pagination

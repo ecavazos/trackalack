@@ -22,6 +22,8 @@ class UsersController < ApplicationController
       @time_entries = @user.time_entries.limit_days(days.to_i)
     end
 
+    @time_entries = @time_entries.includes(:user, :project => :client)
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -87,11 +89,13 @@ class UsersController < ApplicationController
   private
 
   def parse_date_range
-    return false if params[:start_date].nil?
+    sdate = params[:start_date]
+    edate = params[:end_date]
+    return false if (sdate.nil? || sdate.blank?) && (edate.nil? || edate.blank?)
     begin
       fmt = '%m/%d/%Y'
-      sdate = Date.strptime(params[:start_date], fmt)
-      edate = Date.strptime(params[:end_date], fmt) unless params[:end_date].empty?
+      sdate = Date.strptime(sdate, fmt)
+      edate = Date.strptime(edate, fmt) unless edate.empty?
       [sdate, edate]
     rescue ArgumentError => e
       flash.now[:error] = 'Date range was invalid'

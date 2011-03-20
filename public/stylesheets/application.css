@@ -81,9 +81,13 @@
   overflow: hidden; }
   #filter-bar form {
     float: left; }
-  #filter-bar .clear {
+  #filter-bar #clear {
+    background-color: #dddddd;
+    border: solid 1px #cccccc;
+    color: #222222;
     float: right;
-    font-size: 11px; }
+    font-size: 11px;
+    padding: 5px 8px; }
   #filter-bar span {
     display: inline-block !important;
     margin: 0 5px 0 0; }

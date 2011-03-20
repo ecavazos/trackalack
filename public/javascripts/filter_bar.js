@@ -6,6 +6,9 @@ $(function () {
     var end_date   = $('#end_date');
     var days       = $('#days');
 
+    start_date.datepicker();
+    end_date.datepicker();
+
     var isRangeDirty = function () {
       return (start_date.val() != '' || end_date.val() != '');
     };
@@ -19,6 +22,13 @@ $(function () {
       } else {
         days.attr('disabled', false);
       }
+    });
+
+    $('#clear').click(function (e) {
+      start_date.val('');
+      end_date.val('');
+      days.attr('disabled', false);
+      e.preventDefault();
     });
 
   };

@@ -24,7 +24,7 @@
           = text_field_tag :end_date, params[:end_date]
 
         = submit_tag 'Filter', :name => nil
-      %a.clear{:href => ''} Clear
+      %a#clear{:href => ''} Clear
 
     .child-data
       / = render :partial => 'shared/time_grid', :locals => { :time_entries => @time_entries }
@@ -61,4 +61,6 @@
                   } |
                 } Menu |
 
-= javascript_include_tag 'filter_bar', 'item_menu'
+- content_for :scripts do
+  = javascript_include_tag 'filter_bar', 'item_menu'
+
