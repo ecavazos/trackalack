@@ -1,4 +1,6 @@
 class TimeEntriesController < ApplicationController
+  before_filter :parse_date, :only => [:create, :update]
+
   # GET /time_entries
   # GET /time_entries.xml
   def index
@@ -70,5 +72,16 @@ class TimeEntriesController < ApplicationController
     @project = @time_entry.project
     @time_entry.destroy
     redirect_to project_url(@project), :notice => 'Time entry was successfully deleted.'
+  end
+
+  private
+
+  def parse_date
+    params[:time_entry][:date] = parse_us_date(params[:time_entry][:date])
+  end
+
+  def parse_us_date(string)
+    return nil if string.blank?
+    Date.strptime(string, '%m/%d/%Y')
   end
 end

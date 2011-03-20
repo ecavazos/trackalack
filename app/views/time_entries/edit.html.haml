@@ -11,3 +11,5 @@
   %div{ :class => 'column grid_12'}
     = render 'form'
 
+- content_for :scripts do
+  = javascript_include_tag 'time_entry'

@@ -1,5 +1,6 @@
 module HomeHelper
   def format_date(date)
+    return '' if date.nil?
     date.strftime('%m/%d/%Y')
   end
 
