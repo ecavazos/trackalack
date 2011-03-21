@@ -9,26 +9,31 @@
 
 %body
   #header
-    .row
-      %div{ :class => 'column grid_8'}
-        %h1
-          = link_to 'Trackalack', :root
+    #header-box
+      %h1
+        = link_to 'Trackalack', :root
 
-      %div{ :class => 'column grid_4'}
-        %ul#header-links
-          %li
-            - if current_user
-              = link_to current_user.fullname, edit_user_path(current_user)
-          %li
-            = link_to 'My Time', user_path(current_user)
-          %li
-            = link_to 'Sign Out', destroy_user_session_path
+      %ul#header-links
+        %li
+          - if current_user
+            = link_to current_user.fullname, edit_user_path(current_user)
+        %li
+          = link_to 'My Time', user_path(current_user)
+        %li
+          = link_to 'Sign Out', destroy_user_session_path
 
   #app-box
-    = rails_msg(:alert)
-    = rails_msg(:notice)
-    = rails_msg(:error)
-    = yield
+    #menu-bar
+      .home-buttons
+        = link_to 'Clients', clients_path, :id => 'test'
+        = link_to 'Projects', projects_path
+        = link_to 'Users', users_path
+
+    #content
+      = rails_msg(:alert)
+      = rails_msg(:notice)
+      = rails_msg(:error)
+      = yield
 
   = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js'
   = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js'

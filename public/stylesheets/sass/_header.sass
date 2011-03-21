@@ -2,28 +2,35 @@
   background-color: #222
   color: #fff
   margin-bottom: 20px
+  overflow: hidden
 
-  h1
-    font-size: 20px
-    margin: 10px 0
+  #header-box
+    margin: 0 auto
+    width: 980px
 
-  a
-    color: #eee
-    text-decoration: none
-    text-shadow: 0 0 #000
-
-  ul
-    list-style: none
-    font-size: 12px
-    margin: 10px 0
-    text-align: right
-
-    li
-      display: inline-block
-      margin-right: 5px
+    h1
+      font-size: 20px
+      margin: 10px 0
+      float: left
 
     a
-      background-color: rgba(255, 255, 255, 0.1)
-      +border-radius(4px)
-      display: inline-block
-      padding: 5px
+      color: #eee
+      text-decoration: none
+      text-shadow: 0 0 #000
+
+    ul
+      list-style: none
+      font-size: 12px
+      margin: 10px 0
+      text-align: right
+      float: right
+
+      li
+        display: inline-block
+        margin-right: 5px
+
+      a
+        background-color: rgba(255, 255, 255, 0.1)
+        +border-radius(4px)
+        display: inline-block
+        padding: 5px

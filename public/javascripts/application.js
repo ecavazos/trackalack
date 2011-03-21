@@ -12,15 +12,16 @@ $(function () {
 
   };
 
-  $('#test').click(function () {
-    var dialogHtml = '<div id="dialog" title="dialog"><input type="text" /><input type="submit" value="WTF" /></div>';
+  $('#test').click(function (e) {
+    var dialogHtml = '<div id="dialog" title="Time Entry"></div>';
 
     var opts = {
-      closeText: 'x',
       position: 'center'
     };
 
     $(dialogHtml).dialog(opts);
+
+    e.preventDefault();
   });
 
 });

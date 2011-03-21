@@ -34,10 +34,31 @@ a:hover
   background-color: #fff
   border: solid 1px #bbb
   margin: 0 auto 40px auto
-  padding: 20px 10px
-  width: 960px
+  padding: 0
+  width: 980px
   overflow: hidden
   +box-shadow(rgba(0, 0, 0, 0.3), 0, 0, 10px)
+
+#menu-bar
+  background-color: #eceff9
+  margin-bottom: 15px
+  padding-right: 10px
+
+  .home-buttons
+    text-align: right
+
+    a
+      background-color: rgba(0, 0, 0, 0.05)
+      +border-radius($radius)
+      color: #222
+      display: inline-block
+      margin: 10px 0 10px 5px
+      padding: 7px
+      text-decoration: none
+      text-shadow: 1px 0 #fff
+
+#content
+  padding: 10px
 
 #search-box
   background-color: #ddd
@@ -52,16 +73,6 @@ a:hover
     margin-right: 10px
     padding: 5px
     width: 800px
-
-.home-buttons
-  padding: 5px
-  text-align: right
-
-  a
-    display: inline-block
-    margin: 0 0 10px 10px
-    text-decoration: none
-    text-shadow: 1px 0 #fff
 
 .ui-dialog
   background-color: rgba(0, 0, 0, .8)

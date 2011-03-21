@@ -1,12 +1,12 @@
 = TODO
 
-* calendar for entering time
+* make async / modal dialogs
+* top level menu: clients, projects, users
 * soft deletes
   * user
   * clients
   * projects
 * search - index model
-* make async / modal dialogs
 * add hard limits or pagination
 * add totals to client
 * customize devise views (login)
