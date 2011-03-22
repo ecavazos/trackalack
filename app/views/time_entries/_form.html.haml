@@ -1,37 +1,38 @@
-= form_for [@project, @time_entry] do |f|
+#time_entry_form
+  = form_for [@project, @time_entry] do |f|
 
-  -if @time_entry.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@time_entry.errors.count, "error")} prohibited this time_entry from being saved:"
-      %ul
-        - @time_entry.errors.full_messages.each do |msg|
-          %li= msg
+    -if @time_entry.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@time_entry.errors.count, "error")} prohibited this time_entry from being saved:"
+        %ul
+          - @time_entry.errors.full_messages.each do |msg|
+            %li= msg
 
-  .field
-    = f.label :client
-    %span.readonly
-      = @project.client.name
-  .field
-    = f.label :project
-    %span.readonly
-      = @project.name
-  .field
-    = f.label :date
-    = f.text_field :date
-  .field
-    = f.label :duration
-    = f.text_field :duration
-    %span
-      hrs
-  .field
-    = f.label :work_type
-    = f.select :work_type, WorkTypes.for_select
-  .field
-    = f.label :billing_type
-    = f.select :billing_type, BillingTypes.for_select
-  .field
-    = f.label :description
-    = f.text_area :description, :rows => 4
+    .col
+      = f.label :client
+      %span.readonly
+        = @project.client.name
+    .col
+      = f.label :project
+      %span.readonly
+        = @project.name
+    .col.clear
+      = f.label :work_type
+      = f.select :work_type, WorkTypes.for_select
+    .col
+      = f.label :billing_type
+      = f.select :billing_type, BillingTypes.for_select
+    .col.date
+      = f.label :date
+      = f.text_field :date
+    .col.duration
+      = f.label :duration
+      = f.text_field :duration
+      %span
+        hrs
+    .field
+      = f.label :description
+      = f.text_area :description, :rows => 4
 
-  .actions
-    = f.submit 'Save'
+    .actions
+      = f.submit 'Save'

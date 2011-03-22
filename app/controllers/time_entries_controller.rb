@@ -37,6 +37,12 @@ class TimeEntriesController < ApplicationController
     end
   end
 
+  def new2
+    @project = Project.find(params[:project_id])
+    @time_entry = TimeEntry.new
+    render '_form', :layout => false
+  end
+
   def edit
     @time_entry = current_user.time_entries.find(params[:id])
     @project = @time_entry.project

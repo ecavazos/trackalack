@@ -5,6 +5,7 @@ $radius = 6px
 @import tables
 @import filters
 @import item_menus
+@import time_entry_form
 
 body
   background-color: #ccc
@@ -48,11 +49,11 @@ a:hover
     text-align: right
 
     a
-      background-color: rgba(0, 0, 0, 0.05)
+      background-color: rgba(0, 0, 0, 0.1)
       +border-radius($radius)
       color: #222
       display: inline-block
-      margin: 10px 0 10px 5px
+      margin: 10px 0 10px 10px
       padding: 7px
       text-decoration: none
       text-shadow: 1px 0 #fff
@@ -73,30 +74,6 @@ a:hover
     margin-right: 10px
     padding: 5px
     width: 800px
-
-.ui-dialog
-  background-color: rgba(0, 0, 0, .8)
-  +border-radius($radius)
-  color: #fff
-  padding: $radius
-
-.ui-dialog-titlebar
-  padding: 4px
-
-.ui-dialog-titlebar-close
-  background-color: rgba(0, 0, 0, .95)
-  +border-radius(4px)
-  color: #fff
-  padding: 3px 10px
-  margin: 3px
-  text-decoration: none
-  float: right
-
-#dialog
-  background-color: #fff
-  +border-radius($radius)
-  padding: 20px
-  width: 400px
 
 .activity
   background-color: #efefef

@@ -1,27 +1,31 @@
 $(function () {
-  /*
-  jQuery.fn.center = function () {
-    this.css("position","absolute");
-    this.css("top", ( $(window).height() - this.outerHeight() ) / 2 + $(window).scrollTop() + "px");
-    this.css("left", ( $(window).width() - this.outerWidth() ) / 2 + $(window).scrollLeft() + "px");
-    return this;
-  };
-  */
 
   var app = {
 
   };
 
-  $('#test').click(function (e) {
-    var dialogHtml = '<div id="dialog" title="Time Entry"></div>';
+  $('.add-time-link').click(function (e) {
+    e.preventDefault();
+
+    if ($('#dialog').size() == 0) {
+      var dialogHtml = '<div id="dialog" title="Time Entry">Loading ...</div>';
+      $('body').append(dialogHtml);
+    }
 
     var opts = {
-      position: 'center'
+      position: 'center',
+      resizable: false,
+      width: 500,
+      modal: 'true'
     };
 
-    $(dialogHtml).dialog(opts);
+    $.get($(this).attr('href'), function (data, textStatus, jqXHR) {
+      $('#dialog').empty().append(data);
+      $('#time_entry_date').datepicker();
+    });
 
-    e.preventDefault();
+    $('#dialog').dialog(opts);
+
   });
 
 });

@@ -7,6 +7,7 @@ Trackalack::Application.routes.draw do
   end
 
   resources :projects, :except => [:new, :create] do
+    match 'time_entries/new2' => 'time_entries#new2', :via => :get, :as => :time_entry_new2
     resources :time_entries
   end
 

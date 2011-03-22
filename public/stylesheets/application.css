@@ -134,6 +134,25 @@
     #item-menu ul li:hover {
       background-color: #c0cbe3; }
 
+#time_entry_form {
+  margin: 10px; }
+  #time_entry_form .col {
+    float: left;
+    margin: 0 25px 15px 0;
+    overflow: hidden; }
+  #time_entry_form .date {
+    clear: left; }
+    #time_entry_form .date input {
+      width: 240px; }
+  #time_entry_form .duration input {
+    width: 80px; }
+  #time_entry_form .field {
+    clear: left; }
+  #time_entry_form .clear {
+    clear: left; }
+  #time_entry_form textarea {
+    width: 430px; }
+
 body {
   background-color: #cccccc;
   font-family: "Helvetica Neue", Helvetica, Arial, default; }
@@ -176,13 +195,13 @@ a:hover {
   #menu-bar .home-buttons {
     text-align: right; }
     #menu-bar .home-buttons a {
-      background-color: rgba(0, 0, 0, 0.05);
+      background-color: rgba(0, 0, 0, 0.1);
       border-radius: 6px;
       -moz-border-radius: 6px;
       -webkit-border-radius: 6px;
       color: #222222;
       display: inline-block;
-      margin: 10px 0 10px 5px;
+      margin: 10px 0 10px 10px;
       padding: 7px;
       text-decoration: none;
       text-shadow: 1px 0 white; }
@@ -201,36 +220,6 @@ a:hover {
     margin-right: 10px;
     padding: 5px;
     width: 800px; }
-
-.ui-dialog {
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  color: white;
-  padding: 6px; }
-
-.ui-dialog-titlebar {
-  padding: 4px; }
-
-.ui-dialog-titlebar-close {
-  background-color: rgba(0, 0, 0, 0.95);
-  border-radius: 4px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  color: white;
-  padding: 3px 10px;
-  margin: 3px;
-  text-decoration: none;
-  float: right; }
-
-#dialog {
-  background-color: white;
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  padding: 20px;
-  width: 400px; }
 
 .activity {
   background-color: #efefef;
