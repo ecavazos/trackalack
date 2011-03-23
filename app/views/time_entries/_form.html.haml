@@ -1,5 +1,5 @@
-#time_entry_form
-  = form_for [@project, @time_entry] do |f|
+#time-entry-form
+  = form_for [@project, @time_entry], :remote => true do |f|
 
     -if @time_entry.errors.any?
       #error_explanation

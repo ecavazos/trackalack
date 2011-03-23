@@ -13,7 +13,7 @@
     - @time_entries.each do |x|
       .activity
         .activity-action
-          = link_to 'Add time', project_time_entry_new2_path(x.project), :class => 'add-time-link'
+          = link_to 'Add time', new_project_time_entry_path(x.project), :class => 'add-time-link'
         .activity-title
           You logged work for
           = link_to x.project.client.name, client_path(x.project.client)

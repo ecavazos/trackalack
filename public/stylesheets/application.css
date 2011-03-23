@@ -134,23 +134,23 @@
     #item-menu ul li:hover {
       background-color: #c0cbe3; }
 
-#time_entry_form {
+#time-entry-form {
   margin: 10px; }
-  #time_entry_form .col {
+  #time-entry-form .col {
     float: left;
     margin: 0 25px 15px 0;
     overflow: hidden; }
-  #time_entry_form .date {
+  #time-entry-form .date {
     clear: left; }
-    #time_entry_form .date input {
+    #time-entry-form .date input {
       width: 240px; }
-  #time_entry_form .duration input {
+  #time-entry-form .duration input {
     width: 80px; }
-  #time_entry_form .field {
+  #time-entry-form .field {
     clear: left; }
-  #time_entry_form .clear {
+  #time-entry-form .clear {
     clear: left; }
-  #time_entry_form textarea {
+  #time-entry-form textarea {
     width: 430px; }
 
 body {

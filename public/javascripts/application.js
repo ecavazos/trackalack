@@ -1,8 +1,19 @@
 $(function () {
 
+  $.ajaxSetup({dataType:'json'});
+
   var app = {
 
   };
+
+  $('#time-entry-form form')
+    .live('ajax:success', function (e, data) {
+      $('#dialog').dialog('destroy');
+      console.log(data);
+    })
+    .live('ajax:failure', function (e, xhr, status, error) {
+      console.log(xhr.responseText);
+    });
 
   $('.add-time-link').click(function (e) {
     e.preventDefault();
@@ -22,7 +33,7 @@ $(function () {
     $.get($(this).attr('href'), function (data, textStatus, jqXHR) {
       $('#dialog').empty().append(data);
       $('#time_entry_date').datepicker();
-    });
+    }, 'html');
 
     $('#dialog').dialog(opts);
 

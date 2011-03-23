@@ -30,16 +30,6 @@ class TimeEntriesController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @time_entry = TimeEntry.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @time_entry }
-    end
-  end
-
-  def new2
-    @project = Project.find(params[:project_id])
-    @time_entry = TimeEntry.new
     render '_form', :layout => false
   end
 
@@ -54,9 +44,9 @@ class TimeEntriesController < ApplicationController
     @time_entry.project = @project
 
     if @time_entry.save
-      redirect_to project_url(@time_entry.project), :notice => 'Time entry was successfully created.'
+      render :json => @time_entry
     else
-      render :new
+      render :json => { :text => @time_entry.errors }, :status => :bad_request
     end
   end
 
