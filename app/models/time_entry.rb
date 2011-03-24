@@ -42,8 +42,13 @@ class TimeEntry < ActiveRecord::Base
   end
 
   def abbr_description
-    desc = self.description.split(' ')[0,6].join(' ')
-    "#{desc} ..."
+    desc = self.description.split(' ')
+    if desc.size > 6
+      desc = self.description.split(' ')[0,6].join(' ')
+      "#{desc} ..."
+    else
+      self.description
+    end
   end
 
   def self.limit_days(days)
