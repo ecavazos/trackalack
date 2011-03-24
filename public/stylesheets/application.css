@@ -49,16 +49,21 @@
     white-space: nowrap;
     width: 3%; }
     .data-table .crud-action a {
-      background-color: #e7e8be;
-      color: rgba(0, 0, 0, 0.6);
+      background-color: #f1f1f1;
+      background: -webkit-gradient(linear, left top, left bottom, from(white), to(#d3d3d3));
+      background: -moz-linear-gradient(top, white, #d3d3d3);
+      border: solid 1px #cccccc;
+      color: #333333;
       display: block;
       padding: 5px 8px;
       font-size: 11px;
       text-align: center;
-      text-shadow: -1px 0 rgba(0, 0, 0, 0.2);
-      border-radius: 3px;
-      -moz-border-radius: 3px;
-      -webkit-border-radius: 3px; }
+      text-shadow: -1px 0 white;
+      border-radius: 2px;
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px; }
+    .data-table .crud-action a:hover {
+      text-decoration: none; }
   .data-table .description {
     max-width: 300px; }
 
