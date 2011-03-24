@@ -46,7 +46,7 @@ class TimeEntriesController < ApplicationController
     if @time_entry.save
       render :json => @time_entry
     else
-      render :json => { :text => @time_entry.errors }, :status => :bad_request
+      render :json => @time_entry.errors.map{|k,v| "#{k} #{v}"}, :status => :bad_request
     end
   end
 

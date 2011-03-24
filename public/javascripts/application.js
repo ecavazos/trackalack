@@ -7,12 +7,20 @@ $(function () {
   };
 
   $('#time-entry-form form')
+    .live('submit', function (e) {
+      $('#time_errors').remove();
+      $('#time_entry_submit').attr('disabled', 'disabled');
+    })
     .live('ajax:success', function (e, data) {
       $('#dialog').dialog('destroy');
       console.log(data);
     })
-    .live('ajax:failure', function (e, xhr, status, error) {
-      console.log(xhr.responseText);
+    .live('ajax:error', function (e, xhr, status, error) {
+      var errors = $.parseJSON(xhr.responseText);
+      $(this).children('.actions').before('<div id="time_errors"><ul></ul></div>');
+      $('#time_entry_submit').removeAttr('disabled');
+      for (var i in errors)
+        $('#time_errors ul').append('<li>' + errors[i] + '</li>');
     });
 
   $('.add-time-link').click(function (e) {

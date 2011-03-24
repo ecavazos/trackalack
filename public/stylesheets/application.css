@@ -150,6 +150,11 @@
     clear: left; }
   #time-entry-form .clear {
     clear: left; }
+  #time-entry-form #time_errors {
+    color: red;
+    margin-bottom: 15px; }
+    #time-entry-form #time_errors ul {
+      list-style-position: inside; }
   #time-entry-form textarea {
     width: 430px; }
 

@@ -8,12 +8,10 @@
           - @time_entry.errors.full_messages.each do |msg|
             %li= msg
 
-    .col
-      = f.label :client
+    .field
       %span.readonly
         = @project.client.name
-    .col
-      = f.label :project
+      &mdash;
       %span.readonly
         = @project.name
     .col.clear
