@@ -23,7 +23,7 @@ $(function () {
         $('#time_errors ul').append('<li>' + errors[i] + '</li>');
     });
 
-  $('.add-time-link').click(function (e) {
+  $('.add-time-link, .edit-time-link').click(function (e) {
     e.preventDefault();
     var dialog = $('#dialog');
     var loadMessage = 'Loading ...';

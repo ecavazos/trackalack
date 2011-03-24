@@ -1,8 +1,6 @@
 class TimeEntriesController < ApplicationController
   before_filter :parse_date, :only => [:create, :update]
 
-  # GET /time_entries
-  # GET /time_entries.xml
   def index
     @time_entries = Project.
                       includes(:client, :time_entries => :user).
@@ -14,8 +12,6 @@ class TimeEntriesController < ApplicationController
     end
   end
 
-  # GET /time_entries/1
-  # GET /time_entries/1.xml
   def show
     @time_entry = TimeEntry.find(params[:id])
 
@@ -25,8 +21,6 @@ class TimeEntriesController < ApplicationController
     end
   end
 
-  # GET /time_entries/new
-  # GET /time_entries/new.xml
   def new
     @project = Project.find(params[:project_id])
     @time_entry = TimeEntry.new
@@ -36,6 +30,7 @@ class TimeEntriesController < ApplicationController
   def edit
     @time_entry = current_user.time_entries.find(params[:id])
     @project = @time_entry.project
+    render :new, :layout => false
   end
 
   def create
@@ -46,20 +41,18 @@ class TimeEntriesController < ApplicationController
     if @time_entry.save
       render :json => @time_entry
     else
-      render :json => @time_entry.errors.map{|k,v| "#{k} #{v}"}, :status => :bad_request
+      bad_save_or_update_response
     end
   end
 
-  # PUT /time_entries/1
-  # PUT /time_entries/1.xml
   def update
     @time_entry = current_user.time_entries.find(params[:id])
     @project = @time_entry.project
 
     if @time_entry.update_attributes(params[:time_entry])
-      redirect_to project_url(@time_entry.project), :notice => 'Time entry was successfully updated.'
+      render :json => @time_entry
     else
-      render :edit
+      bad_save_or_update_response
     end
   end
 
@@ -71,6 +64,10 @@ class TimeEntriesController < ApplicationController
   end
 
   private
+
+  def bad_save_or_update_response
+    render :json => @time_entry.errors.map{|k,v| "#{k} #{v}"}, :status => :bad_request
+  end
 
   def parse_date
     params[:time_entry][:date] = parse_us_date(params[:time_entry][:date])
