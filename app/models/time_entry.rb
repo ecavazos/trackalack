@@ -2,7 +2,7 @@ class TimeEntry < ActiveRecord::Base
   belongs_to :project, :touch => true
   belongs_to :user
 
-  validates_presence_of :duration
+  validates_presence_of :duration, :date
   validates_numericality_of :duration, :greater_than => 0
   validates_inclusion_of :work_type, :in => WorkTypes.all
   validates_inclusion_of :billing_type, :in => BillingTypes.all
