@@ -25,10 +25,14 @@ $(function () {
 
   $('.add-time-link').click(function (e) {
     e.preventDefault();
+    var dialog = $('#dialog');
+    var loadMessage = 'Loading ...';
 
-    if ($('#dialog').size() == 0) {
-      var dialogHtml = '<div id="dialog" title="Time Entry">Loading ...</div>';
+    if (dialog.size() == 0) {
+      var dialogHtml = '<div id="dialog" title="Time Entry">' + loadMessage + 'div>';
       $('body').append(dialogHtml);
+    } else {
+      dialog.empty().append(loadMessage);
     }
 
     var opts = {
