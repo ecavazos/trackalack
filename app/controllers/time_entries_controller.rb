@@ -30,7 +30,7 @@ class TimeEntriesController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @time_entry = TimeEntry.new
-    render '_form', :layout => false
+    render :new, :layout => false
   end
 
   def edit
