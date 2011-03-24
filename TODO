@@ -1,7 +1,8 @@
 = TODO
 
-* make async / modal dialogs
-* top level menu: clients, projects, users
+* make edit time async
+* make all add and edit links use async dialog
+* pages that use the async should update appropriate sections
 * soft deletes
   * user
   * clients
