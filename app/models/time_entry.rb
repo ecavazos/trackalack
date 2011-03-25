@@ -9,6 +9,8 @@ class TimeEntry < ActiveRecord::Base
 
   default_scope order('date desc, created_at desc')
 
+  scope :all_assoc_limited, lambda { |qty| includes(:user, :project => :client).order('created_at desc').limit(qty) }
+
   def work_type
     v = read_attribute(:work_type)
     return v if v.nil?

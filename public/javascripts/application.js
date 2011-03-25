@@ -13,7 +13,9 @@ $(function () {
     })
     .live('ajax:success', function (e, data) {
       $('#dialog').dialog('destroy');
-      console.log(data);
+      $.get('/stream', function (data) {
+        $('#stream').html(data);
+      }, 'html');
     })
     .live('ajax:error', function (e, xhr, status, error) {
       var errors = $.parseJSON(xhr.responseText);
@@ -23,7 +25,7 @@ $(function () {
         $('#time_errors ul').append('<li>' + errors[i] + '</li>');
     });
 
-  $('.add-time-link, .edit-time-link').click(function (e) {
+  $('.add-time-link, .edit-time-link').live('click', function (e) {
     e.preventDefault();
     var dialog = $('#dialog');
     var loadMessage = 'Loading ...';

@@ -8,30 +8,8 @@
 
 .row
   %div{ :class => 'column grid_9'}
-    %h3 Recent Time Entries
-
-    - @time_entries.each do |x|
-      .activity
-        .activity-action
-          = link_to 'Add time', new_project_time_entry_path(x.project), :class => 'add-time-link'
-        .activity-title
-          You logged work for
-          = link_to x.project.client.name, client_path(x.project.client)
-          on the
-          = link_to x.project.name, project_path(x.project)
-          project.
-        .activity-description
-          = x.description
-        .activity-meta
-          .activity-meta-item
-            = time_ago_in_words(x.created_at)
-            ago
-          &middot;
-          .activity-meta-item
-            = link_to x.user.fullname, user_path(x.user)
-          &middot;
-          .activity-meta-item
-            - user_edit_time_link(x)
+    #stream
+      = render 'stream'
 
   %div{ :class => 'column grid_3'}
     %h3 Recent Projects
@@ -39,12 +17,12 @@
     %ul.quick-links
       - @recently_updated_projects.each do |project|
         %li
-          =link_to project.name, project
+          = link_to project.name, project
           for
-          =link_to project.client.short_name, project.client
+          = link_to project.client.short_name, project.client
 
     .quick-links-footer
-      =link_to 'More', projects_path
+      = link_to 'More', projects_path
 
     %h3 New Clients
 
@@ -53,7 +31,7 @@
         %li= link_to client.name, client_path(client)
 
     .quick-links-footer
-      =link_to 'More', clients_path
+      = link_to 'More', clients_path
 
     %h3 New Projects
 
@@ -62,5 +40,5 @@
         %li= link_to project.name, project_path(project)
 
     .quick-links-footer
-      =link_to 'More', projects_path
+      = link_to 'More', projects_path
 

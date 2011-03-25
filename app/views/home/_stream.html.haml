@@ -1,0 +1,25 @@
+%h3 Recent Time Entries
+
+- @time_entries.each do |x|
+  .activity
+    .activity-action
+      = link_to 'Add time', new_project_time_entry_path(x.project), :class => 'add-time-link'
+    .activity-title
+      You logged work for
+      = link_to x.project.client.name, client_path(x.project.client)
+      on the
+      = link_to x.project.name, project_path(x.project)
+      project.
+    .activity-description
+      = x.description
+    .activity-meta
+      .activity-meta-item
+        = time_ago_in_words(x.created_at)
+        ago
+      &middot;
+      .activity-meta-item
+        = link_to x.user.fullname, user_path(x.user)
+      &middot;
+      .activity-meta-item
+        - user_edit_time_link(x)
+
