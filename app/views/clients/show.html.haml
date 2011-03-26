@@ -21,6 +21,6 @@
         - @client.projects.each do |project|
           %tr
             %td= link_to project.name, project
-            %td.crud-action= link_to 'Add Time', new_project_time_entry_path(project)
+            %td.crud-action= link_to 'Add Time', new_project_time_entry_path(project), :class => 'add-time-link'
             %td.crud-action= link_to 'Edit', edit_project_path(project)
             %td.crud-action= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete

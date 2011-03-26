@@ -1,10 +1,6 @@
 .row
-  %div{ :class => 'column grid_7'}
+  %div{ :class => 'column grid_12'}
     %h2= @user.fullname
-
-  %div{ :class => 'column grid_5'}
-    #manage-nav
-      = link_to 'Users', users_path
 
 .row
   %div{ :class => 'column grid_12'}
@@ -56,8 +52,8 @@
               - if current_user == time.user
                 %a.item-menu-button{:href => '', :data => { |
                   :items => [ |
-                    {:name => 'Edit', :path => edit_project_time_entry_path(time.project, time)}, |
-                    {:name => 'Add Time to Project', :path => new_project_time_entry_path(time.project)}, |
+                    {:name => 'Edit', :path => edit_project_time_entry_path(time.project, time), :class => 'edit-time-link'}, |
+                    {:name => 'Add Time to Project', :path => new_project_time_entry_path(time.project), :class => 'add-time-link'}, |
                     {:name => 'Destroy', :path => project_time_entry_path(time.project, time)} |
                     ].to_json |
                   } |

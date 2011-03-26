@@ -35,7 +35,7 @@ $(function () {
                 + link.name + '</a></li>');
         } else {
           $('#item-menu ul')
-            .append('<li><a href="' + link.path + '" >' + link.name + '</a></li>');
+            .append('<li><a href="' + link.path + '" class="' + link.class + '" >' + link.name + '</a></li>');
         }
       }
 
