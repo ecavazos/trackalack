@@ -13,13 +13,20 @@
       %tr
         %th Name
         %th
-        %th
-        %th
 
       - @clients.each do |client|
         %tr
           %td= client.name
-          %td.crud-action= link_to 'Show', client
-          %td.crud-action= link_to 'Edit', edit_client_path(client)
-          %td.crud-action= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete
 
+          %td.crud-action
+            %a.item-menu-button{:href => '', :data => { |
+              :items => [ |
+                {:name => 'Show', :path => client_path(client)}, |
+                {:name => 'Edit', :path => edit_client_path(client)}, |
+                {:name => 'Destroy', :path => client_path(client)} |
+                ].to_json |
+              } |
+            } Menu |
+
+- content_for :scripts do
+  = javascript_include_tag 'item_menu'

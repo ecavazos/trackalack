@@ -14,8 +14,16 @@
           %td= link_to project.client.name, client_path(project.client)
           %td= project.name
 
-          %td.crud-action= link_to 'Add Time', new_project_time_entry_path(project), :class => 'add-time-link'
-          %td.crud-action= link_to 'Show', project
-          %td.crud-action= link_to 'Edit', edit_project_path(project)
-          %td.crud-action= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+          %td.crud-action
+            %a.item-menu-button{:href => '', :data => { |
+              :items => [ |
+                add_link_data(project), |
+                {:name => 'Show', :path => project_path(project)}, |
+                {:name => 'Edit', :path => edit_project_path(project)}, |
+                {:name => 'Destroy', :path => project_path(project)} |
+                ].to_json |
+              } |
+            } Menu |
 
+- content_for :scripts do
+  = javascript_include_tag 'item_menu'

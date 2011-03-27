@@ -22,7 +22,7 @@
           %th Billing Type
           %th Duration
           %th Description
-          %th{ :colspan => 2}
+          %th
 
         - @project.time_entries.each do |time_entry|
           %tr
@@ -32,5 +32,15 @@
             %td= time_entry.billing_type_display
             %td= time_entry.duration_display
             %td.description= time_entry.abbr_description
-            %td.crud-action= secure_edit(time_entry)
-            %td.crud-action= secure_destroy(time_entry)
+            %td.crud-action
+              - if current_user == time_entry.user
+                %a.item-menu-button{:href => '', :data => { |
+                  :items => [ |
+                    edit_link_data(time_entry), |
+                    destroy_link_data(time_entry) |
+                    ].to_json |
+                  } |
+                } Menu |
+
+- content_for :scripts do
+  = javascript_include_tag 'item_menu'

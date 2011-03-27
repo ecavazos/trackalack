@@ -13,13 +13,23 @@
       %tr
         %th Full name
         %th Email
-        %th{ :colspan => 3 }
+        %th
 
       - @users.each do |user|
         %tr
           %td= user.fullname
           %td= mail_to user.email
-          %td.crud-action= link_to 'Show', user
-          %td.crud-action= link_to 'Edit', edit_user_path(user)
-          %td.crud-action= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
+
+          %td.crud-action
+            %a.item-menu-button{:href => '', :data => { |
+              :items => [ |
+                {:name => 'Show', :path => user_path(user)}, |
+                {:name => 'Edit', :path => edit_user_path(user)}, |
+                {:name => 'Destroy', :path => user_path(user)} |
+                ].to_json |
+              } |
+            } Menu |
+
+- content_for :scripts do
+  = javascript_include_tag 'item_menu'
 

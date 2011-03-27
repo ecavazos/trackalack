@@ -16,11 +16,21 @@
       %table.data-table
         %tr
           %th Project Name
-          %th{ :colspan => 3 }
+          %th
 
         - @client.projects.each do |project|
           %tr
             %td= link_to project.name, project
-            %td.crud-action= link_to 'Add Time', new_project_time_entry_path(project), :class => 'add-time-link'
-            %td.crud-action= link_to 'Edit', edit_project_path(project)
-            %td.crud-action= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+
+            %td.crud-action
+              %a.item-menu-button{:href => '', :data => { |
+                :items => [ |
+                  add_link_data(project), |
+                  {:name => 'Edit', :path => edit_project_path(project)}, |
+                  {:name => 'Destroy', :path => project_path(project)} |
+                  ].to_json |
+                } |
+              } Menu |
+
+- content_for :scripts do
+  = javascript_include_tag 'item_menu'

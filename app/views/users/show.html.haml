@@ -52,9 +52,9 @@
               - if current_user == time.user
                 %a.item-menu-button{:href => '', :data => { |
                   :items => [ |
-                    {:name => 'Edit', :path => edit_project_time_entry_path(time.project, time), :class => 'edit-time-link'}, |
-                    {:name => 'Add Time to Project', :path => new_project_time_entry_path(time.project), :class => 'add-time-link'}, |
-                    {:name => 'Destroy', :path => project_time_entry_path(time.project, time)} |
+                    edit_link_data(time), |
+                    add_link_data(time), |
+                    destroy_link_data(time) |
                     ].to_json |
                   } |
                 } Menu |
