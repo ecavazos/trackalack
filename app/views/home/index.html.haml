@@ -21,24 +21,15 @@
           for
           = link_to project.client.short_name, project.client
 
-    .quick-links-footer
-      = link_to 'More', projects_path
-
     %h3 New Clients
 
     %ul.quick-links
       - @clients.each do |client|
         %li= link_to client.name, client_path(client)
 
-    .quick-links-footer
-      = link_to 'More', clients_path
-
     %h3 New Projects
 
     %ul.quick-links
       - @projects.each do |project|
         %li= link_to project.name, project_path(project)
-
-    .quick-links-footer
-      = link_to 'More', projects_path
 
