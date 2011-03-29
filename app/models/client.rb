@@ -17,4 +17,19 @@ class Client < ActiveRecord::Base
 
     return "#{a} #{b}."
   end
+
+  after_create do |client|
+    SearchIndex.create({
+      :resource_id => client.id,
+      :resource_type => client.class.name,
+      :name => client.name
+    })
+  end
+
+  after_update do |client|
+    si = SearchIndex.where(:resource_id => client.id, :resource_type => client.class.name)
+    si.update_attributes({
+      :name => client.name
+    })
+  end
 end

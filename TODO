@@ -2,18 +2,19 @@
 
 * refactor action item menu haml
 * pages that use the async should update appropriate sections
+* search - index model - type-ahead
 * soft deletes
   * user
   * clients
   * projects
-* search - index model
 * add hard limits or pagination
 * add totals to client
-* client/project/user time totals
+* client/project/user time totals, stats
 * customize devise views (login)
 * style sign in page
 * style alerts and notices
 * make shared partial for form errors
+* csv export
 
 * move home page queries to model classes
 
