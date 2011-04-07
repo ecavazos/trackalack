@@ -10,7 +10,8 @@ Trackalack::Application.routes.draw do
     resources :time_entries
   end
 
-  match "/stream" => "home#stream"
+  match "stream" => "home#stream"
+  match "search" => "search_indices#index"
 
   root :to => "home#index"
 

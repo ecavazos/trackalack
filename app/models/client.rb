@@ -27,7 +27,7 @@ class Client < ActiveRecord::Base
   end
 
   after_update do |client|
-    si = SearchIndex.where(:resource_id => client.id, :resource_type => client.class.name)
+    si = SearchIndex.where(:resource_id => client.id, :resource_type => client.class.name).first
     si.update_attributes({
       :name => client.name
     })

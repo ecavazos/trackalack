@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
   end
 
   after_update do |project|
-    si = SearchIndex.where(:resource_id => project.id, :resource_type => project.class.name)
+    si = SearchIndex.where(:resource_id => project.id, :resource_type => project.class.name).first
     si.update_attributes({
       :name => project.name
     })

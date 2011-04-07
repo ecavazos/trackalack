@@ -53,4 +53,29 @@ $(function () {
 
   });
 
+  var cache = {}, lastXhr;
+
+  $( "#search_term" ).autocomplete({
+    minLength: 2,
+    source: function( request, response ) {
+      var term = request.term;
+      if ( term in cache ) {
+        response( cache[ term ] );
+        return;
+      }
+
+      lastXhr = $.getJSON( "/search", request, function ( data, status, xhr) {
+        cache[ term ] = data;
+        if ( xhr === lastXhr ) {
+          response($.map(data, function (x) {
+            return {
+              label: x.search_index.name,
+              value: x.search_index.id
+            };
+          }));
+        }
+      });
+    }
+  });
+
 });

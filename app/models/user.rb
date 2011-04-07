@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   after_update do |user|
-    si = SearchIndex.where(:resource_id => user.id, :resource_type => user.class.name)
+    si = SearchIndex.where(:resource_id => user.id, :resource_type => user.class.name).first
     si.update_attributes({
       :name => user.fullname
     })
