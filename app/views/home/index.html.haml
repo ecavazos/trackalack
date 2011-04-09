@@ -3,8 +3,8 @@
   %div{ :class => 'column grid_12'}
     #search-box
       %form
-        %input{ :type => 'text', :name => 'search_term', :id => 'search_term'}
-        %input{ :type => 'submit', :value => 'Search'}
+        %input{ :type => 'text', :name => 'search-term', :id => 'search-term'}
+        %input{ :type => 'submit', :value => 'Go'}
 
 .row
   %div{ :class => 'column grid_9'}
@@ -33,3 +33,5 @@
       - @projects.each do |project|
         %li= link_to project.name, project_path(project)
 
+- content_for :scripts do
+  = javascript_include_tag 'search'
