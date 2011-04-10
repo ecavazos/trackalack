@@ -301,6 +301,19 @@ form {
   form input[type='text'], form input[type='password'] {
     width: 200px; }
 
+#alert, #notice, #error {
+  font-size: 13px;
+  text-align: center; }
+
+#alert {
+  color: #ff7f00; }
+
+#notice {
+  color: #408000; }
+
+#error {
+  color: red; }
+
 #error_explanation {
   background-color: #ffd9ed;
   font-size: 12px;
