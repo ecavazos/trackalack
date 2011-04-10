@@ -42,48 +42,59 @@ User.create!({
 
 ### Clients ###
 
-Client.create(:name => 'The Business People')
-Client.create(:name => 'Local Government')
-Client.create(:name => 'Technology Consultants')
+c1 = Client.create(:name => 'The Corporate Business')
+c2 = Client.create(:name => 'The Non-Profit')
+c3 = Client.create(:name => 'Third Party Vendor')
 
 ### Projects ###
 
-Client.all.each do |c|
-  c.projects.create(:name => 'Website')
-  c.projects.create(:name => 'WPF App')
-  c.projects.create(:name => 'iPad App')
-  c.projects.create(:name => 'Database Migration')
-end
+c1.projects.create(:name => 'Website')
+c1.projects.create(:name => 'WPF App')
+c1.projects.create(:name => 'iPad App')
+c2.projects.create(:name => 'Database Migration')
+c2.projects.create(:name => 'Field App')
+c2.projects.create(:name => 'Windows Mobile')
+c3.projects.create(:name => 'Design & Analysis')
+c3.projects.create(:name => 'iPhone App')
+c3.projects.create(:name => 'WinForms App')
 
 ### Time Entries ###
 
-Project.all.each do |p|
+30.times do |x|
   i = 0
+  projects = Project.all
 
-  30.times do |x|
-    attr1 = {
-      :date => Date.today - i,
-      :duration => 3.5,
-      :work_type => :feature,
-      :billing_type => :billable,
-      :description => "Did a little something for #{p.client.name}."
-    }
+  attr1 = {
+    :date => Date.today - x,
+    :duration => 2.5,
+    :work_type => :feature,
+    :billing_type => :billable,
+    :description => "Working on feature requests"
+  }
 
-    attr2 = {
-      :date => Date.today - i,
-      :duration => 1,
-      :work_type => :task,
-      :billing_type => :no_charge,
-      :description => "#{p.name} required some updates."
-    }
+  attr2 = {
+    :date => Date.today - x,
+    :duration => 3,
+    :work_type => :task,
+    :billing_type => :no_charge,
+    :description => "Small change and redeploy."
+  }
 
-    User.all.each do |u|
-      p.time_entries.create(attr1.merge(:user => u))
-      p.time_entries.create(attr2.merge(:user => u))
-      sleep(0.01)
-    end
+  attr3 = {
+    :date => Date.today - x,
+    :duration => 2.5,
+    :work_type => :incident,
+    :billing_type => :billable,
+    :description => "Bug fixes."
+  }
 
-    i += 1
+  User.all.each do |u|
+    projects[0].time_entries.create(attr1.merge(:user => u))
+    projects[3].time_entries.create(attr2.merge(:user => u))
+    projects[6].time_entries.create(attr3.merge(:user => u))
+    sleep(0.001)
   end
+
+  i += 1
 end
 

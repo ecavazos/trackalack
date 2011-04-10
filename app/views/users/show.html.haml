@@ -26,6 +26,11 @@
       / = render :partial => 'shared/time_grid', :locals => { :time_entries => @time_entries }
       %h3= user_show_time_title
 
+      #total
+        Total:
+        = @time_entries.sum('duration')
+        hrs
+
       %table.data-table
         %tr
           %th Client

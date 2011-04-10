@@ -72,9 +72,19 @@
   border: solid 1px #dddddd;
   padding: 20px;
   margin-bottom: 10px;
+  overflow: hidden;
   border-radius: 6px;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px; }
+  .child-data h3 {
+    float: left; }
+  .child-data #total {
+    background-color: #4083ff;
+    color: white;
+    padding: 7px;
+    font-size: 12px;
+    float: right;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.2); }
   .child-data th {
     background-color: #eeeeee; }
   .child-data tr:nth-child(even) {
@@ -197,6 +207,7 @@ a:hover {
 
 #menu-bar {
   background-color: #f1f1f1;
+  border-bottom: solid 1px #dddddd;
   margin-bottom: 15px;
   padding-right: 10px; }
   #menu-bar .home-buttons {

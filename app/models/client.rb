@@ -6,7 +6,7 @@ class Client < ActiveRecord::Base
   scope :recently_created, lambda { |qty| order('created_at desc').limit(qty) }
 
   def short_name
-    split = self.name.split(' ')
+    split = self.name.gsub('-', ' ').split(' ')
 
     a = split.shift
     b = ''

@@ -2,12 +2,6 @@
 
 * refactor action item menu haml
 * pages that use the async should update appropriate sections
-
-* search - index model - type-ahead
-  - resource_id
-  - name
-  - type
-
 * soft deletes
   * user
   * clients

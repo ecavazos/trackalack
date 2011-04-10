@@ -54,7 +54,7 @@ class TimeEntry < ActiveRecord::Base
   end
 
   def self.limit_days(days)
-    self.date_range((Date.today - days), Date.today)
+    self.date_range((Date.today - (days - 1)), Date.today)
   end
 
   def self.date_range(start_date, end_date)
