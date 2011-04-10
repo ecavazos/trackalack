@@ -9,9 +9,8 @@
 * add hard limits or pagination
 * add totals to client
 * client/project/user time totals, stats
-* customize devise views (login)
-* style sign in page
-* style alerts and notices
+* customize devise views
+* style alerts and notices or remove them
 * make shared partial for form errors
 * csv export
 
