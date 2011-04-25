@@ -19,6 +19,7 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'autotest'
+  gem 'fixjour'
 end
 
 # Use unicorn as the web server

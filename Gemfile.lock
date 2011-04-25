@@ -39,6 +39,8 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    fixjour (0.5.3)
+      activerecord
     haml (3.0.23)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -102,6 +104,7 @@ PLATFORMS
 DEPENDENCIES
   autotest
   devise
+  fixjour
   haml-rails
   hpricot
   jquery-rails

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe ClientsController do
+  login_user
 
   def mock_client(stubs={})
     (@mock_client ||= mock_model(Client).as_null_object).tap do |client|
