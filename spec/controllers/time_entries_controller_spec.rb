@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe TimeEntriesController do
+  login_user
 
   def mock_time_entry(stubs={})
     (@mock_time_entry ||= mock_model(TimeEntry).as_null_object).tap do |time_entry|

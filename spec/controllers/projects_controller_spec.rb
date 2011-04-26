@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe ProjectsController do
+  login_user
 
   def mock_project(stubs={})
     (@mock_project ||= mock_model(Project).as_null_object).tap do |project|
@@ -10,7 +11,9 @@ describe ProjectsController do
 
   describe "GET index" do
     it "assigns all projects as @projects" do
-      Project.stub(:all) { [mock_project] }
+      includes = mock(Object)
+      includes.stub(:all) { [mock_project] }
+      Project.stub(:includes) { includes }
       get :index
       assigns(:projects).should eq([mock_project])
     end
@@ -18,7 +21,9 @@ describe ProjectsController do
 
   describe "GET show" do
     it "assigns the requested project as @project" do
-      Project.stub(:find).with("37") { mock_project }
+      includes = mock(Object)
+      includes.stub(:find).with("37") { mock_project }
+      Project.stub(:includes) { includes }
       get :show, :id => "37"
       assigns(:project).should be(mock_project)
     end
@@ -26,8 +31,9 @@ describe ProjectsController do
 
   describe "GET new" do
     it "assigns a new project as @project" do
+      Client.stub(:find).with("37") { Client.new }
       Project.stub(:new) { mock_project }
-      get :new
+      get :new, :client_id => "37"
       assigns(:project).should be(mock_project)
     end
   end
@@ -43,31 +49,41 @@ describe ProjectsController do
   describe "POST create" do
 
     describe "with valid params" do
+      before do
+        client = mock_model(Client).as_null_object
+        client.stub(:build).with({'these' => 'params'}) { mock_project(:save => true) }
+        Client.stub(:find).with("37") { client }
+        post :create, :client_id => "37", :project => {'these' => 'params'}
+      end
+
       it "assigns a newly created project as @project" do
-        Project.stub(:new).with({'these' => 'params'}) { mock_project(:save => true) }
-        post :create, :project => {'these' => 'params'}
         assigns(:project).should be(mock_project)
       end
 
       it "redirects to the created project" do
-        Project.stub(:new) { mock_project(:save => true) }
-        post :create, :project => {}
-        response.should redirect_to(project_url(mock_project))
+        response.should redirect_to(projects_url)
       end
     end
 
     describe "with invalid params" do
+      before do
+        client = mock_model(Client).as_null_object
+        client.stub(:build).with({'these' => 'params'}) { mock_project(:save => false) }
+        Client.stub(:find).with("37") { client }
+        post :create, :client_id => "37", :project => {'these' => 'params'}
+      end
+
       it "assigns a newly created but unsaved project as @project" do
-        Project.stub(:new).with({'these' => 'params'}) { mock_project(:save => false) }
-        post :create, :project => {'these' => 'params'}
         assigns(:project).should be(mock_project)
       end
 
       it "re-renders the 'new' template" do
-        Project.stub(:new) { mock_project(:save => false) }
-        post :create, :project => {}
         response.should render_template("new")
       end
+    end
+
+    describe "with invalid client id" do
+      it "should do something"
     end
 
   end

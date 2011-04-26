@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe UsersController do
+  login_user
 
   def mock_user(stubs={})
     (@mock_user ||= mock_model(User).as_null_object).tap do |user|
