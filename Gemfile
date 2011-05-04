@@ -17,7 +17,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.5.0'
   gem 'autotest'
   gem 'fixjour'
 end

@@ -1,26 +1,6 @@
 class TimeEntriesController < ApplicationController
   before_filter :parse_date, :only => [:create, :update]
 
-  def index
-    @time_entries = Project.
-                      includes(:client, :time_entries => :user).
-                      find(params[:project_id]).time_entries
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @time_entries }
-    end
-  end
-
-  def show
-    @time_entry = TimeEntry.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @time_entry }
-    end
-  end
-
   def new
     @project = Project.find(params[:project_id])
     @time_entry = TimeEntry.new
@@ -58,9 +38,8 @@ class TimeEntriesController < ApplicationController
 
   def destroy
     @time_entry = current_user.time_entries.find(params[:id])
-    @project = @time_entry.project
     @time_entry.destroy
-    redirect_to project_url(@project), :notice => 'Time entry was successfully deleted.'
+    redirect_to project_url(@time_entry.project), :notice => 'Time entry was successfully deleted.'
   end
 
   private

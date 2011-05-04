@@ -7,7 +7,7 @@ Trackalack::Application.routes.draw do
   end
 
   resources :projects, :except => [:new, :create] do
-    resources :time_entries
+    resources :time_entries, :except => [:index, :show]
   end
 
   match "stream" => "home#stream"
