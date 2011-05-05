@@ -7,5 +7,6 @@ Fixjour do
 #  end
 
   define_builder(SearchIndex, :resource_id => '37', :name => 'foo', :resource_type => 'client')
+  define_builder(TimeEntry, :date => Date.new, :duration => 3.5, :work_type => :feature, :billing_type => :billable, :description => 'foo')
 end
 

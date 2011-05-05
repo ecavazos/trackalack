@@ -38,50 +38,73 @@ describe TimeEntriesController do
 
   describe "POST create" do
     describe "with valid params" do
-
       before do
         @project = mock_model(Project)
         Project.stub(:find).with("37") { @project }
-        mock_user = mock_model(User).as_null_object
-        @controller.stub(:current_user) { mock_user }
-        mock_user.stub(:build).with({'these' => 'params', "date" => nil }) { mock_time_entry(:save => true) }
-        mock_time_entry.should_receive(:project=).with(@project)
+        @mock_user = mock_model(User).as_null_object
+        @controller.stub(:current_user) { @mock_user }
+        @mock_user.stub(:build).with({'these' => 'params', "date" => nil }) { mock_time_entry(:save => true) }
+      end
+
+      def do_post
         post :create, :project_id => "37", :time_entry => {'these' => 'params'}
       end
 
       it "assigns a newly created time_entry as @time_entry" do
+        do_post
         assigns(:time_entry).should be(mock_time_entry)
       end
 
+      it "associates project with new time entry" do
+        mock_time_entry.should_receive(:project=).with(@project)
+        do_post
+      end
+
       it "assigns the found project to @project" do
+        do_post
         assigns(:project).should be(@project)
       end
 
-      it "redirects to the created time_entry" do
-        response.should be_success
+      it "should return json" do
+        time = new_time_entry
+        time.stub(:save).and_return(true)
+        @mock_user.stub(:build).with({'these' => 'params', "date" => nil }) { time }
+        do_post
+        response.body.should eq(time.to_json)
       end
-
-      it "should return json"
     end
 
     describe "with invalid params" do
       before do
-        mock_user = mock_model(User).as_null_object
-        @controller.stub(:current_user) { mock_user }
-        mock_user.stub(:build).with({'these' => 'params', 'date' => nil }) { mock_time_entry(:save => false ) }
+        @mock_user = mock_model(User).as_null_object
+        @controller.stub(:current_user) { @mock_user }
+        @mock_user.stub(:build).with({'these' => 'params', 'date' => nil }) { mock_time_entry(:save => false ) }
         Project.stub(:find).with("37")
+      end
+
+      def do_post
         post :create, :project_id => "37", :time_entry => {'these' => 'params'}
       end
 
       it "assigns a newly created but unsaved time_entry as @time_entry" do
+        do_post
         assigns(:time_entry).should be(mock_time_entry)
       end
 
       it "returns a status of 400" do
+        do_post
         response.status.should eq(400)
       end
 
-      it "should return json error messages"
+      it "should return json error messages" do
+        time = new_time_entry
+        time.stub(:save).and_return(false)
+        time.errors.add(:duration, 'foo')
+        time.errors.add(:work_type, 'bar')
+        @mock_user.stub(:build).with({'these' => 'params', "date" => nil }) { time }
+        do_post
+        response.body.should eq(["duration foo", "work_type bar"].to_json)
+      end
     end
 
   end
