@@ -81,11 +81,6 @@ describe ProjectsController do
         response.should render_template("new")
       end
     end
-
-    describe "with invalid client id" do
-      it "should do something"
-    end
-
   end
 
   describe "PUT update" do

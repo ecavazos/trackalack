@@ -1,341 +1,93 @@
-#header {
-  background-color: #222222;
-  color: white;
-  margin-bottom: 20px;
-  overflow: hidden; }
-  #header #header-box {
-    margin: 0 auto;
-    width: 980px; }
-    #header #header-box h1 {
-      font-size: 20px;
-      margin: 10px 0;
-      float: left; }
-    #header #header-box a {
-      color: #eeeeee;
-      text-decoration: none;
-      text-shadow: 0 0 black; }
-    #header #header-box ul {
-      list-style: none;
-      font-size: 11px;
-      margin: 13px 0 0 0;
-      text-align: right;
-      float: right; }
-      #header #header-box ul li {
-        display: inline-block;
-        margin-right: 5px; }
-      #header #header-box ul a {
-        display: inline-block;
-        padding: 5px; }
+/*
+Syntax error: Invalid variable: "$radius = 6px".
+        on line 1 of /Users/ejcavazos/Dropbox/code/rails/trackalack/public/stylesheets/sass/application.sass
 
-.data-table {
-  font-size: 12px;
-  width: 100%;
-  margin-bottom: 10px; }
-  .data-table th {
-    background-color: white;
-    border-bottom: solid 1px #bbbbbb;
-    padding: 5px 2px;
-    text-align: left; }
-  .data-table td {
-    padding: 5px 2px; }
-  .data-table tr:hover {
-    background-color: #ffff9f !important; }
-  .data-table tr:nth-child(even) {
-    background-color: white; }
-  .data-table tr:nth-child(odd) {
-    background-color: #eeeeee; }
-  .data-table .crud-action {
-    text-align: right;
-    white-space: nowrap;
-    width: 3%; }
-    .data-table .crud-action a {
-      background-color: #f1f1f1;
-      background: -webkit-gradient(linear, left top, left bottom, from(white), to(#d3d3d3));
-      background: -moz-linear-gradient(top, white, #d3d3d3);
-      border: solid 1px #cccccc;
-      color: #333333;
-      display: block;
-      padding: 5px 8px;
-      font-size: 11px;
-      text-align: center;
-      text-shadow: -1px 0 white;
-      border-radius: 2px;
-      -moz-border-radius: 2px;
-      -webkit-border-radius: 2px; }
-    .data-table .crud-action a:hover {
-      text-decoration: none; }
-  .data-table .description {
-    max-width: 300px; }
+1: $radius = 6px
+2: 
+3: @import css3
+4: @import header
+5: @import tables
+6: @import filters
 
-.child-data {
-  background-color: #eeeeee;
-  border: solid 1px #dddddd;
-  padding: 20px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px; }
-  .child-data h3 {
-    float: left; }
-  .child-data #total {
-    background-color: #4083ff;
-    color: white;
-    padding: 7px;
-    font-size: 12px;
-    float: right;
-    text-shadow: 0 -1px rgba(0, 0, 0, 0.2); }
-  .child-data th {
-    background-color: #eeeeee; }
-  .child-data tr:nth-child(even) {
-    background-color: #eeeeee; }
-  .child-data tr:nth-child(odd) {
-    background-color: #dddddd; }
-
-#filter-bar {
-  background-color: #eeeeee;
-  border: solid 1px #dddddd;
-  margin-bottom: 20px;
-  padding: 10px;
-  overflow: hidden; }
-  #filter-bar form {
-    float: left; }
-  #filter-bar #clear {
-    background-color: #dddddd;
-    border: solid 1px #cccccc;
-    color: #222222;
-    float: right;
-    font-size: 11px;
-    padding: 5px 8px; }
-  #filter-bar span {
-    display: inline-block !important;
-    margin: 0 5px 0 0; }
-  #filter-bar .field {
-    display: inline-block;
-    margin: 0;
-    vertical-align: middle; }
-    #filter-bar .field label {
-      display: inline-block;
-      margin: 0 5px 0 0;
-      padding: 0; }
-    #filter-bar .field select {
-      margin: 0 10px 0 0; }
-    #filter-bar .field input[type='text'] {
-      width: 100px; }
-
-#item-menu {
-  background-color: #eeeeee;
-  border: solid 1px #cccccc;
-  margin: 1px;
-  padding: 2px;
-  position: absolute;
-  text-align: left; }
-  #item-menu ul {
-    list-style: none; }
-    #item-menu ul li {
-      padding: 5px 15px 5px 5px; }
-      #item-menu ul li a {
-        background: none;
-        border: none;
-        color: black;
-        margin: 0;
-        padding: 0;
-        text-align: left; }
-      #item-menu ul li a:hover {
-        text-decoration: none; }
-    #item-menu ul li:hover {
-      background-color: #c0cbe3; }
-
-#time-entry-form {
-  margin: 10px; }
-  #time-entry-form .col {
-    float: left;
-    margin: 0 25px 15px 0;
-    overflow: hidden; }
-  #time-entry-form .date {
-    clear: left; }
-    #time-entry-form .date input {
-      width: 240px; }
-  #time-entry-form .duration input {
-    width: 80px; }
-  #time-entry-form .field {
-    clear: left; }
-  #time-entry-form .clear {
-    clear: left; }
-  #time-entry-form #time_errors {
-    color: red;
-    margin-bottom: 15px; }
-    #time-entry-form #time_errors ul {
-      list-style-position: inside; }
-  #time-entry-form textarea {
-    width: 430px; }
-
-body {
-  background-color: #cccccc;
-  font-family: "Helvetica Neue", Helvetica, Arial, default; }
-
-h2 {
-  color: #333333;
-  font-size: 22px;
-  padding-bottom: 5px;
-  margin-bottom: 20px; }
-
-h3 {
-  font-size: 18px;
-  margin-bottom: 20px; }
-
-p {
-  margin-bottom: 20px; }
-
-a {
-  color: #2a4bf8;
-  text-decoration: none; }
-
-a:hover {
-  text-decoration: underline; }
-
-#app-box {
-  background-color: white;
-  border: solid 1px #bbbbbb;
-  margin: 0 auto 40px auto;
-  padding: 0;
-  width: 980px;
-  overflow: hidden;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px; }
-
-#menu-bar {
-  background-color: #f1f1f1;
-  border-bottom: solid 1px #dddddd;
-  margin-bottom: 15px;
-  padding-right: 10px; }
-  #menu-bar .home-buttons {
-    text-align: right; }
-    #menu-bar .home-buttons a {
-      background-color: rgba(0, 0, 0, 0.1);
-      border-radius: 6px;
-      -moz-border-radius: 6px;
-      -webkit-border-radius: 6px;
-      color: #222222;
-      display: inline-block;
-      font-size: 13px;
-      margin: 10px 0 10px 10px;
-      padding: 7px;
-      text-decoration: none;
-      text-shadow: 1px 0 white; }
-
-#content {
-  padding: 10px; }
-
-#search-box {
-  background-color: #dddddd;
-  border: solid 1px #cccccc;
-  margin-bottom: 20px;
-  padding: 10px; }
-  #search-box form {
-    float: none; }
-  #search-box input[type='text'] {
-    margin-right: 10px;
-    padding: 5px;
-    width: 850px; }
-
-.activity {
-  background-color: #efefef;
-  border-bottom: solid 1px #dddddd;
-  color: #666666;
-  font-size: 12px;
-  margin-bottom: 10px;
-  padding: 15px;
-  overflow: hidden; }
-  .activity div {
-    clear: left;
-    float: left;
-    margin-bottom: 5px; }
-  .activity .activity-title {
-    font-size: 12px;
-    margin: 0 0 10px 0;
-    width: 80%; }
-  .activity .activity-description {
-    color: #333333;
-    font-size: 12px;
-    font-style: italic;
-    line-height: 16px;
-    margin: 0 0 10px 0; }
-  .activity .activity-meta {
-    margin: 0; }
-    .activity .activity-meta .activity-meta-item {
-      float: none;
-      display: inline-block;
-      margin: 0 3px 0 3px; }
-  .activity .activity-action {
-    float: right;
-    clear: none; }
-
-.quick-links {
-  color: #666666;
-  font-size: 13px;
-  margin-bottom: 20px; }
-  .quick-links li {
-    border-bottom: solid 1px #eeeeee;
-    margin-bottom: 5px;
-    padding-bottom: 5px; }
-
-form {
-  font-size: 12px; }
-  form .field {
-    margin-bottom: 15px;
-    overflow: hidden; }
-  form label {
-    display: block;
-    letter-spacing: 0.1em;
-    font-weight: bold;
-    padding: 0 0 5px; }
-  form .readonly {
-    display: inline-block;
-    padding: 5px 0; }
-  form input[type='text'], form input[type='password'], form select, form textarea {
-    font-size: 12px;
-    padding: 2px;
-    margin: 0 4px 0 0; }
-  form input[type='text'], form input[type='password'] {
-    width: 200px; }
-
-#alert, #notice, #error {
-  font-size: 13px;
-  text-align: center; }
-
-#alert {
-  color: #ff7f00; }
-
-#notice {
-  color: #408000; }
-
-#error {
-  color: red; }
-
-#error_explanation {
-  background-color: #ffd9ed;
-  font-size: 12px;
-  margin-bottom: 20px;
-  padding: 15px; }
-  #error_explanation h2 {
-    border: none;
-    color: #710c1b;
-    font-size: 16px;
-    margin-bottom: 5px; }
-  #error_explanation ul {
-    list-style-position: inside; }
-
-#manage-nav {
-  text-align: right; }
-  #manage-nav a {
-    display: inline-block;
-    margin: 0 0 10px 10px;
-    font-size: 14px; }
-
-.idx-type {
-  color: #b1b1b1;
-  display: inline-block;
-  font-weight: bold;
-  margin-left: 5px; }
+Backtrace:
+/Users/ejcavazos/Dropbox/code/rails/trackalack/public/stylesheets/sass/application.sass:1
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/engine.rb:594:in `parse_variable'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/engine.rb:538:in `parse_line'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/engine.rb:447:in `build_tree'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/engine.rb:466:in `block in append_children'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/engine.rb:465:in `each'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/engine.rb:465:in `append_children'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/engine.rb:322:in `_to_tree'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/engine.rb:291:in `_render'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/engine.rb:239:in `block in render'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/util.rb:298:in `silence_sass_warnings'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/engine.rb:239:in `render'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/plugin/compiler.rb:319:in `update_stylesheet'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/plugin/compiler.rb:181:in `block (2 levels) in update_stylesheets'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/plugin/compiler.rb:175:in `each'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/plugin/compiler.rb:175:in `block in update_stylesheets'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/plugin/compiler.rb:173:in `each'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/plugin/compiler.rb:173:in `update_stylesheets'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/sass-3.1.1/lib/sass/plugin/rack.rb:51:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/warden-1.0.4/lib/warden/manager.rb:35:in `block in call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/warden-1.0.4/lib/warden/manager.rb:34:in `catch'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/warden-1.0.4/lib/warden/manager.rb:34:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rack-1.2.2/lib/rack/methodoverride.rb:24:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/activerecord-3.0.7.rc2/lib/active_record/query_cache.rb:32:in `block in call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/activerecord-3.0.7.rc2/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/activerecord-3.0.7.rc2/lib/active_record/query_cache.rb:12:in `cache'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/activerecord-3.0.7.rc2/lib/active_record/query_cache.rb:31:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/activerecord-3.0.7.rc2/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/activesupport-3.0.7.rc2/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rack-1.2.2/lib/rack/sendfile.rb:107:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/railties-3.0.7.rc2/lib/rails/rack/logger.rb:13:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rack-1.2.2/lib/rack/runtime.rb:17:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/activesupport-3.0.7.rc2/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rack-1.2.2/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rack-1.2.2/lib/rack/lock.rb:11:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/middleware/static.rb:30:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/railties-3.0.7.rc2/lib/rails/application.rb:168:in `call'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rack-test-0.5.7/lib/rack/mock_session.rb:30:in `request'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rack-test-0.5.7/lib/rack/test.rb:209:in `process_request'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rack-test-0.5.7/lib/rack/test.rb:105:in `request'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/testing/integration.rb:292:in `process'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/testing/integration.rb:32:in `get'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/actionpack-3.0.7.rc2/lib/action_dispatch/testing/integration.rb:325:in `block (2 levels) in <module:Runner>'
+/Users/ejcavazos/Dropbox/code/rails/trackalack/spec/requests/clients_spec.rb:6:in `block (3 levels) in <top (required)>'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/example.rb:48:in `instance_eval'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/example.rb:48:in `block in run'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/example.rb:107:in `with_around_hooks'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/example.rb:45:in `run'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/example_group.rb:294:in `block in run_examples'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/example_group.rb:290:in `map'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/example_group.rb:290:in `run_examples'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/example_group.rb:262:in `run'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/example_group.rb:263:in `block in run'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/example_group.rb:263:in `map'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/example_group.rb:263:in `run'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/command_line.rb:24:in `block (2 levels) in run'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/command_line.rb:24:in `map'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/command_line.rb:24:in `block in run'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/reporter.rb:12:in `report'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/command_line.rb:21:in `run'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/runner.rb:61:in `run_in_process'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/runner.rb:52:in `run'
+/Users/ejcavazos/.rvm/gems/ruby-1.9.2-p180@trackalack/gems/rspec-core-2.6.0.rc4/lib/rspec/core/runner.rb:10:in `block in autorun'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid variable: \"$radius = 6px\".\A         on line 1 of /Users/ejcavazos/Dropbox/code/rails/trackalack/public/stylesheets/sass/application.sass\A \A 1: $radius = 6px\A 2: \A 3: @import css3\A 4: @import header\A 5: @import tables\A 6: @import filters"; }
