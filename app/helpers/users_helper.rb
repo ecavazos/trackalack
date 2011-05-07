@@ -10,7 +10,7 @@ module UsersHelper
       return "#{base} for last 5 days"
     elsif !params[:start_date].empty? && !params[:end_date].empty?
       return "#{base} between #{params[:start_date]} and #{params[:end_date]}"
-    elsif !params[:start_date].empty? && params[:end_date].empty?
+    elsif !params[:start_date].empty? && !params[:start_date].nil?
       return "#{base} for #{params[:start_date]}"
     elsif params[:days]
       return "#{base} for last #{params[:days]} days"
