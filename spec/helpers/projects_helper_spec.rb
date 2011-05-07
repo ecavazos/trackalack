@@ -1,15 +1,48 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the ProjectsHelper. For example:
-#
-# describe ProjectsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe ProjectsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#secure_edit(time_entry)" do
+    describe "when time_entry is owned by current_user" do
+
+      it "should return a link to edit time" do
+        user = create_user
+        time = mock_model(TimeEntry).as_null_object
+        id = time.id
+        time.stub(:user).and_return(user)
+        helper.stub(:current_user).and_return(user)
+
+        helper.secure_edit(time).should eq("<a href=\"/projects/#{id}/time_entries/#{id}/edit\" class=\"edit-time-link\">Edit</a>")
+      end
+    end
+
+    describe "when time_entry is not owned by current_user" do
+      it "should return blank" do
+        time = mock_model(TimeEntry).as_null_object
+        helper.stub(:current_user)
+        helper.secure_edit(time).should eq("")
+      end
+    end
+  end
+
+  describe "#secure_destroy" do
+    describe "when time_entry is owned by current_user" do
+      it "should return a link to destroy time" do
+        user = create_user
+        time = mock_model(TimeEntry).as_null_object
+        id = time.id
+        time.stub(:user).and_return(user)
+        helper.stub(:current_user).and_return(user)
+
+        helper.secure_destroy(time).should eq("<a href=\"/projects/#{id}/time_entries/#{id}\" data-confirm=\"Are you sure?\" data-method=\"delete\" rel=\"nofollow\">Destroy</a>")
+      end
+    end
+
+    describe "when time_entry is not owned by current_user" do
+      it "should return blank" do
+        time = mock_model(TimeEntry).as_null_object
+        helper.stub(:current_user)
+        helper.secure_destroy(time).should eq("")
+      end
+    end
+  end
 end
