@@ -15,7 +15,7 @@ class Client < ActiveRecord::Base
       b = b + x[0]
     end
 
-    return "#{a} #{b}."
+    (b.empty?) ? a : "#{a} #{b}."
   end
 
   after_create do |client|
