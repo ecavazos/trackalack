@@ -13,8 +13,7 @@ class TimeEntry < ActiveRecord::Base
 
   def work_type
     v = read_attribute(:work_type)
-    return v if v.nil?
-    v.to_sym
+    (v.nil?) ? v : v.to_sym
   end
 
   def work_type= (value)
@@ -27,8 +26,7 @@ class TimeEntry < ActiveRecord::Base
 
   def billing_type
     v = read_attribute(:billing_type)
-    return v if v.nil?
-    v.to_sym
+    (v.nil?) ? v : v.to_sym
   end
 
   def billing_type= (value)
