@@ -4,7 +4,7 @@ class BillingTypes
   end
 
   def self.for_select
-    self.all.collect {|k,v| [ v, k ] }
+    self.all.map { |k,v| [ v, k ] }
   end
 end
 
