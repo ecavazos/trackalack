@@ -9,11 +9,7 @@ class Client < ActiveRecord::Base
     split = self.name.gsub('-', ' ').split(' ')
 
     a = split.shift
-    b = ''
-
-    split.each do |x|
-      b = b + x[0]
-    end
+    b = split.map { |word| word[0] }.join
 
     (b.empty?) ? a : "#{a} #{b}."
   end

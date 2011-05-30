@@ -1,7 +1,6 @@
 module HomeHelper
   def format_date(date)
-    return '' if date.nil?
-    date.strftime('%m/%d/%Y')
+    (date.nil?)? '' : date.strftime('%m/%d/%Y')
   end
 
   def user_edit_time_link(time_entry)
