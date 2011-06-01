@@ -34,14 +34,22 @@ describe Client do
     end
   end
 
-  describe "#after_create" do
-    it "should create a search index record" do
-#      @client.save
-#      SearchIndex.should_receive(:create).with({
-#        :resource_id => @client.id,
-#        :resource_type => @client.class.name,
-#        :name => @client.name
-#      })
+  context "after create" do
+    it "should create search index for new client" do
+      SearchIndex.should_receive(:create).with({
+        :resource_id => 1,
+        :resource_type => 'Client',
+        :name => 'foo'
+      })
+      create_client(:name => 'foo')
+    end
+  end
+
+  context "after update" do
+    it "should update search index for client" do
+      client = create_client
+      client.update_attributes(:name => 'pedro')
+      SearchIndex.first.name.should == 'pedro'
     end
   end
 end

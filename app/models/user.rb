@@ -18,19 +18,4 @@ class User < ActiveRecord::Base
   def pathname
     fullname.downcase.gsub(' ', '_')
   end
-
-  after_create do |user|
-    SearchIndex.create({
-      :resource_id => user.id,
-      :resource_type => user.class.name,
-      :name => user.fullname
-    })
-  end
-
-  after_update do |user|
-    si = SearchIndex.where(:resource_id => user.id, :resource_type => user.class.name).first
-    si.update_attributes({
-      :name => user.fullname
-    })
-  end
 end
