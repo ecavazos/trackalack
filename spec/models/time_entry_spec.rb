@@ -47,7 +47,7 @@ describe TimeEntry do
   end
 
   describe "default_scope" do
-    before do 
+    before do
       create_time_entry
       create_time_entry
       (1..4).each { |i| create_time_entry(:date => Date.today - i, :created_at => Time.now - (i)) }
@@ -57,8 +57,8 @@ describe TimeEntry do
 
     it "should order by date desc" do
       entries[0].date.should be == entries[1].date
-      entries[1].date.should be > entries[2].date 
-      entries[3].date.should be > entries[4].date 
+      entries[1].date.should be > entries[2].date
+      entries[3].date.should be > entries[4].date
     end
 
     context 'then' do

@@ -1,4 +1,6 @@
 class TimeEntry < ActiveRecord::Base
+  extend EnumAttributes
+
   belongs_to :project, :touch => true
   belongs_to :user
 
@@ -11,31 +13,8 @@ class TimeEntry < ActiveRecord::Base
 
   scope :all_assoc_limited, lambda { |qty| includes(:user, :project => :client).order('created_at desc').limit(qty) }
 
-  def work_type
-    v = read_attribute(:work_type)
-    (v.nil?) ? v : v.to_sym
-  end
-
-  def work_type= (value)
-    write_attribute(:work_type, value.to_s)
-  end
-
-  def work_type_display
-    self.work_type ? WorkTypes.all[self.work_type] : ''
-  end
-
-  def billing_type
-    v = read_attribute(:billing_type)
-    (v.nil?) ? v : v.to_sym
-  end
-
-  def billing_type= (value)
-    write_attribute(:billing_type, value.to_s)
-  end
-
-  def billing_type_display
-    self.billing_type ? BillingTypes.all[self.billing_type] : ''
-  end
+  enum_attr :work_type
+  enum_attr :billing_type
 
   def duration_display
     "#{self.duration} hrs"
