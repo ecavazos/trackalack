@@ -11,7 +11,9 @@ class TimeEntry < ActiveRecord::Base
 
   default_scope order('date desc, created_at desc')
 
-  scope :all_assoc_limited, lambda { |qty| includes(:user, :project => :client).order('created_at desc').limit(qty) }
+  scope :all_assoc_limited, lambda { |qty|
+    includes(:user, :project => :client).order('created_at desc').limit(qty)
+  }
 
   enum_attr :work_type
   enum_attr :billing_type
@@ -23,7 +25,7 @@ class TimeEntry < ActiveRecord::Base
   def abbr_description
     desc = self.description.split(' ')
     if desc.size > 6
-      desc = self.description.split(' ')[0,6].join(' ')
+      desc = desc[0,6].join(' ')
       "#{desc} ..."
     else
       self.description
