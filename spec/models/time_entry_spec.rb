@@ -48,9 +48,9 @@ describe TimeEntry do
 
   describe "default_scope" do
     before do
-      create_time_entry
-      create_time_entry
-      (1..4).each { |i| create_time_entry(:date => Date.today - i, :created_at => Time.now - (i)) }
+      Factory.create(:time_entry)
+      Factory.create(:time_entry)
+      (1..4).each { |i| Factory.create(:time_entry, {:date => Date.today - i, :created_at => Time.now - (i) }) }
     end
 
     let(:entries) { TimeEntry.all }
@@ -129,7 +129,7 @@ describe TimeEntry do
 
   describe "#limit_days(days)" do
     before do
-      (0..6).each { |i| create_time_entry(:date => Date.today - i) }
+      (0..6).each { |i| Factory.create(:time_entry, :date => Date.today - i) }
     end
 
     it { TimeEntry.limit_days(1).should have(1).time_entries }
@@ -138,7 +138,7 @@ describe TimeEntry do
 
   describe "#date_range(start_date, end_date)" do
     before do
-      (0..6).each { |i| create_time_entry(:date => Date.today - i) }
+      (0..6).each { |i| Factory.create(:time_entry, :date => Date.today - i) }
     end
 
     it { TimeEntry.date_range(Date.today - 2, Date.today).should  have(3).time_entries }

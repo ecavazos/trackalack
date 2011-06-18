@@ -6,7 +6,7 @@ describe SearchIndicesController do
     login_user
 
     before do
-      @idx = new_search_index
+      @idx = Factory.build(:search_index)
       SearchIndex.stub(:where).with('name LIKE ?', "%foo%") {[@idx]}
     end
 

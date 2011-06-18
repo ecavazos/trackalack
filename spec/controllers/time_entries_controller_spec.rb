@@ -66,7 +66,7 @@ describe TimeEntriesController do
       end
 
       it "should return json" do
-        time = new_time_entry
+        time = Factory.build(:time_entry)
         time.stub(:save).and_return(true)
         @mock_user.stub(:build).with({'these' => 'params', "date" => nil }) { time }
         do_post
@@ -97,7 +97,7 @@ describe TimeEntriesController do
       end
 
       it "should return json error messages" do
-        time = new_time_entry
+        time = Factory.build(:time_entry)
         time.stub(:save).and_return(false)
         time.errors.add(:duration, 'foo')
         time.errors.add(:work_type, 'bar')

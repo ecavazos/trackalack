@@ -16,7 +16,7 @@ end
 group :test, :development do
   gem 'rspec-rails', '2.6.0.rc4'
   gem 'autotest'
-  gem 'fixjour'
+  gem 'factory_girl_rails'
 end
 
 # Bundle edge Rails instead:

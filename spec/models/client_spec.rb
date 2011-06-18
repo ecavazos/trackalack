@@ -41,13 +41,13 @@ describe Client do
         :resource_type => 'Client',
         :name => 'foo'
       })
-      create_client(:name => 'foo')
+      Factory.create(:client, :name => 'foo')
     end
   end
 
   context "after update" do
     it "should update search index for client" do
-      client = create_client
+      client = Factory.create(:client)
       client.update_attributes(:name => 'pedro')
       SearchIndex.first.name.should == 'pedro'
     end

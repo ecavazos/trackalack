@@ -19,13 +19,13 @@ describe Project do
         :resource_type => 'Project',
         :name => 'foo'
       })
-      create_project(:name => 'foo')
+      Factory.create(:project)
     end
   end
 
   context "after update" do
     it "should update search index for project" do
-      project = create_project
+      project = Factory.create(:project)
       project.update_attributes(:name => 'ibm')
       SearchIndex.first.name.should == 'ibm'
     end

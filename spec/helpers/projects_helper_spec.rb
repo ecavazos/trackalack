@@ -5,7 +5,7 @@ describe ProjectsHelper do
     describe "when time_entry is owned by current_user" do
 
       it "should return a link to edit time" do
-        user = create_user
+        user = Factory.create(:user)
         time = mock_model(TimeEntry).as_null_object
         id = time.id
         time.stub(:user).and_return(user)
@@ -27,7 +27,7 @@ describe ProjectsHelper do
   describe "#secure_destroy" do
     describe "when time_entry is owned by current_user" do
       it "should return a link to destroy time" do
-        user = create_user
+        user = Factory.create(:user)
         time = mock_model(TimeEntry).as_null_object
         id = time.id
         time.stub(:user).and_return(user)

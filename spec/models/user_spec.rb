@@ -25,13 +25,13 @@ describe User do
         :resource_type => 'User',
         :name => 'foo bar'
       })
-      create_user(:email => 'foo@bar.com', :first_name => 'foo', :last_name => 'bar')
+      Factory(:user, :email => 'foo@bar.com', :first_name => 'foo', :last_name => 'bar')
     end
   end
 
   context "after update" do
     it "should update search index for user" do
-      user = create_user
+      user = Factory.create(:user)
       user.update_attributes(:first_name => 'john', :last_name => 'cage')
       SearchIndex.first.name.should == 'john cage'
     end

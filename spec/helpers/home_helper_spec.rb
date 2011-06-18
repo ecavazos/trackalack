@@ -20,8 +20,8 @@ describe HomeHelper do
       before do
         helper.extend Haml::Helpers
         helper.init_haml_helpers
-        
-        @user = create_user
+
+        @user = Factory.create(:user)
         @time_entry = mock_model(TimeEntry).as_null_object
         @time_entry.stub(:user).and_return(@user)
         helper.stub(:current_user).and_return(@user)
