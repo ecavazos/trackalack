@@ -20,5 +20,6 @@ group :test, :development do
 
   gem 'launchy' # save_and_open_page
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
