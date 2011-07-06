@@ -11,10 +11,12 @@ Factory.define :time_entry do |f|
   f.work_type :feature
   f.billing_type :billable
   f.description 'foo'
+  f.project { Factory.create(:project) }
 end
 
 Factory.define :project do |f|
   f.name 'foo'
+  f.client { Factory.create(:client) }
 end
 
 Factory.define :client do |f|
