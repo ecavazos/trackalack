@@ -55,9 +55,7 @@ describe UsersHelper do
       it "should return base message" do
         @params.delete(:days)
         helper.stub(:params).and_return(@params.merge({ :start_date => nil }))
-        helper
-          .user_show_time_title
-          .should eq("Time entries")
+        helper.user_show_time_title.should eq("Time entries")
       end
 
       it "should return base message" do
