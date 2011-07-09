@@ -21,11 +21,11 @@ describe User do
   context "after create" do
     it "should create search index for new user" do
       SearchIndex.should_receive(:create).with({
-        :resource_id => 1,
+        :resource_id => 37,
         :resource_type => 'User',
         :name => 'foo bar'
       })
-      Factory(:user, :email => 'foo@bar.com', :first_name => 'foo', :last_name => 'bar')
+      Factory.create(:user, :id => 37, :first_name => 'foo', :last_name => 'bar')
     end
   end
 

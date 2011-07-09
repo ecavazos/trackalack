@@ -37,11 +37,11 @@ describe Client do
   context "after create" do
     it "should create search index for new client" do
       SearchIndex.should_receive(:create).with({
-        :resource_id => 1,
+        :resource_id => 37,
         :resource_type => 'Client',
         :name => 'foo'
       })
-      Factory.create(:client, :name => 'foo')
+      Factory.create(:client, :id => 37, :name => 'foo')
     end
   end
 

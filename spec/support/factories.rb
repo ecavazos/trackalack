@@ -19,6 +19,10 @@ Factory.define :project do |f|
   f.client { Factory.create(:client) }
 end
 
+Factory.define :project_without_client, :class => 'project' do |f|
+  f.name 'foo'
+end
+
 Factory.define :client do |f|
   f.name 'foo'
 end

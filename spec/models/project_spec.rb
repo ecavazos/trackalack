@@ -15,11 +15,11 @@ describe Project do
   context "after create" do
     it "should create search index for new project" do
       SearchIndex.should_receive(:create).with({
-        :resource_id => 1,
+        :resource_id => 37,
         :resource_type => 'Project',
         :name => 'foo'
       })
-      Factory.create(:project)
+      Factory.create(:project_without_client, :id => 37)
     end
   end
 
@@ -27,7 +27,7 @@ describe Project do
     it "should update search index for project" do
       project = Factory.create(:project)
       project.update_attributes(:name => 'ibm')
-      SearchIndex.first.name.should == 'ibm'
+      SearchIndex.where(:resource_type => 'Project').first.name.should == 'ibm'
     end
   end
 end
