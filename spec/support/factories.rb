@@ -1,6 +1,6 @@
 Factory.define :user do |f|
-  f.first_name 'luke'
-  f.last_name 'skywalker'
+  f.first_name 'Luke'
+  f.last_name 'Skywalker'
   f.email 'skywalker@trackalack.com'
   f.password '1234'
 end

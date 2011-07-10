@@ -2,19 +2,23 @@ require 'spec_helper'
 
 describe 'Home Page', :js => true do
 
-  context 'Recent Time Entries' do
+  before do
+    @user = sign_in
+  end
+
+  context 'within recent time entries section' do
+
     it 'has title' do
       visit root_path
-      should have_content 'Recent Time Entries'
+      page.should have_content 'Recent Time Entries'
     end
 
     it 'displays time entries by created at date descending' do
-      user = sign_in
 
       with_timestamping_disabled TimeEntry do
-        Factory.create :time_entry, :description => 'foo3', :user => user, :created_at => Time.now.ago(2.day)
-        Factory.create :time_entry, :description => 'foo2', :user => user, :created_at => Time.now.ago(1.day)
-        Factory.create :time_entry, :description => 'foo1', :user => user, :created_at => Time.now
+        Factory.create :time_entry, :description => 'foo3', :user => @user, :created_at => Time.now.ago(2.day)
+        Factory.create :time_entry, :description => 'foo2', :user => @user, :created_at => Time.now.ago(1.day)
+        Factory.create :time_entry, :description => 'foo1', :user => @user, :created_at => Time.now
       end
 
       visit root_path
@@ -24,6 +28,88 @@ describe 'Home Page', :js => true do
       entries[0].should have_content 'foo1'
       entries[1].should have_content 'foo2'
       entries[2].should have_content 'foo3'
+    end
+
+    context 'a single time entry' do
+
+      before do
+        @client     = Factory.create :client, :name => 'Seven Eleven'
+        @project    = Factory.create :project, :name => 'Make Awesome!', :client => @client
+        @time_entry = Factory.create :time_entry, :description => 'Delivered awesomeness!', :user => @user, :project => @project
+      end
+
+      it 'links to the associated client' do
+
+        visit root_path
+
+        within '#stream .activity' do
+          click_link 'Seven Eleven'
+        end
+
+        current_path.should == client_path(@client)
+      end
+
+      it 'links to the associated project' do
+
+        visit root_path
+
+        within '#stream .activity' do
+          click_link 'Make Awesome!'
+        end
+
+        current_path.should == project_path(@project)
+      end
+
+      it 'links to the associated user' do
+
+        visit root_path
+
+        within '#stream .activity' do
+          click_link 'Luke Skywalker'
+        end
+
+        current_path.should == user_path(@user)
+      end
+
+      it 'shows description' do
+
+        visit root_path
+
+        within '#stream .activity' do
+          page.should have_content 'Delivered awesomeness!'
+        end
+      end
+
+      it 'allows owner to edit' do
+
+        visit root_path
+
+        within '#stream .activity' do
+          click_link 'Edit'
+        end
+
+        within '.ui-dialog' do
+          page.should have_content 'Time Entry'
+          fill_in 'time_entry[description]', :with => 'Make that super-awesomeness!'
+          click_button 'Save'
+        end
+
+        time_entry.reload
+        @time_entry.description.should == 'Make that super-awesomeness!'
+
+        # TODO: page should refresh the updated time entry
+      end
+
+      it "hides edit for other user's time entries" do
+        other_user = Factory.create :user, :email => 'foo@bar.com'
+        Factory.create :time_entry, :description => 'not my time entry.', :user => other_user, :project => @project
+
+        visit root_path
+
+        within '#stream .activity' do
+          page.should have_no_content 'Edit'
+        end
+      end
     end
   end
 

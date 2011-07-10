@@ -15,7 +15,7 @@
       = f.select :billing_type, BillingTypes.for_select
     .col.date
       = f.label :date
-      = f.text_field :date
+      = f.text_field :date, :value => l(@time_entry.date || Date.today)
     .col.duration
       = f.label :duration
       = f.text_field :duration
