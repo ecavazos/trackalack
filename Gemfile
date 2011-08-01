@@ -15,6 +15,7 @@ end
 
 group :test, :development do
   gem 'capybara', '>=1.0.0.rc1'
+  # gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git', :branch => '1.0'
   gem 'rspec-rails'
   gem 'autotest'
 
