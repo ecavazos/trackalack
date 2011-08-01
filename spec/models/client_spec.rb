@@ -30,24 +30,4 @@ describe Client do
       Client.new(:name => 'Foo Bar Inc.').short_name.should == 'Foo BI.'
     end
   end
-
-  # TODO: move this to search index specs
-  context "after create" do
-    it "should create search index for new client" do
-      SearchIndex.should_receive(:create).with({
-        :resource_id => 37,
-        :resource_type => 'Client',
-        :name => 'foo'
-      })
-      Factory.create(:client, :id => 37, :name => 'foo')
-    end
-  end
-
-  context "after update" do
-    it "should update search index for client" do
-      client = Factory.create(:client)
-      client.update_attributes(:name => 'pedro')
-      SearchIndex.first.name.should == 'pedro'
-    end
-  end
 end
