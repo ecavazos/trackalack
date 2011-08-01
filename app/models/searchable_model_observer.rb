@@ -12,8 +12,11 @@ class SearchableModelObserver < ActiveRecord::Observer
 
   def after_update(model)
     name = index_name(model)
-    si = SearchIndex.where(:resource_id => model.id, :resource_type => model.class.name).first
-    si.update_attributes({
+
+    SearchIndex.where(
+      :resource_id => model.id,
+      :resource_type => model.class.name
+    ).first.update_attributes({
       :name => name
     })
   end
@@ -21,6 +24,6 @@ class SearchableModelObserver < ActiveRecord::Observer
   private
 
   def index_name(model)
-    model.respond_to?('fullname')? model.fullname : model.name
+    model.respond_to?('fullname') ? model.fullname : model.name
   end
 end

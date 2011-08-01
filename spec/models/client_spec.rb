@@ -1,39 +1,37 @@
 require 'spec_helper'
 
 describe Client do
-  before do
-    @client = Client.new :name => 'foo'
-  end
 
-  describe "validations" do
-    it "is not be valid without name" do
-      @client.name = ""
-      @client.should_not be_valid
+  describe Client, '#name=' do
+
+    it 'requires name' do
+      Client.new(:name =>             nil).should_not be_valid
+      Client.new(:name => 'Turd Ferguson').should be_valid
     end
   end
 
-  describe "#short_name" do
-    it "should do nothing when name is only one word" do
-      @client.name = "Blah"
-      @client.short_name.should eq("Blah")
+  describe Client, "#short_name" do
+
+    it 'does NOT alter single word names' do
+      Client.new(:name => 'Blah').short_name.should == 'Blah'
     end
 
-    it "should stip dashes" do
-      @client.name = "Foo Dash-Bar"
-      @client.short_name.should eq("Foo DB.")
+    it 'uses only the first inital after the first word' do
+      Client.new(
+        :name => 'Monster Like Kitties'
+      ).short_name.should == 'Monster LK.'
     end
 
-    it "should handle many words" do
-      @client.name = "Monster Like Kitties"
-      @client.short_name.should eq("Monster LK.")
+    it 'removes dashes' do
+      Client.new(:name => 'Foo Dash-Bar').short_name.should == 'Foo DB.'
     end
 
-    it "should not double up periods and the end of a name" do
-      @client.name = "Foo Bar Inc."
-      @client.short_name.should eq("Foo BI.")
+    it 'does NOT add a period to names that already end with a period' do
+      Client.new(:name => 'Foo Bar Inc.').short_name.should == 'Foo BI.'
     end
   end
 
+  # TODO: move this to search index specs
   context "after create" do
     it "should create search index for new client" do
       SearchIndex.should_receive(:create).with({
