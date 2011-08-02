@@ -1,33 +1,29 @@
 require 'spec_helper'
 
 describe Project do
-  before do
-    @project = Project.new :name => 'foo'
-  end
 
-  context "validations" do
-    it "is not valid without name" do
-      @project.name = ""
-      @project.should_not be_valid
+  describe Project, '#name=' do
+
+    it 'is required' do
+      Project.new(:name =>                nil).should_not be_valid
+      Project.new(:name => 'Fascinating Work').should be_valid
     end
   end
 
-  context "after create" do
-    it "should create search index for new project" do
-      SearchIndex.should_receive(:create).with({
-        :resource_id => 37,
-        :resource_type => 'Project',
-        :name => 'foo'
-      })
-      Factory.create(:project_without_client, :id => 37)
+  describe Project, '#client=' do
+
+    it 'can be associated with a client' do
+      Factory.create(:project, :client =>        nil).should be_valid
+      Factory.create(:project, :client => Client.new).should be_valid
     end
   end
 
-  context "after update" do
-    it "should update search index for project" do
-      project = Factory.create(:project)
-      project.update_attributes(:name => 'ibm')
-      SearchIndex.where(:resource_type => 'Project').first.name.should == 'ibm'
+  describe Project, '#time_entries=' do
+
+    it 'can have many time_entries' do
+      Factory.create(:project, :time_entries => []).should be_valid
+      time_entries = Array.new(2) { Factory.create :time_entry }
+      Factory.create(:project, :time_entries => time_entries).should be_valid
     end
   end
 end
