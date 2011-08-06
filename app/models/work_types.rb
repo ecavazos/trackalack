@@ -1,6 +1,10 @@
 class WorkTypes
   def self.all
-    {:feature => 'Feature', :task => 'Task', :incident => 'Incident'}
+    {
+      :feature  => 'Feature',
+      :task     => 'Task',
+      :incident => 'Incident'
+    }
   end
 
   def self.for_select
