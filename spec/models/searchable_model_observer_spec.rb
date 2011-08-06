@@ -55,4 +55,35 @@ describe SearchableModelObserver do
       search_index.name.should == 'Make Pretty'
     end
   end
+
+  describe SearchableModelObserver, '#after_create :user' do
+
+    it 'creates an index record for new user' do
+      Factory.create(:user, :id => 37, :first_name => 'Sam', :last_name => 'Sneed')
+      search_index = SearchIndex.last
+      search_index.resource_id.should   == 37
+      search_index.resource_type.should == 'User'
+      search_index.name.should          == 'Sam Sneed'
+    end
+  end
+
+  describe SearchableModelObserver, '#after_update :project' do
+
+    it 'updates the search index when user is updated' do
+      user = Factory.create(:user,
+                            :id => 37,
+                            :first_name => 'Sam',
+                            :last_name => 'Sneed')
+
+      search_index = SearchIndex.last
+
+      search_index.name.should == 'Sam Sneed'
+
+      user.update_attributes(:first_name => 'John', :last_name => 'Cage')
+
+      search_index.reload
+
+      search_index.name.should == 'John Cage'
+    end
+  end
 end
