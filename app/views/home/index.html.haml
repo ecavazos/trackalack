@@ -12,14 +12,16 @@
       = render 'stream'
 
   %div{ :class => 'column grid_3'}
-    %h3 Recent Projects
 
-    %ul.quick-links
-      - @recently_updated_projects.each do |project|
-        %li
-          = link_to project.name, project
-          for
-          = link_to project.client.short_name, project.client
+    #recent_projects
+      %h3 Recent Projects
+
+      %ul.quick-links
+        - @recently_updated_projects.each do |project|
+          %li
+            = link_to project.name, project
+            for
+            = link_to project.client.short_name, project.client
 
     %h3 New Clients
 

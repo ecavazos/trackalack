@@ -6,7 +6,28 @@ describe 'Home Page', :js => true do
     @user = sign_in
   end
 
-  context 'within recent time entries section' do
+  context 'navigation' do
+
+    it 'links to clients page' do
+      visit root_path
+      click_link 'Clients'
+      current_path.should == clients_path
+    end
+
+    it 'links to projects page' do
+      visit root_path
+      click_link 'Projects'
+      current_path.should == projects_path
+    end
+
+    it 'links to users page' do
+      visit root_path
+      click_link 'Users'
+      current_path.should == users_path
+    end
+  end
+
+  context 'recent time entries section' do
 
     it 'has title' do
       visit root_path
@@ -168,4 +189,63 @@ describe 'Home Page', :js => true do
     end
   end
 
+  context 'recent projects section' do
+
+    it 'has title' do
+      visit root_path
+      find('#recent_projects h3').should have_content 'Recent Projects'
+    end
+
+    it 'displays projects ordered by (updated at) desc and limited to 10' do
+      13.times do |i|
+        client = Client.gen :name => "Client #{i}"
+        Project.gen :name => "Project #{i}", :client => client
+      end
+
+      Project.first.update_attribute 'name', 'Was Project 0'
+
+      visit root_path
+
+      within '#recent_projects' do
+        entries = all('li')
+
+        entries.length.should == 10
+
+        entries[0].should have_content 'Was Project 0'
+        entries[1].should have_content 'Project 12'
+        entries[2].should have_content 'Project 11'
+        entries[3].should have_content 'Project 10'
+        entries[4].should have_content 'Project 9'
+        entries[5].should have_content 'Project 8'
+        entries[6].should have_content 'Project 7'
+        entries[7].should have_content 'Project 6'
+        entries[8].should have_content 'Project 5'
+        entries[9].should have_content 'Project 4'
+      end
+    end
+
+    it 'links to project' do
+      project = Project.gen :name => 'Operation Flying Turtle'
+      visit root_path
+
+      within '#recent_projects' do
+        click_link 'Operation Flying Turtle'
+      end
+
+      current_path.should == project_path(project)
+    end
+
+    it 'links to client' do
+      client = Client.gen :name => 'The Cookie Makers'
+      Project.gen :client => client
+
+      visit root_path
+
+      within '#recent_projects' do
+        click_link 'The CM.'
+      end
+
+      current_path.should == client_path(client)
+    end
+  end
 end
