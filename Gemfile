@@ -18,9 +18,9 @@ group :test, :development do
   # gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git', :branch => '1.0'
   gem 'rspec-rails'
   gem 'autotest'
-
   gem 'launchy' # save_and_open_page
   gem 'factory_girl_rails'
+  gem 'factory_girl_extensions'
   gem 'database_cleaner'
 end
 

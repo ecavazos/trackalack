@@ -16,9 +16,17 @@ describe 'Home Page', :js => true do
     it 'displays time entries by created at date descending' do
 
       with_timestamping_disabled TimeEntry do
-        Factory.create :time_entry, :description => 'foo3', :user => @user, :created_at => Time.now.ago(2.day)
-        Factory.create :time_entry, :description => 'foo2', :user => @user, :created_at => Time.now.ago(1.day)
-        Factory.create :time_entry, :description => 'foo1', :user => @user, :created_at => Time.now
+        TimeEntry.gen(:description => 'foo3',
+                      :user        => @user,
+                      :created_at  => Time.now.ago(2.day))
+
+        TimeEntry.gen(:description => 'foo2',
+                      :user        => @user,
+                      :created_at  => Time.now.ago(1.day))
+
+        TimeEntry.gen(:description => 'foo1',
+                      :user        => @user,
+                      :created_at  => Time.now)
       end
 
       visit root_path
@@ -33,9 +41,11 @@ describe 'Home Page', :js => true do
     context 'a single time entry' do
 
       before do
-        @client     = Factory.create :client, :name => 'Seven Eleven'
-        @project    = Factory.create :project, :name => 'Make Awesome!', :client => @client
-        @time_entry = Factory.create :time_entry, :description => 'Delivered awesomeness!', :user => @user, :project => @project
+        @client     = Client.gen  :name => 'Seven Eleven'
+        @project    = Project.gen :name => 'Make Awesome!', :client => @client
+        @time_entry = TimeEntry.gen(:description => 'Delivered awesomeness!',
+                                    :user        => @user,
+                                    :project     => @project)
       end
 
       it 'links to the associated client' do
@@ -143,8 +153,11 @@ describe 'Home Page', :js => true do
       end
 
       it "hides edit for other user's time entries" do
-        other_user = Factory.create :user, :email => 'foo@bar.com'
-        Factory.create :time_entry, :description => 'not my time entry.', :user => other_user, :project => @project
+        other_user = User.gen :email => 'foo@bar.com'
+
+        TimeEntry.gen(:description => 'not my time entry.',
+                      :user        => other_user,
+                      :project     => @project)
 
         visit root_path
 

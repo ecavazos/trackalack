@@ -6,7 +6,9 @@ describe SearchableModelObserver do
 
     it 'creates an index record for new client' do
       Factory.create(:client, :id => 37, :name => 'Money Bagz')
+
       search_index = SearchIndex.last
+
       search_index.resource_id.should   == 37
       search_index.resource_type.should == 'Client'
       search_index.name.should          == 'Money Bagz'
@@ -33,7 +35,9 @@ describe SearchableModelObserver do
 
     it 'creates an index record for new project' do
       Factory.create(:project, :id => 37, :name => 'Make Look Nice')
+
       search_index = SearchIndex.last
+
       search_index.resource_id.should   == 37
       search_index.resource_type.should == 'Project'
       search_index.name.should          == 'Make Look Nice'
@@ -60,7 +64,9 @@ describe SearchableModelObserver do
 
     it 'creates an index record for new user' do
       Factory.create(:user, :id => 37, :first_name => 'Sam', :last_name => 'Sneed')
+
       search_index = SearchIndex.last
+
       search_index.resource_id.should   == 37
       search_index.resource_type.should == 'User'
       search_index.name.should          == 'Sam Sneed'
@@ -71,9 +77,9 @@ describe SearchableModelObserver do
 
     it 'updates the search index when user is updated' do
       user = Factory.create(:user,
-                            :id => 37,
+                            :id         => 37,
                             :first_name => 'Sam',
-                            :last_name => 'Sneed')
+                            :last_name  => 'Sneed')
 
       search_index = SearchIndex.last
 
