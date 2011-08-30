@@ -196,7 +196,7 @@ describe 'Home Page', :js => true do
       find('#recent_projects h3').should have_content 'Recent Projects'
     end
 
-    it 'displays projects ordered by (updated at) desc and limited to 10' do
+    it 'displays projects ordered by ( updated_at ) desc and limited to 10' do
       13.times do |i|
         client = Client.gen :name => "Client #{i}"
         Project.gen :name => "Project #{i}", :client => client
@@ -245,7 +245,97 @@ describe 'Home Page', :js => true do
         click_link 'The CM.'
       end
 
-      current_path.should == client_path(client)
+      current_path.should == client_path( client )
+    end
+  end
+
+  context 'new clients section' do
+
+    it 'has title' do
+      visit root_path
+      find('#new_clients h3').should have_content 'New Clients'
+    end
+
+    it 'displays clients ordered by ( created_at ) desc and limited to 10' do
+      13.times do |i|
+        Client.gen :name => "Client #{i}"
+      end
+
+      visit root_path
+
+      within '#new_clients' do
+        entries = all('li')
+
+        entries.length.should == 10
+
+        entries[0].should have_content 'Client 12'
+        entries[1].should have_content 'Client 11'
+        entries[2].should have_content 'Client 10'
+        entries[3].should have_content 'Client 9'
+        entries[4].should have_content 'Client 8'
+        entries[5].should have_content 'Client 7'
+        entries[6].should have_content 'Client 6'
+        entries[7].should have_content 'Client 5'
+        entries[8].should have_content 'Client 4'
+        entries[9].should have_content 'Client 3'
+      end
+    end
+
+    it 'links to client' do
+      client = Client.gen :name => 'The Cookie Makers'
+
+      visit root_path
+
+      within '#new_clients' do
+        click_link 'The Cookie Makers'
+      end
+
+      current_path.should == client_path( client )
+    end
+  end
+
+  context 'new projects section' do
+
+    it 'has title' do
+      visit root_path
+      find('#new_projects h3').should have_content 'New Projects'
+    end
+
+    it 'displays projects ordered by ( created_at ) desc and limited to 10' do
+      13.times do |i|
+        Project.gen :name => "Project #{i}"
+      end
+
+      visit root_path
+
+      within '#new_projects' do
+        entries = all('li')
+
+        entries.length.should == 10
+
+        entries[0].should have_content 'Project 12'
+        entries[1].should have_content 'Project 11'
+        entries[2].should have_content 'Project 10'
+        entries[3].should have_content 'Project 9'
+        entries[4].should have_content 'Project 8'
+        entries[5].should have_content 'Project 7'
+        entries[6].should have_content 'Project 6'
+        entries[7].should have_content 'Project 5'
+        entries[8].should have_content 'Project 4'
+        entries[9].should have_content 'Project 3'
+      end
+    end
+
+    it 'links to project' do
+      project = Project.gen :name => 'Eat Cake!'
+
+      visit root_path
+
+      within '#new_projects' do
+        click_link 'Eat Cake!'
+      end
+
+      current_path.should == project_path( project )
     end
   end
 end

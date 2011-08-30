@@ -23,17 +23,19 @@
             for
             = link_to project.client.short_name, project.client
 
-    %h3 New Clients
+    #new_clients
+      %h3 New Clients
 
-    %ul.quick-links
-      - @clients.each do |client|
-        %li= link_to client.name, client_path(client)
+      %ul.quick-links
+        - @clients.each do |client|
+          %li= link_to client.name, client_path(client)
 
-    %h3 New Projects
+    #new_projects
+      %h3 New Projects
 
-    %ul.quick-links
-      - @projects.each do |project|
-        %li= link_to project.name, project_path(project)
+      %ul.quick-links
+        - @projects.each do |project|
+          %li= link_to project.name, project_path(project)
 
 - content_for :scripts do
   = javascript_include_tag 'search'
