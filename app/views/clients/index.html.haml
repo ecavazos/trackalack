@@ -9,24 +9,31 @@
 .row
   %div{ :class => 'column grid_12'}
 
-    %table.data-table
-      %tr
-        %th Name
-        %th
+    - if @clients.any?
 
-      - @clients.each do |client|
+      %table.data-table
         %tr
-          %td= client.name
+          %th Name
+          %th
 
-          %td.crud-action
-            %a.item-menu-button{:href => '', :data => { |
-              :items => [ |
-                {:name => 'Show', :path => client_path(client)}, |
-                {:name => 'Edit', :path => edit_client_path(client)}, |
-                {:name => 'Destroy', :path => client_path(client)} |
-                ].to_json |
-              } |
-            } Menu |
+        - @clients.each do |client|
+          %tr
+            %td= client.name
+
+            %td.crud-action
+              %a.item-menu-button{:href => '', :data => { |
+                :items => [ |
+                  {:name => 'Show',    :path => client_path(client)}, |
+                  {:name => 'Edit',    :path => edit_client_path(client)}, |
+                  {:name => 'Destroy', :path => client_path(client)} |
+                  ].to_json |
+                } |
+              } Menu |
+    - else
+
+      .prompt
+        You have 0 clients.
+        = link_to 'Add a client.', new_client_path
 
 - content_for :scripts do
   = javascript_include_tag 'item_menu'

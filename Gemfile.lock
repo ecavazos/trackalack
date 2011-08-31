@@ -142,7 +142,7 @@ PLATFORMS
 
 DEPENDENCIES
   autotest
-  capybara (>= 1.0.0.rc1)
+  capybara
   database_cleaner
   devise (= 1.3.4)
   factory_girl_extensions
