@@ -10,17 +10,17 @@ describe 'Clients Index', :js => true do
 
     visit clients_path
 
-    find('h2').should have_content 'Clients'
+    find('h2').should have_content('Clients')
 
     # table header
     within '.data-table' do
-      find('th:first').should have_content 'Name'
+      find('th:first').should have_content('Name')
 
-      find('tr:nth-child(2) td:first').should have_content client1.name
-      find('tr:nth-child(2) td:last' ).should have_css '.item-menu-button'
+      find('tr:nth-child(2) td:first').should have_content(client1.name)
+      find('tr:nth-child(2) td:last' ).should have_css('.item-menu-button')
 
-      find('tr:nth-child(3) td:first').should have_content client2.name
-      find('tr:nth-child(3) td:last' ).should have_css '.item-menu-button'
+      find('tr:nth-child(3) td:first').should have_content(client2.name)
+      find('tr:nth-child(3) td:last' ).should have_css('.item-menu-button')
     end
   end
 
@@ -29,10 +29,12 @@ describe 'Clients Index', :js => true do
 
     visit clients_path
 
-    find('.prompt').should have_content 'You have 0 clients. Add a client.'
-    page.should_not have_css '.data-table'
+    find('.prompt').should have_content('You have 0 clients. Add a client')
+    page.should_not have_css('.data-table')
 
-    click_link 'Add a client'
+    within '.prompt' do
+      click_link 'Add a client'
+    end
 
     current_path.should == new_client_path
   end

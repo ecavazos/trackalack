@@ -31,7 +31,7 @@ describe 'Home Page', :js => true do
 
     it 'has title' do
       visit root_path
-      page.should have_content 'Recent Time Entries'
+      page.should have_content('Recent Time Entries')
     end
 
     it 'displays time entries by created at date descending' do
@@ -54,9 +54,9 @@ describe 'Home Page', :js => true do
 
       entries = all('#stream .activity')
 
-      entries[0].should have_content 'foo1'
-      entries[1].should have_content 'foo2'
-      entries[2].should have_content 'foo3'
+      entries[0].should have_content('foo1')
+      entries[1].should have_content('foo2')
+      entries[2].should have_content('foo3')
     end
 
     context 'a single time entry' do
@@ -107,29 +107,32 @@ describe 'Home Page', :js => true do
         visit root_path
 
         within '#stream .activity' do
-          page.should have_content 'Delivered awesomeness!'
+          page.should have_content('Delivered awesomeness!')
         end
       end
 
       it 'allows user to add time entries to associated project' do
         visit root_path
 
-        page.should have_no_content 'Time Entry'
+        page.should have_no_content('Time Entry')
 
         within '#stream .activity' do
           click_link 'Add time'
         end
 
-        within '.ui-dialog' do
-          page.should have_content 'Time Entry'
+        TimeEntry.count.should == 1
 
-          page.execute_script("$('#time_entry_work_type option:eq(1)').attr('selected', 'selected');")
-          page.execute_script("$('#time_entry_billing_type option:eq(2)').attr('selected', 'selected');")
+        within '.ui-dialog' do
+          page.should have_content('Time Entry')
+
+          select 'Task',      :from => 'Work type'
+          select 'No Charge', :from => 'Billing type'
 
           find('label', :text => 'Date').click
           fill_in 'Date', :with => Date.today.strftime('%m/%d/%Y')
         end
 
+        # the DOM elements for the date-picker are not within the dialog
         find('#ui-datepicker-div .ui-state-highlight').click
 
         within '.ui-dialog' do
@@ -138,7 +141,10 @@ describe 'Home Page', :js => true do
           click_button 'Save'
         end
 
+        TimeEntry.count.should == 2
+
         time_entry = TimeEntry.first
+
         time_entry.project.should      == @project
         time_entry.work_type.should    == :task
         time_entry.billing_type.should == :no_charge
@@ -147,22 +153,25 @@ describe 'Home Page', :js => true do
         time_entry.description.should  == 'I had a nice time with your mom.'
 
         within '#stream .activity' do
-          page.should have_content 'I had a nice time with your mom.'
+          page.should have_content('I had a nice time with your mom.')
         end
       end
 
       it 'allows owner to edit' do
+        @time_entry.update_attribute :description, 'I like cheeze.'
 
         visit root_path
 
-        page.should have_no_content 'Time Entry'
+        page.should have_no_content('Time Entry')
+        page.should    have_content('I like cheeze.')
 
         within '#stream .activity' do
           click_link 'Edit'
         end
 
+        page.should have_content('Time Entry')
+
         within '.ui-dialog' do
-          page.should have_content 'Time Entry'
           fill_in 'Description', :with => 'Make that super-awesomeness!'
           click_button 'Save'
         end
@@ -171,6 +180,7 @@ describe 'Home Page', :js => true do
         @time_entry.description.should == 'Make that super-awesomeness!'
 
         # TODO: page should refresh the updated time entry *ONLY*
+        page.should have_content('Make that super-awesomeness!')
       end
 
       it "hides edit for other user's time entries" do
@@ -183,7 +193,7 @@ describe 'Home Page', :js => true do
         visit root_path
 
         within '#stream .activity' do
-          page.should have_no_content 'Edit'
+          page.should have_no_content('Edit')
         end
       end
     end
@@ -193,7 +203,7 @@ describe 'Home Page', :js => true do
 
     it 'has title' do
       visit root_path
-      find('#recent_projects h3').should have_content 'Recent Projects'
+      find('#recent_projects h3').should have_content('Recent Projects')
     end
 
     it 'displays projects ordered by ( updated_at ) desc and limited to 10' do
@@ -211,16 +221,16 @@ describe 'Home Page', :js => true do
 
         entries.length.should == 10
 
-        entries[0].should have_content 'Was Project 0'
-        entries[1].should have_content 'Project 12'
-        entries[2].should have_content 'Project 11'
-        entries[3].should have_content 'Project 10'
-        entries[4].should have_content 'Project 9'
-        entries[5].should have_content 'Project 8'
-        entries[6].should have_content 'Project 7'
-        entries[7].should have_content 'Project 6'
-        entries[8].should have_content 'Project 5'
-        entries[9].should have_content 'Project 4'
+        entries[0].should have_content('Was Project 0')
+        entries[1].should have_content('Project 12')
+        entries[2].should have_content('Project 11')
+        entries[3].should have_content('Project 10')
+        entries[4].should have_content('Project 9')
+        entries[5].should have_content('Project 8')
+        entries[6].should have_content('Project 7')
+        entries[7].should have_content('Project 6')
+        entries[8].should have_content('Project 5')
+        entries[9].should have_content('Project 4')
       end
     end
 
@@ -253,7 +263,7 @@ describe 'Home Page', :js => true do
 
     it 'has title' do
       visit root_path
-      find('#new_clients h3').should have_content 'New Clients'
+      find('#new_clients h3').should have_content('New Clients')
     end
 
     it 'displays clients ordered by ( created_at ) desc and limited to 10' do
@@ -268,16 +278,16 @@ describe 'Home Page', :js => true do
 
         entries.length.should == 10
 
-        entries[0].should have_content 'Client 12'
-        entries[1].should have_content 'Client 11'
-        entries[2].should have_content 'Client 10'
-        entries[3].should have_content 'Client 9'
-        entries[4].should have_content 'Client 8'
-        entries[5].should have_content 'Client 7'
-        entries[6].should have_content 'Client 6'
-        entries[7].should have_content 'Client 5'
-        entries[8].should have_content 'Client 4'
-        entries[9].should have_content 'Client 3'
+        entries[0].should have_content('Client 12')
+        entries[1].should have_content('Client 11')
+        entries[2].should have_content('Client 10')
+        entries[3].should have_content('Client 9')
+        entries[4].should have_content('Client 8')
+        entries[5].should have_content('Client 7')
+        entries[6].should have_content('Client 6')
+        entries[7].should have_content('Client 5')
+        entries[8].should have_content('Client 4')
+        entries[9].should have_content('Client 3')
       end
     end
 
@@ -298,10 +308,10 @@ describe 'Home Page', :js => true do
 
     it 'has title' do
       visit root_path
-      find('#new_projects h3').should have_content 'New Projects'
+      find('#new_projects h3').should have_content('New Projects')
     end
 
-    it 'displays projects ordered by ( created_at ) desc and limited to 10' do
+    it 'displays projects ordered by ( created_at ( desc and limited to 10' do
       13.times do |i|
         Project.gen :name => "Project #{i}"
       end
@@ -313,16 +323,16 @@ describe 'Home Page', :js => true do
 
         entries.length.should == 10
 
-        entries[0].should have_content 'Project 12'
-        entries[1].should have_content 'Project 11'
-        entries[2].should have_content 'Project 10'
-        entries[3].should have_content 'Project 9'
-        entries[4].should have_content 'Project 8'
-        entries[5].should have_content 'Project 7'
-        entries[6].should have_content 'Project 6'
-        entries[7].should have_content 'Project 5'
-        entries[8].should have_content 'Project 4'
-        entries[9].should have_content 'Project 3'
+        entries[0].should have_content('Project 12')
+        entries[1].should have_content('Project 11')
+        entries[2].should have_content('Project 10')
+        entries[3].should have_content('Project 9')
+        entries[4].should have_content('Project 8')
+        entries[5].should have_content('Project 7')
+        entries[6].should have_content('Project 6')
+        entries[7].should have_content('Project 5')
+        entries[8].should have_content('Project 4')
+        entries[9].should have_content('Project 3')
       end
     end
 

@@ -37,7 +37,7 @@ class TimeEntriesController < ApplicationController
   end
 
   def destroy
-    @time_entry = current_user.time_entries.find(params[:id])
+    @time_entry = current_user.time_entries.find params[:id]
     @time_entry.destroy
     redirect_to project_url(@time_entry.project), :notice => 'Time entry was successfully deleted.'
   end
@@ -45,11 +45,11 @@ class TimeEntriesController < ApplicationController
   private
 
   def bad_save_or_update_response
-    render :json => @time_entry.errors.map{|k,v| "#{k} #{v}"}, :status => :bad_request
+    render :json => @time_entry.errors.map{ |k, v| "#{ k } #{ v }" }, :status => :bad_request
   end
 
   def parse_date
-    params[:time_entry][:date] = parse_us_date(params[:time_entry][:date])
+    params[:time_entry][:date] = parse_us_date( params[:time_entry][:date] )
   end
 
   def parse_us_date(string)
