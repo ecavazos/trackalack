@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
     @project = @client.projects.build(params[:project])
 
     if @project.save
-      redirect_to projects_path
+      redirect_to projects_path, :notice => 'Project was successfully created.'
     else
       render :new
     end
