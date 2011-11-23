@@ -23,7 +23,8 @@ describe 'Project new' do
     Project.count.should == 1
 
     project = Project.first
-    project.name.should == 'Food Face'
+    project.name.should   == 'Food Face'
+    project.client.should == @client
 
     current_path.should == projects_path
 

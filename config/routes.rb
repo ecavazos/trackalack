@@ -3,7 +3,7 @@ Trackalack::Application.routes.draw do
   resources :users
 
   resources :clients do
-    resources :projects, :only => [:new, :create]
+    resources :projects
   end
 
   resources :projects, :except => [:new, :create] do
