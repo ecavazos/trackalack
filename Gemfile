@@ -14,7 +14,6 @@ group :development do
 end
 
 group :test, :development do
-  # gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git', :branch => '1.0'
   gem 'autotest'
   gem 'capybara'
   gem 'database_cleaner'

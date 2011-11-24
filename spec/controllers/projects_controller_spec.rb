@@ -38,14 +38,6 @@ describe ProjectsController do
     end
   end
 
-  describe "GET edit" do
-    it "assigns the requested project as @project" do
-      Project.stub(:find).with("37") { mock_project }
-      get :edit, :id => "37"
-      assigns(:project).should be(mock_project)
-    end
-  end
-
   describe "POST create" do
 
     describe "with valid params" do
@@ -81,44 +73,6 @@ describe ProjectsController do
         response.should render_template("new")
       end
     end
-  end
-
-  describe "PUT update" do
-
-    describe "with valid params" do
-      it "updates the requested project" do
-        Project.should_receive(:find).with("37") { mock_project }
-        mock_project.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :project => {'these' => 'params'}
-      end
-
-      it "assigns the requested project as @project" do
-        Project.stub(:find) { mock_project(:update_attributes => true) }
-        put :update, :id => "1"
-        assigns(:project).should be(mock_project)
-      end
-
-      it "redirects to the project" do
-        Project.stub(:find) { mock_project(:update_attributes => true) }
-        put :update, :id => "1"
-        response.should redirect_to(project_url(mock_project))
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the project as @project" do
-        Project.stub(:find) { mock_project(:update_attributes => false) }
-        put :update, :id => "1"
-        assigns(:project).should be(mock_project)
-      end
-
-      it "re-renders the 'edit' template" do
-        Project.stub(:find) { mock_project(:update_attributes => false) }
-        put :update, :id => "1"
-        response.should render_template("edit")
-      end
-    end
-
   end
 
   describe "DELETE destroy" do
