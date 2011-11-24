@@ -4,26 +4,31 @@
     %h2 Listing projects
 
     %table.data-table
-      %tr
-        %th Client
-        %th Name
-        %th{ :colspan => 4 }
+      %thead
 
-      - @projects.each do |project|
         %tr
-          %td= link_to project.client.name, client_path(project.client)
-          %td= project.name
+          %th Client
+          %th Name
+          %th{ :colspan => 4 }
 
-          %td.crud-action
-            %a.item-menu-button{:href => '', :data => { |
-              :items => [ |
-                add_link_data(project), |
-                {:name => 'Show', :path => project_path(project)}, |
-                {:name => 'Edit', :path => edit_project_path(project)}, |
-                {:name => 'Destroy', :path => project_path(project)} |
-                ].to_json |
-              } |
-            } Menu |
+      %tbody
+
+        - @projects.each do |project|
+
+          %tr
+            %td= link_to project.client.name, client_path(project.client)
+            %td= project.name
+
+            %td.crud-action
+              %a.item-menu-button{:href => '', :data => { |
+                :items => [ |
+                  add_link_data(project), |
+                  {:name => 'Show', :path => project_path(project)}, |
+                  {:name => 'Edit', :path => edit_project_path(project)}, |
+                  {:name => 'Destroy', :path => project_path(project)} |
+                  ].to_json |
+                } |
+              } Menu |
 
 - content_for :scripts do
   = javascript_include_tag 'item_menu'

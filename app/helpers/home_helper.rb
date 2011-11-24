@@ -1,8 +1,4 @@
 module HomeHelper
-  def format_date(date)
-    (date.nil?)? '' : date.strftime('%m/%d/%Y')
-  end
-
   def user_edit_time_link(time_entry)
     return unless time_entry.user == current_user
     haml_concat('&middot;'.html_safe)

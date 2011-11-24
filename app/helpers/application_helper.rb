@@ -14,6 +14,10 @@ module ApplicationHelper
     end
   end
 
+  def format_date(date)
+    (date.nil?)? '' : date.strftime('%m/%d/%Y')
+  end
+
   def add_link_data(time)
     project = time.is_a?(TimeEntry) ? time.project : time
     {
