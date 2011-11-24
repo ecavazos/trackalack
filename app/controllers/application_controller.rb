@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
+
+  # TODO: fix this in Rails 3.1
+  # Ensure that application helper is the only helper loaded by default.
+  clear_helpers
+  helper :application
+
   protect_from_forgery
-
   before_filter :authenticate_user!
-
   layout :layout_picker
 
   private

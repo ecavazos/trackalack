@@ -13,4 +13,29 @@ module ApplicationHelper
       end
     end
   end
+
+  def add_link_data(time)
+    project = time.is_a?(TimeEntry) ? time.project : time
+    {
+      :name  => 'Add Time to Project',
+      :path  => new_project_time_entry_path(project),
+      :class => 'add-time-link'
+    }
+  end
+
+  def edit_link_data(time)
+    {
+      :name  => 'Edit Time',
+      :path  => edit_project_time_entry_path( time.project, time ),
+      :class => 'edit-time-link'
+    }
+  end
+
+  def destroy_link_data(time)
+    {
+      :name => 'Destroy',
+      :path => project_time_entry_path( time.project, time )
+    }
+  end
+
 end

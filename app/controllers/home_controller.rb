@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   def index
     # @time_entries = current_user.time_entries.all_assoc_limited(50)
     @time_entries              = TimeEntry.all_assoc_limited(50)
